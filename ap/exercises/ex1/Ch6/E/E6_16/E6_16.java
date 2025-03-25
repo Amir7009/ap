@@ -1,4 +1,4 @@
-package ap.exercises.Ch6.E.E6_16;
+package ap.exercises.ex1.Ch6.E.E6_16;
 
 public class E6_16 {
     public static void main(String[] args) {

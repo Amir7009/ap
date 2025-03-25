@@ -1,4 +1,4 @@
-package ap.exercises.Ch6.E.E6_1.e;
+package ap.exercises.ex1.Ch6.E.E6_1.e;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package ap.exercises.Ch6.E.E6_1.a;
+package ap.exercises.ex1.Ch6.E.E6_1.a;
 
 public class A {
     public static void main(String[] args) {
