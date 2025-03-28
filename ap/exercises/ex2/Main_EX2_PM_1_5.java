@@ -33,8 +33,7 @@ public class Main_EX2_PM_1_5 {
         printMap(map);
 
         // Random movement
-        int h=5;
-        while (--h >= 0){
+        while (1 > 0){
             int s = (int)(Math.random()*4);
             switch (s) {
                 case 0:
