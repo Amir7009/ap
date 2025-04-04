@@ -14,6 +14,7 @@ public class Main_EX2_PM_3_1 extends JFrame implements KeyListener {
     final int LEFT = 1, RIGHT = 2, TOP = 3, BOTTOM = 4;
     Point dotPoint = new Point();
     int score=0;
+    static long start, finish;
 
     public Main_EX2_PM_3_1() {
         addKeyListener(this);
@@ -53,6 +54,11 @@ public class Main_EX2_PM_3_1 extends JFrame implements KeyListener {
         if (dotPoint.x == pacmanPoint.x && dotPoint.y == pacmanPoint.y) {
             getNewDotPointLocation();
             score++;
+            if ( score == 5 ){
+                System.out.println("You win the game!\nYour score: " + score );
+                System.out.println("Your playing time: " + (float)((finish-start)/1000));
+                System.exit(0);
+            }
             System.out.println("Score: " + score);
         }
         movePacman();
@@ -100,6 +106,11 @@ public class Main_EX2_PM_3_1 extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        finish = System.currentTimeMillis();
+        if ( (finish-start)/1000 > 30 ){
+            System.out.println("\nError! Your time is over!\nYour score: " + score);
+            System.exit(0);
+        }
         if (e.getKeyCode() == KeyEvent.VK_UP)
             direction = 3;
         else if (e.getKeyCode() == KeyEvent.VK_DOWN)
@@ -140,6 +151,8 @@ public class Main_EX2_PM_3_1 extends JFrame implements KeyListener {
     }
 
     public static void main(String[] args) {
+        System.out.println("Target score: 5\nTime limit: 30 sec");
+        start = System.currentTimeMillis();
         Main_EX2_PM_3_1 frame = new Main_EX2_PM_3_1();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
