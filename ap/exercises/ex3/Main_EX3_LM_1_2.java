@@ -77,6 +77,34 @@ public class Main_EX3_LM_1_2 {
         FileNotFoundException e) {
         throw new RuntimeException(e);
         }
+
+        // read from file
+        String[][] studentReadList = new String[3][4];
+        String[][] bookReadList = new String[4][4];
+        Scanner text1 = null;
+        Scanner text2 = null;
+        try {
+            text1 = new Scanner(new File("students.txt"));
+            text2 = new Scanner(new File("books.txt"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        // read students
+        for (int i=0 ; i < studentsCount ; i++){
+            for (int j=0 ; j < 4 ; j++){
+                studentReadList[i][j] = text1.nextLine();
+            }
+        }
+        text1.close();
+
+        // read books
+        for (int i=0 ; i < booksCount ; i++){
+            for (int j=0 ; j < 4 ; j++){
+                bookReadList[i][j] = text2.nextLine();
+            }
+        }
+        text2.close();
     }
 
     private static void saveStudentToArray(Students student, String[][] studentsList, int index){
