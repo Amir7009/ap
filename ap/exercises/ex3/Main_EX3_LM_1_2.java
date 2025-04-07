@@ -34,7 +34,7 @@ public class Main_EX3_LM_1_2 {
         booksCount++;
         saveBookToArray(myBook4, booksList, booksCount-1);
 
-        // save to file
+        // Create file for save to file
         File file1 = new File("students.txt");
         File file2 = new File("books.txt");
         try { // create backup file
@@ -44,6 +44,16 @@ public class Main_EX3_LM_1_2 {
             throw new RuntimeException(e);
         }
 
+        // Call method for save data
+        saveArrays(studentsList, booksList);
+
+        // Call method for read from files
+        String[][] studentReadList = new String[3][4];
+        String[][] bookReadList = new String[4][4];
+        loadFiles(studentsCount, booksCount, studentReadList, bookReadList);
+    }
+
+    static void saveArrays (String[][] studentsList, String[][] booksList){
         try { // to empty file
             FileWriter fileWriter = new FileWriter("students.txt", false);
             fileWriter.close();
@@ -74,13 +84,13 @@ public class Main_EX3_LM_1_2 {
             out2.close();
 
         } catch (
-        FileNotFoundException e) {
-        throw new RuntimeException(e);
+                FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
+    }
 
+    static void loadFiles(int studentsCount, int booksCount, String[][] studentReadList, String[][] bookReadList){
         // Read from files
-        String[][] studentReadList = new String[3][4];
-        String[][] bookReadList = new String[4][4];
         Scanner text1 = null;
         Scanner text2 = null;
         try {
