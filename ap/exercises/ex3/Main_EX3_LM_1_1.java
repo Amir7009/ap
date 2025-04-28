@@ -5,19 +5,19 @@ import java.util.Scanner;
 public class Main_EX3_LM_1_1 {
     public static void main(String[] args) {
         // Book instants
-        Book myBook1 = new Book("Namira", "Sadegh Karamyar", 120, 1398);
-        Book myBook2 = new Book("Kimiaghar", "Paolo Kuiilo", 90, 2008);
+        BooksClass myBook1 = new BooksClass("Namira", "Sadegh Karamyar", 120, 1398);
+        BooksClass myBook2 = new BooksClass("Kimiaghar", "Paolo Kuiilo", 90, 2008);
 
         // Student instants
-        Student student1 = new Student("Amir Hossein", "Mohebbi", "112233", "Computer" );
-        Student student2 = new Student("Amir Mohammad", "Najafi", "332211", "Computer" );
+        StudentsClass student1 = new StudentsClass("Amir Hossein", "Mohebbi", "112233", "Computer" );
+        StudentsClass student2 = new StudentsClass("Amir Mohammad", "Najafi", "332211", "Computer" );
     }
 }
 
-class Student{
+class StudentsClass{
     private String fName, lName, stCode, studyingField;
 
-    public Student(String fName, String lName, String stCode, String studyingField ){
+    public StudentsClass(String fName, String lName, String stCode, String studyingField ){
         this.fName = fName;
         this.lName = lName;
         this.stCode = stCode;
@@ -53,11 +53,11 @@ class Student{
     }
 }
 
-class Book{
+class BooksClass{
     private String title, author;
     private int pages, year;
 
-    public Book(String title, String author, int pages, int year ){
+    public BooksClass(String title, String author, int pages, int year ){
         this.title = title;
         this.author = author;
         this.pages = pages;
