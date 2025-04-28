@@ -1,6 +1,6 @@
 package ap.trainingCodes.shapeManager;
 
-public class Main {
+public class ShapeMain {
 
     public static void main(String[] args) {
 
