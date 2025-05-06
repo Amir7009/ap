@@ -17,15 +17,17 @@ public class Main {
 
         for(Book i : books){
             System.out.println(i.getName());
-            System.out.println(i.getPrice());
-            System.out.println(i.getDiscount());
-            System.out.println("final price=" +(i.getPrice()- i.getDiscount()));
+            System.out.println("price= " + i.getPrice());
+            System.out.println("discount= " + i.getDiscount());
+            System.out.println("final price=" +(i.getPrice()- i.getDiscount()) + "\n\n");
         }
 
         for(Pen j : pens){
             System.out.println(j.getBrand());
-            System.out.println(j.getPrice());
             System.out.println(j.getColor());
+            System.out.println("price= " + j.getPrice());
+            System.out.println("discount= " + j.getDiscount());
+            System.out.println("final price= "+(j.getPrice()-j.getDiscount()) + "\n\n");
         }
 
     }
