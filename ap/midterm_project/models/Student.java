@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Student extends User {
 
-    private String firstName, lastName, studyingField, studentId, membershipDate;
+    private String firstName, lastName, studyingField, studentID, membershipDate;
 
     public Student(String firstName, String lastName, String studyingField, String studentId, String membershipDate){
 
@@ -13,7 +13,7 @@ public class Student extends User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.studyingField = studyingField;
-        this.studentId = studentId;
+        this.studentID = studentId;
         this.membershipDate = membershipDate;
 
     }
@@ -24,7 +24,7 @@ public class Student extends User {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", studyingField='" + studyingField + '\'' +
-                ", studentId='" + studentId + '\'' +
+                ", studentID='" + studentID + '\'' +
                 ", membershipDate='" + membershipDate + '\'' +
                 '}';
     }

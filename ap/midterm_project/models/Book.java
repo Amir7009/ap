@@ -81,7 +81,7 @@ public class Book{
         return new Book(
                 values.get("title"),
                 values.get("author"),
-                values.get("page"),
+                values.get("pages"),
                 values.get("year"),
                 values.get("ISBN")
         );
