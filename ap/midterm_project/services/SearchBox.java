@@ -1,8 +1,8 @@
 package ap.midterm_project.services;
 
 import ap.midterm_project.constants.ValidateRoles;
-import ap.midterm_project.helper.InputHandler;
-import ap.midterm_project.helper.Printer;
+import ap.midterm_project.helpers.InputHandler;
+import ap.midterm_project.helpers.Printer;
 import ap.midterm_project.models.Book;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package ap.midterm_project.helper;
+package ap.midterm_project.helpers;
 
 import java.util.Scanner;
 

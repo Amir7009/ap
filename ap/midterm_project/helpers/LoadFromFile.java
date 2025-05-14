@@ -1,4 +1,4 @@
-package ap.midterm_project.helper;
+package ap.midterm_project.helpers;
 
 import ap.midterm_project.models.Book;
 import ap.midterm_project.models.Librarian;

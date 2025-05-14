@@ -1,10 +1,10 @@
-package ap.midterm_project.controler;
+package ap.midterm_project.controllers;
 
-import ap.midterm_project.helper.Printer;
+import ap.midterm_project.helpers.Printer;
 import ap.midterm_project.services.*;
 import ap.midterm_project.constants.*;
 import ap.midterm_project.constants.UserRoles;
-import ap.midterm_project.dataBase.Library;
+import ap.midterm_project.database.Library;
 
 public class SwitchHandler {
 

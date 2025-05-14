@@ -1,8 +1,8 @@
 package ap.midterm_project.services;
 
-import ap.midterm_project.dataBase.Library;
-import ap.midterm_project.helper.LoadFromFile;
-import ap.midterm_project.helper.SaveToFile;
+import ap.midterm_project.database.Library;
+import ap.midterm_project.helpers.LoadFromFile;
+import ap.midterm_project.helpers.SaveToFile;
 
 public class FileManager {
 

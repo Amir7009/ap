@@ -1,8 +1,8 @@
 package ap.midterm_project;
 
 import ap.midterm_project.constants.UserRoles;
-import ap.midterm_project.controler.SwitchHandler;
-import ap.midterm_project.dataBase.Library;
+import ap.midterm_project.controllers.SwitchHandler;
+import ap.midterm_project.database.Library;
 import ap.midterm_project.services.FileManager;
 import ap.midterm_project.services.MenuHelper;
 

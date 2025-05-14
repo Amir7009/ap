@@ -1,6 +1,6 @@
 package ap.midterm_project.services;
 
-import ap.midterm_project.helper.InputHandler;
+import ap.midterm_project.helpers.InputHandler;
 
 public class MenuHelper {
 

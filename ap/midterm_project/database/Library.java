@@ -1,4 +1,4 @@
-package ap.midterm_project.dataBase;
+package ap.midterm_project.database;
 
 import ap.midterm_project.models.BorrowSystem;
 import ap.midterm_project.models.Book;
@@ -7,7 +7,6 @@ import ap.midterm_project.models.LibraryManager;
 import ap.midterm_project.models.Student;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Library {

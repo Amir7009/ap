@@ -1,6 +1,6 @@
 package ap.midterm_project.services;
 
-import ap.midterm_project.helper.InputHandler;
+import ap.midterm_project.helpers.InputHandler;
 import ap.midterm_project.models.UsernameInterface;
 import ap.midterm_project.constants.ValidateRoles;
 import ap.midterm_project.models.Student;
