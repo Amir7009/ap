@@ -6,6 +6,7 @@ import ap.midterm_project.helpers.Printer;
 import ap.midterm_project.models.Book;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class SearchBox {
 
@@ -27,7 +28,7 @@ public class SearchBox {
                         calculateMatchScore(query, b2.getTitle()),
                         calculateMatchScore(query, b1.getTitle())
                 ))
-                .toList();
+                .collect(Collectors.toList());
 
         print.printObjectInfo(matchBooks);
 

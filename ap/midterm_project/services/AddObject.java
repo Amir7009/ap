@@ -43,8 +43,8 @@ public class AddObject {
 
         System.out.println("Please enter the ISBN: ");
         ISBN = userInput.userInput(
-                condition.USERNAME_VALIDATE_CONDITION,
-                "You are only allowed to use numbers."
+                condition.ISBN_VALIDATE_CONDITION,
+                "You are only allowed to use numbers(10 digits)."
         );
 
         // add book

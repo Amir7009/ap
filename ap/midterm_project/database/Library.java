@@ -1,6 +1,7 @@
 package ap.midterm_project.database;
 
-import ap.midterm_project.models.BorrowSystem;
+import ap.midterm_project.models.Borrow;
+import ap.midterm_project.models.Request;
 import ap.midterm_project.models.Book;
 import ap.midterm_project.models.Librarian;
 import ap.midterm_project.models.LibraryManager;
@@ -37,7 +38,7 @@ public class Library {
     // declare lists of library data
     private ArrayList<Student> libraryStudents = new ArrayList<>();
 
-    private ArrayList<BorrowSystem> loans = new ArrayList<>();
+    private ArrayList<Borrow> loans = new ArrayList<>();
 
     // declare lists for all types of Books (at first I have declared all in one list)
     private ArrayList<Book> books = new ArrayList<>();
@@ -46,6 +47,10 @@ public class Library {
         ArrayList<Book> scientificBooks = new ArrayList<>();
         ArrayList<Book> religiousBooks = new ArrayList<>();
     */
+
+    // lists of loan requests
+    ArrayList<Request> loanRequests = new ArrayList<>();
+    ArrayList<Request> returnRequests = new ArrayList<>();
 
     // data getter methods
     public ArrayList<Book> getBooks() {
@@ -64,10 +69,19 @@ public class Library {
         return librarians;
     }
 
-    public ArrayList<BorrowSystem> getLoans() {
+    public ArrayList<Borrow> getLoans() {
         return loans;
     }
 
+    public ArrayList<Request> getLoanRequests() {
+        return loanRequests;
+    }
+
+    public ArrayList<Request> getReturnRequests() {
+        return returnRequests;
+    }
+
+    // data setter methods
     public void setLibrarians(ArrayList<Librarian> librarians) {
         this.librarians = librarians;
     }
@@ -76,7 +90,7 @@ public class Library {
         this.libraryStudents = libraryStudents;
     }
 
-    public void setLoans(ArrayList<BorrowSystem> loans) {
+    public void setLoans(ArrayList<Borrow> loans) {
         this.loans = loans;
     }
 

@@ -1,5 +1,6 @@
 package ap.midterm_project.helpers;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class InputHandler{
@@ -25,17 +26,27 @@ public class InputHandler{
 
     public String userInput(String condition, String exception) {
 
-        Scanner input = new Scanner(System.in);
         String temp;
         while (true) {
 
-            temp = input.nextLine();
+            temp = scanner.nextLine();
             if (validate.Validate(temp, condition)) {
                 return temp;
             } else
                 System.out.println(exception);
 
         }
+
+    }
+
+    public boolean yesOrNo(){
+
+        String temp = scanner.nextLine();
+        temp = temp.toLowerCase();
+        if (temp.contains("y"))
+            return true;
+        else
+            return false;
 
     }
 

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Student extends User {
 
-    private String firstName, lastName, studyingField, studentID, membershipDate;
+    private String firstName, lastName, studyingField, studentID, membershipDate, notifications = "Massages:\n";
 
     public Student(String firstName, String lastName, String studyingField, String studentId, String membershipDate){
 
@@ -53,4 +53,13 @@ public class Student extends User {
         );
 
     }
+
+    public void setNotifications(String notifications) {
+        this.notifications = this.notifications.concat("\n" + notifications);
+    }
+
+    public String getNotifications() {
+        return notifications;
+    }
+
 }

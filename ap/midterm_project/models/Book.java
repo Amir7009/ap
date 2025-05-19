@@ -1,12 +1,14 @@
 package ap.midterm_project.models;
 
+import ap.midterm_project.constants.BookStatus;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Book{
 
     private String title, author, pages, year, ISBN;
-    boolean isBorrowed; // this can be replaced with book count if we will have duplicated books
+    private BookStatus bookStatus; // this can be replaced with book count if we will have duplicated books
 
     public Book(String title, String author, String pages, String year, String ISBN) {
 
@@ -15,7 +17,7 @@ public class Book{
         this.pages = pages;
         this.year = year;
         this.ISBN = ISBN;
-        this.isBorrowed = false;
+        this.bookStatus = BookStatus.NOT_BORROWED;
 
     }
 
@@ -40,6 +42,10 @@ public class Book{
         this.ISBN = ISBN;
     }
 
+    public void setBookStatus(BookStatus bookStatus) {
+        this.bookStatus = bookStatus;
+    }
+
     // ISBN getter method for borrow a book
     public String getISBN() {
         return ISBN;
@@ -48,6 +54,11 @@ public class Book{
     // title getter method for search a book
     public String getTitle() {
         return title;
+    }
+
+    // for lending system
+    public BookStatus getBookStatus() {
+        return bookStatus;
     }
 
     @Override

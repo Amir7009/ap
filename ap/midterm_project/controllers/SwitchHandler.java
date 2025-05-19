@@ -16,6 +16,7 @@ public class SwitchHandler {
     Editor edit = new Editor();
     AddObject add = new AddObject();
     FileManager fileManager = new FileManager();
+    BorrowHandler borrowHandler = new BorrowHandler();
 
     public SwitchHandler(Library library) {
         this.library = library;
@@ -88,7 +89,8 @@ public class SwitchHandler {
                 case 4 -> StudentAccessMenu.REQUEST_TO_RETURN_A_BOOK;
                 case 5 -> StudentAccessMenu.UNRETURNED_BOOKS;
                 case 6 -> StudentAccessMenu.VIEW_MY_BOOK_LOAN_HISTORY;
-                case 7 -> StudentAccessMenu.BACK;
+                case 7 -> StudentAccessMenu.SHOW_NOTIFICATIONS;
+                case 8 -> StudentAccessMenu.BACK;
                 case -1 -> null;
                 default -> StudentAccessMenu.INVALID_OPTION;
             };
@@ -98,6 +100,16 @@ public class SwitchHandler {
                 switch (option) {
                     case SHOW_LIBRARY_BOOKS -> printer.printObjectInfo(library.getBooks());
                     case SEARCH_A_BOOK -> search.searchBooks(library.getBooks());
+                    case REQUEST_TO_BORROW_A_BOOK -> {
+                        borrowHandler.makeLoanRequest(library, library.getLibraryStudents().get(studentIndex));
+                    }
+                    case REQUEST_TO_RETURN_A_BOOK -> {
+                        borrowHandler.makeReturnRequest(library, library.getLibraryStudents().get(studentIndex));
+                    }
+                    case UNRETURNED_BOOKS -> {
+                        printer.printUnreturnedBooks(library.getLoans(), library.getLibraryStudents().get(studentIndex));
+                    }
+                    case SHOW_NOTIFICATIONS -> printer.showStudentNotifications(library.getLibraryStudents().get(studentIndex));
                     case BACK -> whileCondition = false;
                     case INVALID_OPTION -> System.out.println("Invalid option!");
                 }
@@ -131,6 +143,12 @@ public class SwitchHandler {
                 switch (option) {
                     case EDIT_INFO -> edit.editLibrarianInfo(library.getLibrarians().get(librarianIndex));
                     case ADD_A_NEW_BOOK -> add.addBook(library.getBooks());
+                    case BORROW_REQUESTS ->{
+                        borrowHandler.acceptRequest(library.getLoanRequests(), library, librarianIndex);
+                    }
+                    case RETURN_REQUESTS -> {
+                        borrowHandler.acceptRequest(library.getReturnRequests(), library, librarianIndex);
+                    }
                     case BACK -> whileCondition = false;
                     case INVALID_OPTION -> System.out.println("Invalid option!");
                 }

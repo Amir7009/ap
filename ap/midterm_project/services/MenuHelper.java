@@ -39,11 +39,12 @@ public class MenuHelper {
                 
                 1-Show Library books
                 2-Search a book
-                3-Request to borrow a book // off
-                4-Request to return a book // off
-                5-Unreturned books // off
+                3-Request to borrow a book
+                4-Request to return a book
+                5-Unreturned books
                 6-View my book loan history // off
-                7-Go back
+                7-Show notifications
+                8-Go back
                 """);
 
         return input.switcher();
@@ -56,8 +57,8 @@ public class MenuHelper {
                 
                 1-Edit info
                 2-Add a new book
-                3-Borrow requests // off
-                4-Return requests // off
+                3-Borrow requests
+                4-Return requests
                 5-Unreturned books // off
                 6-View my all book loan history // off
                 7-View student book loan history // off
