@@ -62,7 +62,7 @@ public class BankMain {
         System.out.println("Please enter your first name: ");
         while (s1) { // set account owner's first name
             firstName = input.nextLine();
-            if (firstName.matches("[a-zA-Z]+\\s")) {
+            if (firstName.matches("[a-zA-Z ]+")) {
             s1 = false;
             } else {
                 System.out.println("input must be characters only! please try again.");
@@ -72,7 +72,7 @@ public class BankMain {
         System.out.println("Please enter your last name: ");
         while (s2) { // set account owner's last name
             lastName = input.nextLine();
-            if (lastName.matches("[a-zA-Z]+\\s")) {
+            if (lastName.matches("[a-zA-Z ]+")) {
                 s2 = false;
             } else {
                 System.out.println("input must be characters only! please try again.");
@@ -231,10 +231,10 @@ public class BankMain {
 
                     System.out.print("Your current balance is: " + list.getBalance());
                     if (list.getDepositType() == DepositType.DOLLARS) {
-                        System.out.println("dollars");
+                        System.out.println(" dollars");
                         break;
                     } else {
-                        System.out.println("rials");
+                        System.out.println(" rials");
                         break;
                     }
 
