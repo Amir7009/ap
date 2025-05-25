@@ -5,9 +5,24 @@ import java.util.Map;
 
 public class Student extends User {
 
-    private String firstName, lastName, studyingField, studentID, membershipDate, notifications = "Massages:\n";
+    private String
+            firstName,
+            lastName,
+            studyingField,
+            studentID,
+            membershipDate,
+            notifications,
+            loanHistory;
 
-    public Student(String firstName, String lastName, String studyingField, String studentId, String membershipDate){
+    public Student(
+            String firstName,
+            String lastName,
+            String studyingField,
+            String studentId,
+            String membershipDate,
+            String notifications,
+            String loanHistory
+    ){
 
         super (studentId);
         this.firstName = firstName;
@@ -15,6 +30,8 @@ public class Student extends User {
         this.studyingField = studyingField;
         this.studentID = studentId;
         this.membershipDate = membershipDate;
+        this.notifications = notifications;
+        this.loanHistory = loanHistory;
 
     }
 
@@ -26,6 +43,8 @@ public class Student extends User {
                 ", studyingField='" + studyingField + '\'' +
                 ", studentID='" + studentID + '\'' +
                 ", membershipDate='" + membershipDate + '\'' +
+                ", notifications='" + notifications + '\'' +
+                ", loanHistory='" + loanHistory + '\'' +
                 '}';
     }
 
@@ -49,17 +68,26 @@ public class Student extends User {
                 values.get("lastName"),
                 values.get("studyingField"),
                 values.get("studentID"),
-                values.get("membershipDate")
+                values.get("membershipDate"),
+                values.get("notifications"),
+                values.get("loanHistory")
         );
 
     }
 
-    public void setNotifications(String notifications) {
-        this.notifications = this.notifications.concat("\n" + notifications);
+    public void setNotifications(String newNotification) {
+        this.notifications = this.notifications.concat("-" + newNotification);
+    }
+
+    public void setHistory(String newAction) {
+        this.loanHistory = this.loanHistory.concat("-" + newAction);
     }
 
     public String getNotifications() {
         return notifications;
     }
 
+    public String getLoanHistory() {
+        return loanHistory;
+    }
 }

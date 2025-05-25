@@ -5,7 +5,16 @@ import java.util.Map;
 
 public class Librarian extends User {
 
-    private String employeeID, firstName, lastName, nationalID, address, educationLevel, phoneNumber;
+    private String
+            employeeID,
+            firstName,
+            lastName,
+            nationalID,
+            address,
+            educationLevel,
+            phoneNumber,
+            receiveReport,
+            lendReport;
 
     public Librarian(String employeeID, String firstName, String lastName) {
 
@@ -13,6 +22,8 @@ public class Librarian extends User {
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.lendReport = "-";
+        this.receiveReport = "-";
 
     }
 
@@ -33,6 +44,22 @@ public class Librarian extends User {
         this.phoneNumber = phoneNumber;
     }
 
+    public void setReceiveReport(String receiveReport) {
+        this.receiveReport = this.receiveReport.concat(receiveReport);
+    }
+
+    public void setLendReport(String lendReport){
+        this.lendReport = this.lendReport.concat(lendReport);
+    }
+
+    public String getLendReport() {
+        return lendReport;
+    }
+
+    public String getReceiveReport() {
+        return receiveReport;
+    }
+
     // for save librarians' data in file
     @Override
     public String toString() {
@@ -44,6 +71,8 @@ public class Librarian extends User {
                 ", Address='" + address + '\'' +
                 ", educationLevel='" + educationLevel + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", receiveReport='" + receiveReport + '\'' +
+                ", lendReport='" + lendReport + '\'' +
                 '}';
     }
 
@@ -72,6 +101,11 @@ public class Librarian extends User {
         readLibrarian.setAddress(values.get("Address"));
         readLibrarian.setEducationLevel(values.get("educationLevel"));
         readLibrarian.setPhoneNumber(values.get("phoneNumber"));
+        String receive = values.getOrDefault("receiveReport", "");
+        readLibrarian.receiveReport = receive == null ? "" : receive;
+
+        String lend = values.getOrDefault("lendReport", "");
+        readLibrarian.lendReport = lend == null ? "" : lend;
 
         return readLibrarian;
     }

@@ -1,5 +1,6 @@
 package ap.midterm_project.controllers;
 
+import ap.midterm_project.constants.RequestType;
 import ap.midterm_project.models.Borrow;
 import ap.midterm_project.models.Request;
 import ap.midterm_project.constants.BookStatus;
@@ -18,10 +19,7 @@ public class BorrowHandler {
     private InputHandler input = new InputHandler();
     private ValidateRoles condition = new ValidateRoles();
 
-    public void makeLoanRequest(
-            Library library,
-            Student student
-    ) {
+    public void makeLoanRequest(Library library, Student student) {
 
         System.out.println("Enter the ISBN of book: ");
         String tempISBN = input.userInput(
@@ -40,7 +38,7 @@ public class BorrowHandler {
                             new Request(
                                     student,
                                     book,
-                                    "Borrow",
+                                    RequestType.BORROW,
                                     library.getLibrarians().get(random.nextInt(library.getLibrarians().size()))
                             )
                     );
@@ -57,10 +55,7 @@ public class BorrowHandler {
 
     }
 
-    public void makeReturnRequest(
-            Library library,
-            Student student
-    ) {
+    public void makeReturnRequest(Library library, Student student) {
 
         System.out.println("Enter the ISBN of book: ");
         String tempISBN = input.userInput(
@@ -78,7 +73,7 @@ public class BorrowHandler {
                             new Request(
                                     student,
                                     book,
-                                    "Return",
+                                    RequestType.RETURN,
                                     library.getLibrarians().get(random.nextInt(library.getLibrarians().size()))
                             )
                     );
@@ -102,8 +97,8 @@ public class BorrowHandler {
         for (Request loanRequest : loanRequests) {
 
             int studentIndex = library.getLibraryStudents().indexOf(loanRequest.getBorrowerStudent());
-            if (loanRequest.getRequestType().equals("Borrow") && loanRequest.getLibrarian().equals(library.getLibrarians().get(librarianIndex))) {
-                System.out.println(loanRequest.getRequestType() + " " + loanRequest);
+            if (loanRequest.getRequestType() == RequestType.BORROW && loanRequest.getLibrarian().equals(library.getLibrarians().get(librarianIndex))) {
+                System.out.println(loanRequest.getRequestType() + " " + loanRequest.printRequestDetails());
                 if (acceptBorrowRequest(loanRequest, library.getLoans())) {
                     library.getLibraryStudents().get(studentIndex).setNotifications(
                             "your request " +
@@ -128,7 +123,7 @@ public class BorrowHandler {
                 }
             }
             else if(loanRequest.getLibrarian().equals(library.getLibrarians().get(librarianIndex))) {
-                System.out.println(loanRequest.getRequestType() + " " + loanRequest);
+                System.out.println(loanRequest.getRequestType() + " " + loanRequest.printRequestDetails());
                 if (acceptReturnRequest(loanRequest, library.getLoans())) {
                     library.getLibraryStudents().get(studentIndex).setNotifications(
                             "your request " +
@@ -172,6 +167,14 @@ public class BorrowHandler {
                     LocalDate.now(),
                     LocalDate.now().plusMonths(1)
             ));
+            borrowRequest.getLibrarian().setLendReport(
+                    "-Lend " + LocalDate.now() +
+                    " Book > " + borrowRequest.getBorrowedBook().getISBN()
+            );
+            borrowRequest.getBorrowerStudent().setHistory(
+                    "Successful borrow in " + LocalDate.now() +
+                    " Book > " + borrowRequest.getBorrowedBook().getISBN()
+            );
             return true;
 
         }else
@@ -193,6 +196,14 @@ public class BorrowHandler {
                             returnRequest.getLibrarian(),
                             LocalDate.now()
                     );
+                    returnRequest.getLibrarian().setReceiveReport(
+                            "-Receive " + LocalDate.now() +
+                            " Book > " + returnRequest.getBorrowedBook().getISBN()
+                    );
+                    returnRequest.getBorrowerStudent().setHistory(
+                            "Successful return in " + LocalDate.now() +
+                            " Book > " + returnRequest.getBorrowedBook().getISBN()
+                    );
 
                 }
             }
@@ -205,4 +216,3 @@ public class BorrowHandler {
     }
 
 }
-

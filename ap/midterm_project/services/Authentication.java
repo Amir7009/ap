@@ -17,7 +17,7 @@ public class Authentication {
     public void signUp(ArrayList<Student> students) {
 
         // declare temporary variables for keep student's info
-        String firstName, lastName, studyingField, studentId;
+        String firstName, lastName, studyingField, studentID;
 
         // Time classes for Membership date
         LocalDate date = LocalDate.now();
@@ -48,7 +48,7 @@ public class Authentication {
 
         // get student's ID from user
         System.out.println("Please enter your student ID: ");
-        studentId = userInput.userInput(
+        studentID = userInput.userInput(
                 condition.ID_VALIDATE_CONDITION,
                 "You are only allowed to use numbers."
         );
@@ -58,7 +58,17 @@ public class Authentication {
         System.out.println("Your student ID is your username.\n");
 
         // add a new student
-        students.add(new Student(firstName, lastName, studyingField, studentId, date.format(timeFormat)));
+        students.add(
+                new Student(
+                        firstName,
+                        lastName,
+                        studyingField,
+                        studentID,
+                        date.format(timeFormat),
+                        "Massages",
+                        "History"
+                )
+        );
 
     }
 

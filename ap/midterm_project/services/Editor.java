@@ -15,7 +15,7 @@ public class Editor {
         System.out.println("Please enter your national ID: ");
         librarian.setNationalID(userInput.userInput(
                 condition.ID_VALIDATE_CONDITION,
-                "You are only allowed to use letters."
+                "You are only allowed to use numbers."
         ));
 
         System.out.println("Please enter your address: ");
@@ -24,7 +24,7 @@ public class Editor {
                 "You are only allowed to use letters, numbers, punctuation marks."
         ));
 
-        System.out.println("Please enter your latest academic degree: ");
+        System.out.println("Please enter your last academic degree: ");
         librarian.setEducationLevel(userInput.userInput(
                 condition.NAME_VALIDATE_CONDITION,
                 "You are only allowed to use letters."

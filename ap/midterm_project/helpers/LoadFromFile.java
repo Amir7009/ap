@@ -1,8 +1,6 @@
 package ap.midterm_project.helpers;
 
-import ap.midterm_project.models.Book;
-import ap.midterm_project.models.Librarian;
-import ap.midterm_project.models.Student;
+import ap.midterm_project.models.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,6 +57,54 @@ public class LoadFromFile {
             System.out.println("File not found: " + filePath);
         }
         return librarians;
+    }
+
+    public  ArrayList<Borrow> loadLoans(String filePath) {
+        ArrayList<Borrow> loans = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(filePath));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                loans.add(Borrow.fromString(line));
+            }
+            scanner.close();
+            System.out.println("Loans loaded!");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filePath);
+        }
+        return loans;
+    }
+
+    public  ArrayList<Request> loadLoanRequests(String filePath) {
+        ArrayList<Request> loanRequests = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(filePath));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                loanRequests.add(Request.fromString(line));
+            }
+            scanner.close();
+            System.out.println("Loan Requests loaded!");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filePath);
+        }
+        return loanRequests;
+    }
+
+    public  ArrayList<Request> loadReturnRequests(String filePath) {
+        ArrayList<Request> returnRequests = new ArrayList<>();
+        try {
+            Scanner scanner = new Scanner(new File(filePath));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                returnRequests.add(Request.fromString(line));
+            }
+            scanner.close();
+            System.out.println("Return Requests loaded!");
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filePath);
+        }
+        return returnRequests;
     }
 
 }

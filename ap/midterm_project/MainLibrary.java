@@ -22,7 +22,7 @@ public class MainLibrary {
                 case 1 -> UserRoles.STUDENT;
                 case 2 -> UserRoles.LIBRARIAN;
                 case 3 -> UserRoles.MANAGER;
-                case 4 -> UserRoles.EXIT;
+                case 0 -> UserRoles.EXIT;
                 case -1 -> null;
                 default -> UserRoles.INVALID_OPTION;
             };

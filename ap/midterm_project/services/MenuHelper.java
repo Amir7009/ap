@@ -13,7 +13,7 @@ public class MenuHelper {
                 1-I am a student
                 2-Librarian login
                 3-Library manager login
-                4-Exit
+                0-Exit
                 """);
 
         return input.switcher();
@@ -26,7 +26,7 @@ public class MenuHelper {
                 
                 1-Sign in
                 2-Sign up
-                3-Go back
+                0-Go back
                 """);
 
         return input.switcher();
@@ -42,9 +42,9 @@ public class MenuHelper {
                 3-Request to borrow a book
                 4-Request to return a book
                 5-Unreturned books
-                6-View my book loan history // off
+                6-View my book loan history
                 7-Show notifications
-                8-Go back
+                0-Go back
                 """);
 
         return input.switcher();
@@ -59,10 +59,11 @@ public class MenuHelper {
                 2-Add a new book
                 3-Borrow requests
                 4-Return requests
-                5-Unreturned books // off
-                6-View my all book loan history // off
-                7-View student book loan history // off
-                8-Go back
+                5-Unreturned books
+                6-View my all book lend history
+                7-View my all book reclaim history
+                8-View student book loan history
+                0-Go back
                 """);
 
         return input.switcher();
@@ -74,10 +75,10 @@ public class MenuHelper {
         System.out.println("""
                 
                 1-Add a librarian
-                2-See all late books // off
-                3-View a librarian performance // off
-                4-View top ten borrowed books in last year // off
-                5-Go back
+                2-See all late books
+                3-View a librarian performance
+                4-View top ten borrowed books in last year
+                0-Go back
                 """);
 
         return input.switcher();

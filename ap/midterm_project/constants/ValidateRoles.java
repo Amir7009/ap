@@ -9,6 +9,6 @@ public class ValidateRoles {
     public final String ISBN_VALIDATE_CONDITION = "^\\d{10}$";
     public final String TEXT_VALIDATE_CONDITION = "^[A-Za-z0-9\\p{Punct}\\s]+$";
     public final String BOOK_NAME_VALIDATE_CONDITION = "^[A-Za-z0-9\\s]+$";
-    public final String PHONE_NUMBER_VALIDATE_CONDITION = "^09\\\\d{9}$";
+    public final String PHONE_NUMBER_VALIDATE_CONDITION = "^09\\d{9}$";
 
 }

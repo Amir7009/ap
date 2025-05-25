@@ -53,7 +53,7 @@ public class SwitchHandler {
             StudentLoginMenu option = switch (menu.studentLoginMenu()) {
                 case 1 -> StudentLoginMenu.SIGN_IN;
                 case 2 -> StudentLoginMenu.SIGN_UP;
-                case 3 -> StudentLoginMenu.BACK;
+                case 0 -> StudentLoginMenu.BACK;
                 case -1 -> null;
                 default -> StudentLoginMenu.INVALID_OPTION;
             };
@@ -61,6 +61,7 @@ public class SwitchHandler {
             if (option != null) {
 
                 switch (option) {
+
                     case SIGN_IN -> {
                         int index = authentication.signIn(library.getLibraryStudents());
                         if (index >= 0)
@@ -69,6 +70,7 @@ public class SwitchHandler {
                     case SIGN_UP -> authentication.signUp(library.getLibraryStudents());
                     case BACK -> whileCondition = false;
                     case INVALID_OPTION -> System.out.println("Invalid option!");
+
                 }
 
             }
@@ -90,7 +92,7 @@ public class SwitchHandler {
                 case 5 -> StudentAccessMenu.UNRETURNED_BOOKS;
                 case 6 -> StudentAccessMenu.VIEW_MY_BOOK_LOAN_HISTORY;
                 case 7 -> StudentAccessMenu.SHOW_NOTIFICATIONS;
-                case 8 -> StudentAccessMenu.BACK;
+                case 0 -> StudentAccessMenu.BACK;
                 case -1 -> null;
                 default -> StudentAccessMenu.INVALID_OPTION;
             };
@@ -98,18 +100,20 @@ public class SwitchHandler {
             if (option != null) {
 
                 switch (option) {
-                    case SHOW_LIBRARY_BOOKS -> printer.printObjectInfo(library.getBooks());
-                    case SEARCH_A_BOOK -> search.searchBooks(library.getBooks());
-                    case REQUEST_TO_BORROW_A_BOOK -> {
-                        borrowHandler.makeLoanRequest(library, library.getLibraryStudents().get(studentIndex));
-                    }
-                    case REQUEST_TO_RETURN_A_BOOK -> {
-                        borrowHandler.makeReturnRequest(library, library.getLibraryStudents().get(studentIndex));
-                    }
-                    case UNRETURNED_BOOKS -> {
-                        printer.printUnreturnedBooks(library.getLoans(), library.getLibraryStudents().get(studentIndex));
-                    }
-                    case SHOW_NOTIFICATIONS -> printer.showStudentNotifications(library.getLibraryStudents().get(studentIndex));
+                    case SHOW_LIBRARY_BOOKS ->
+                            printer.printObjectInfo(library.getBooks());
+                    case SEARCH_A_BOOK ->
+                            search.searchBooks(library.getBooks());
+                    case REQUEST_TO_BORROW_A_BOOK ->
+                            borrowHandler.makeLoanRequest(library, library.getLibraryStudents().get(studentIndex));
+                    case REQUEST_TO_RETURN_A_BOOK ->
+                            borrowHandler.makeReturnRequest(library, library.getLibraryStudents().get(studentIndex));
+                    case UNRETURNED_BOOKS ->
+                            printer.printStudentUnreturnedBooks(library.getLoans(), library.getLibraryStudents().get(studentIndex));
+                    case VIEW_MY_BOOK_LOAN_HISTORY ->
+                            printer.printStudentHistory(library.getLibraryStudents().get(studentIndex));
+                    case SHOW_NOTIFICATIONS ->
+                            printer.showStudentNotifications(library.getLibraryStudents().get(studentIndex));
                     case BACK -> whileCondition = false;
                     case INVALID_OPTION -> System.out.println("Invalid option!");
                 }
@@ -131,9 +135,10 @@ public class SwitchHandler {
                 case 3 -> LibrarianAccessMenu.BORROW_REQUESTS;
                 case 4 -> LibrarianAccessMenu.RETURN_REQUESTS;
                 case 5 -> LibrarianAccessMenu.UNRETURNED_BOOKS;
-                case 6 -> LibrarianAccessMenu.VIEW_MY_ALL_BOOK_LOAN_HISTORY;
-                case 7 -> LibrarianAccessMenu.VIEW_STUDENT_BOOK_LOAN_HISTORY;
-                case 8 -> LibrarianAccessMenu.BACK;
+                case 6 -> LibrarianAccessMenu.VIEW_MY_ALL_BOOK_LEND_HISTORY;
+                case 7 -> LibrarianAccessMenu.VIEW_MY_ALL_BOOK_RECLAIM_HISTORY;
+                case 8 -> LibrarianAccessMenu.VIEW_STUDENT_BOOK_LOAN_HISTORY;
+                case 0 -> LibrarianAccessMenu.BACK;
                 case -1 -> null;
                 default -> LibrarianAccessMenu.INVALID_OPTION;
             };
@@ -141,13 +146,26 @@ public class SwitchHandler {
             if (option != null) {
 
                 switch (option) {
-                    case EDIT_INFO -> edit.editLibrarianInfo(library.getLibrarians().get(librarianIndex));
-                    case ADD_A_NEW_BOOK -> add.addBook(library.getBooks());
-                    case BORROW_REQUESTS ->{
-                        borrowHandler.acceptRequest(library.getLoanRequests(), library, librarianIndex);
-                    }
-                    case RETURN_REQUESTS -> {
-                        borrowHandler.acceptRequest(library.getReturnRequests(), library, librarianIndex);
+                    case EDIT_INFO ->
+                            edit.editLibrarianInfo(library.getLibrarians().get(librarianIndex));
+                    case ADD_A_NEW_BOOK ->
+                            add.addBook(library.getBooks());
+                    case BORROW_REQUESTS ->
+                            borrowHandler.acceptRequest(library.getLoanRequests(), library, librarianIndex);
+                    case RETURN_REQUESTS ->
+                            borrowHandler.acceptRequest(library.getReturnRequests(), library, librarianIndex);
+                    case UNRETURNED_BOOKS ->
+                            printer.printUnreturnedBooks(library.getLoans());
+                    case VIEW_MY_ALL_BOOK_LEND_HISTORY ->
+                            printer.printLibrarianHistory(library.getLibrarians().get(librarianIndex).getLendReport());
+                    case VIEW_MY_ALL_BOOK_RECLAIM_HISTORY ->
+                            printer.printLibrarianHistory(library.getLibrarians().get(librarianIndex).getReceiveReport());
+                    case VIEW_STUDENT_BOOK_LOAN_HISTORY ->{
+                        int index = search.searchStudent(library.getLibraryStudents());
+                        if (index != -1)
+                            printer.printStudentHistory(library.getLibraryStudents().get(index));
+                        else
+                            System.out.println("Student not found!");
                     }
                     case BACK -> whileCondition = false;
                     case INVALID_OPTION -> System.out.println("Invalid option!");
@@ -161,6 +179,7 @@ public class SwitchHandler {
 
     private void handleManagerMenu(int managerIndex) {
 
+        // Manager index is unused because we have one, but we may have more in the future
         boolean whileCondition = true;
         while (whileCondition) {
 
@@ -169,7 +188,7 @@ public class SwitchHandler {
                 case 2 -> ManagerAccessMenu.SEE_ALL_LATE_BOOKS;
                 case 3 -> ManagerAccessMenu.VIEW_A_LIBRARIAN_PERFORMANCE;
                 case 4 -> ManagerAccessMenu.VIEW_TOP_TEN_BORROWED_BOOKS_IN_LAST_YEAR;
-                case 5 -> ManagerAccessMenu.BACK;
+                case 0 -> ManagerAccessMenu.BACK;
                 case -1 -> null;
                 default -> ManagerAccessMenu.INVALID_OPTION;
             };
@@ -177,7 +196,23 @@ public class SwitchHandler {
             if (option != null) {
 
                 switch (option) {
-                    case ADD_A_LIBRARIAN -> add.addLibrarian(library.getLibrarians());
+                    case ADD_A_LIBRARIAN ->
+                            add.addLibrarian(library.getLibrarians());
+                    case SEE_ALL_LATE_BOOKS ->
+                            printer.printLateBooks(library.getLoans());
+                    case VIEW_A_LIBRARIAN_PERFORMANCE -> {
+                        int index = search.searchLibrarian(library.getLibrarians());
+                        if (index != -1) {
+                            System.out.println("Lend Report:");
+                            printer.printLibrarianHistory(library.getLibrarians().get(index).getLendReport());
+                            System.out.println("\nReceive Report:");
+                            printer.printLibrarianHistory(library.getLibrarians().get(index).getReceiveReport());
+                        }
+                        else
+                            System.out.println("Librarian not found!");
+                    }
+                    case VIEW_TOP_TEN_BORROWED_BOOKS_IN_LAST_YEAR ->
+                            printer.printTopTenBook(library.getLoans());
                     case BACK -> whileCondition = false;
                     case INVALID_OPTION -> System.out.println("Invalid option!");
                 }

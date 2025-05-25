@@ -97,4 +97,13 @@ public class Library {
     public void setBooks(ArrayList<Book> books) {
         this.books = books;
     }
+
+    public void setLoanRequests(ArrayList<Request> loanRequests) {
+        this.loanRequests = loanRequests;
+    }
+
+    public void setReturnRequests(ArrayList<Request> returnRequests) {
+        this.returnRequests = returnRequests;
+    }
+
 }

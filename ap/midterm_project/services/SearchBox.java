@@ -4,6 +4,8 @@ import ap.midterm_project.constants.ValidateRoles;
 import ap.midterm_project.helpers.InputHandler;
 import ap.midterm_project.helpers.Printer;
 import ap.midterm_project.models.Book;
+import ap.midterm_project.models.Librarian;
+import ap.midterm_project.models.Student;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -33,6 +35,7 @@ public class SearchBox {
         print.printObjectInfo(matchBooks);
 
     }
+
     private int calculateMatchScore(String query, String target) {
         query = normalize(query);
         target = normalize(target);
@@ -47,7 +50,36 @@ public class SearchBox {
         return input.toLowerCase().trim();
     }
 
+    public int searchStudent(ArrayList<Student> students){
 
+        System.out.println("Please enter student's ID: ");
+        String studentID = input.userInput(
+                condition.ID_VALIDATE_CONDITION,
+                "You are only allowed to use numbers."
+        );
 
+        for (int i = 0; i < students.size(); i++){
+            if (students.get(i).getUsername().equals(studentID))
+                return i;
+        }
+        return -1;
+
+    }
+
+    public int searchLibrarian(ArrayList<Librarian> librarians){
+
+        System.out.println("Please enter librarian's ID: ");
+        String librarianID = input.userInput(
+                condition.ID_VALIDATE_CONDITION,
+                "You are only allowed to use numbers."
+        );
+
+        for (int i = 0; i < librarians.size(); i++){
+            if (librarians.get(i).getUsername().equals(librarianID))
+                return i;
+        }
+        return -1;
+
+    }
 
 }
