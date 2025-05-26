@@ -1,6 +1,5 @@
 package ap.midterm_project.helpers;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class InputHandler{
