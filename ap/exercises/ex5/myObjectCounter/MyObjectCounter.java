@@ -28,6 +28,7 @@ public class MyObjectCounter {
 
         String[][] topUrls = new String[10][2];
 
+        // bubble sort
         for (int i = 0 ; i < urlCount.size()-1 ; i++){
 
             for (int j = urlCount.size()-1 ; j > i ; j--){
@@ -49,6 +50,7 @@ public class MyObjectCounter {
 
         }
 
+        // specify top k items
         for (int t = 0 ; t < k ; t++){
 
             topUrls[t][0] = urls.get(t);
