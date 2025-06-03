@@ -1,12 +1,11 @@
-package ap.exercises.ex5.scraper.analyzer;
+package ap.exercises.ex5_6.scraper.analyzer;
 
-import ap.exercises.ex5.myHtmlParser.GetPngUrl;
-import ap.exercises.ex5.myObjectCounter.MyObjectCounter;
-import ap.exercises.ex5.scraper.Conf;
-import ap.exercises.ex5.scraper.parser.HtmlParser;
-import ap.exercises.ex5.scraper.utils.DirectoryTools;
-import ap.exercises.ex5.scraper.utils.FileTools;
-import ap.exercises.ex5.scraper.utils.ObjectCounter;
+import ap.exercises.ex5_6.myObjectCounter.MyObjectCounter;
+import ap.exercises.ex5_6.scraper.Conf;
+import ap.exercises.ex5_6.scraper.parser.HtmlParser;
+import ap.exercises.ex5_6.scraper.utils.DirectoryTools;
+import ap.exercises.ex5_6.scraper.utils.FileTools;
+import ap.exercises.ex5_6.scraper.utils.ObjectCounter;
 
 import java.util.Comparator;
 import java.util.List;

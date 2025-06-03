@@ -1,4 +1,4 @@
-package ap.exercises.ex5.scraper.fetcher;
+package ap.exercises.ex5_6.scraper.fetcher;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;

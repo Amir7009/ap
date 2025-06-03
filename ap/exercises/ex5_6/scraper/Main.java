@@ -1,4 +1,4 @@
-package ap.exercises.ex5.scraper;
+package ap.exercises.ex5_6.scraper;
 
 import java.io.IOException;
 

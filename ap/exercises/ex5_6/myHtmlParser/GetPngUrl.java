@@ -1,8 +1,8 @@
-package ap.exercises.ex5.myHtmlParser;
+package ap.exercises.ex5_6.myHtmlParser;
 
-import ap.exercises.ex5.scraper.Conf;
-import ap.exercises.ex5.scraper.utils.DirectoryTools;
-import ap.exercises.ex5.scraper.utils.FileTools;
+import ap.exercises.ex5_6.scraper.Conf;
+import ap.exercises.ex5_6.scraper.utils.DirectoryTools;
+import ap.exercises.ex5_6.scraper.utils.FileTools;
 
 import java.util.List;
 import java.util.stream.Collectors;

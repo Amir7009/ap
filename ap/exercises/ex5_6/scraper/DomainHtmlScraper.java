@@ -1,8 +1,8 @@
-package ap.exercises.ex5.scraper;
+package ap.exercises.ex5_6.scraper;
 
-import ap.exercises.ex5.scraper.fetcher.HtmlFetcher;
-import ap.exercises.ex5.scraper.parser.HtmlParser;
-import ap.exercises.ex5.scraper.store.HtmlFileManager;
+import ap.exercises.ex5_6.scraper.fetcher.HtmlFetcher;
+import ap.exercises.ex5_6.scraper.parser.HtmlParser;
+import ap.exercises.ex5_6.scraper.store.HtmlFileManager;
 
 import java.io.IOException;
 import java.util.*;

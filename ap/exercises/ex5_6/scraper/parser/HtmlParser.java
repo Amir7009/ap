@@ -1,4 +1,4 @@
-package ap.exercises.ex5.scraper.parser;
+package ap.exercises.ex5_6.scraper.parser;
 
 import java.io.IOException;
 import java.nio.file.Files;

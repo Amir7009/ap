@@ -1,4 +1,4 @@
-package ap.exercises.ex5.myObjectCounter;
+package ap.exercises.ex5_6.myObjectCounter;
 
 import java.util.ArrayList;
 

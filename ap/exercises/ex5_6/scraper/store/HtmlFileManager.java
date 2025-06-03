@@ -1,6 +1,6 @@
-package ap.exercises.ex5.scraper.store;
+package ap.exercises.ex5_6.scraper.store;
 
-import ap.exercises.ex5.scraper.utils.DirectoryTools;
+import ap.exercises.ex5_6.scraper.utils.DirectoryTools;
 
 import java.io.PrintWriter;
 import java.util.List;
