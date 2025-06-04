@@ -7,7 +7,7 @@ import ap.exercises.ex5_6.scraper.utils.FileTools;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GetPngUrl {
+public class GetImagesUrl {
 
     static List<String> fileList = DirectoryTools.getFilesAbsolutePathInDirectory(Conf.SAVE_DIRECTORY);
 

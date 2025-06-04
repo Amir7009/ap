@@ -11,7 +11,7 @@ public class SaveImageUrlMain {
         PrintWriter printWriter = new PrintWriter(saveUrlPath);
 
         System.out.println("urls are saved to this location:\n");
-        for (String i : GetPngUrl.getAllUrls()) {
+        for (String i : GetImagesUrl.getAllUrls()) {
             printWriter.println(i);
         }
 
