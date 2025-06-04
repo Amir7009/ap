@@ -7,12 +7,11 @@ public class SaveImageUrlMain {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        String saveUrlPath = "E:\\Java\\Advanced-Programming\\ap\\exercises\\ex5_6\\scraper\\parser\\myHtmlParser\\imageUrls.txt";
+        String saveUrlPath = "ex5_6\\scraper\\parser\\myHtmlParser\\imageUrls.txt";
         PrintWriter printWriter = new PrintWriter(saveUrlPath);
 
-        System.out.println("this urls are saved!\n");
+        System.out.println("urls are saved to this location:\n");
         for (String i : GetPngUrl.getAllUrls()) {
-            System.out.println(i);
             printWriter.println(i);
         }
 
