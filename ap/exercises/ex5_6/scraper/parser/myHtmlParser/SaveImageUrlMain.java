@@ -1,4 +1,4 @@
-package ap.exercises.ex5_6.myHtmlParser;
+package ap.exercises.ex5_6.scraper.parser.myHtmlParser;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

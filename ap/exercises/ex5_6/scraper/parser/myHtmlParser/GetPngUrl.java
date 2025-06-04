@@ -1,4 +1,4 @@
-package ap.exercises.ex5_6.myHtmlParser;
+package ap.exercises.ex5_6.scraper.parser.myHtmlParser;
 
 import ap.exercises.ex5_6.scraper.Conf;
 import ap.exercises.ex5_6.scraper.utils.DirectoryTools;

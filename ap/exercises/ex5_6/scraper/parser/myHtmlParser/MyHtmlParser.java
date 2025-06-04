@@ -1,4 +1,4 @@
-package ap.exercises.ex5_6.myHtmlParser;
+package ap.exercises.ex5_6.scraper.parser.myHtmlParser;
 
 public class MyHtmlParser {
 

@@ -1,6 +1,6 @@
 package ap.exercises.ex5_6.scraper.analyzer;
 
-import ap.exercises.ex5_6.myObjectCounter.MyObjectCounter;
+import ap.exercises.ex5_6.scraper.utils.myObjectCounter.MyObjectCounter;
 import ap.exercises.ex5_6.scraper.Conf;
 import ap.exercises.ex5_6.scraper.parser.HtmlParser;
 import ap.exercises.ex5_6.scraper.utils.DirectoryTools;
