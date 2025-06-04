@@ -23,19 +23,20 @@ public class HtmlParser {
         return url;
     }
 
-    private static List<String> getAllUrlsFromHtmlLinesStream(Stream<String> htmlLinesStream) throws IOException {
+    private static List<String> getAllUrlsFromHtmlLinesStream(Stream<String> htmlLinesStream, String domainCondition) throws IOException {
         List<String> urls = htmlLinesStream
                 .map(line -> getFirstUrl(line))
                 .filter(s -> s != null)
+                .filter(s -> s.contains(domainCondition))
                 .collect(Collectors.toList());
         return urls;
     }
 
-    public static List<String> getAllUrlsFromFile(String filePath) throws IOException {
-        return getAllUrlsFromHtmlLinesStream(Files.lines(Path.of(filePath)));
-    }
+//    public static List<String> getAllUrlsFromFile(String filePath) throws IOException {
+//        return getAllUrlsFromHtmlLinesStream(Files.lines(Path.of(filePath)));
+//    }
 
-    public static List<String> getAllUrlsFromList(List<String> htmlLines) throws IOException {
-        return getAllUrlsFromHtmlLinesStream(htmlLines.stream());
+    public static List<String> getAllUrlsFromList(List<String> htmlLines, String domainCondition) throws IOException {
+        return getAllUrlsFromHtmlLinesStream(htmlLines.stream(), domainCondition);
     }
 }

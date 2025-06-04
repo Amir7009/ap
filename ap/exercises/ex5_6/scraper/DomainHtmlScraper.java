@@ -21,9 +21,12 @@ public class DomainHtmlScraper {
 
     public void start() throws IOException {
         List<String> htmlLines = HtmlFetcher.fetchHtml(domainAddress);
-        this.htmlFileManager.save(htmlLines);
+//        this.htmlFileManager.save(htmlLines);
 
-        List<String> urls = HtmlParser.getAllUrlsFromList(htmlLines);
+        // get domainCondition
+        String domainCondition = Conf.getDomain(domainAddress);
+
+        List<String> urls = HtmlParser.getAllUrlsFromList(htmlLines, domainCondition);
         queue.addAll(new HashSet<>(urls));
         int counter=1;
 
@@ -31,10 +34,10 @@ public class DomainHtmlScraper {
             String url = queue.remove();
             counter++;
             try {
-                htmlLines = HtmlFetcher.fetchHtml(domainAddress);
-                this.htmlFileManager.save(htmlLines);
+                htmlLines = HtmlFetcher.fetchHtml(url);
+                this.htmlFileManager.save(htmlLines, url, domainCondition);
 
-                urls = HtmlParser.getAllUrlsFromList(htmlLines);
+                urls = HtmlParser.getAllUrlsFromList(htmlLines, domainCondition);
                 queue.addAll(new HashSet<>(urls));
             }
             catch (Exception e){

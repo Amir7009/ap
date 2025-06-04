@@ -6,4 +6,16 @@ public class Conf {
 
     public static final String SAVE_DIRECTORY = "E:\\Java\\Advanced-Programming\\ap\\exercises\\ex5_6\\scraper\\fetched_html";
 
+    public static String getDomain(String domainAddress){
+        String domainCondition = domainAddress;
+        if(domainAddress.contains("https://"))
+            domainCondition = domainCondition.replace("https://", "");
+        if(domainAddress.contains("http://"))
+            domainCondition = domainCondition.replace("http://", "");
+        if (domainAddress.contains("www."))
+            domainCondition = domainCondition.replace("www.", "");
+
+        return domainCondition;
+    }
+
 }
