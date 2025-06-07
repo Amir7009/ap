@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         String domainAddress = Conf.DOMAIN_ADDRESS;
-        String savePath = Conf.SAVE_DIRECTORY;
+        String savePath = Conf.HTML_SAVE_DIRECTORY;
 
         DomainHtmlScraper domainHtmlScraper = new DomainHtmlScraper(domainAddress,savePath);
 

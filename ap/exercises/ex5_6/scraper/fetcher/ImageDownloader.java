@@ -36,22 +36,7 @@ public class ImageDownloader {
             catch (Exception e){}
             Files.copy(in, output, StandardCopyOption.REPLACE_EXISTING);
         }
+
     }
 
-
-    public static void main(String[] args) {
-        try {
-            String imageUrl = "https://www.znu.ac.ir/files/uploaded/news-pic/stories/thumbsVertical-450-600/pr-132-pr-entesab404-03-04.jpg";
-            String saveFileAddress = "fetched_images/test.jpg";
-
-
-            System.out.println("Downloading image from: " + imageUrl);
-            downloadImage(imageUrl, saveFileAddress);
-            System.out.println("Image successfully saved to: " + saveFileAddress);
-
-        } catch (IOException e) {
-            System.err.println("Failed to download image: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }

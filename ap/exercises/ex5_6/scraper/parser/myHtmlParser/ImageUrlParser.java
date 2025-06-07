@@ -1,20 +1,21 @@
 package ap.exercises.ex5_6.scraper.parser.myHtmlParser;
 
-public class MyHtmlParser {
+public class ImageUrlParser {
 
-    public static String getFirstUrl(String htmlLine) {
+    public static String getImageUrl(String htmlLine) {
         String url = null;
         int endIndex = htmlLine.indexOf(".png");
         if (endIndex < 0){
             endIndex = htmlLine.indexOf(".jpg");
         } // I think this two formats are enough.
-        if (endIndex >= 0) {
+        if (endIndex >= 0 && (htmlLine.contains("src=\"") || htmlLine.contains("href\""))) {
             try {
-                int startIndex = htmlLine.indexOf("\"", htmlLine.indexOf("="), endIndex);
-                url = htmlLine.substring(startIndex + 1, endIndex + 4);
+                int startIndex = htmlLine.indexOf("=\"") + 2;
+                url = htmlLine.substring(startIndex, endIndex + 4);
             } catch (Exception e) {
             }
         }
+
         return url;
     }
 

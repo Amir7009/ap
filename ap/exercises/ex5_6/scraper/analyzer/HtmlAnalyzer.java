@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class HtmlAnalyzer {
 
-    private static List<String> fileList = DirectoryTools.getFilesAbsolutePathInDirectory(Conf.SAVE_DIRECTORY);
+    private static List<String> fileList = DirectoryTools.getFilesAbsolutePathInDirectory(Conf.HTML_SAVE_DIRECTORY);
 
     public static List<String> getAllUrls() {
         List<String> urls = fileList.stream()

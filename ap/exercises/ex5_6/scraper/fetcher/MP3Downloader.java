@@ -83,19 +83,7 @@ public class MP3Downloader {
             if (fileOut != null) fileOut.close();
             if (connection != null) connection.disconnect();
         }
+
     }
 
-    public static void main(String[] args) {
-        try {
-            String mp3Url = "https://dl.musicdel.ir/Music/1400/05/gholamhossein_banan_ey_iran%20ey%20marze%20por%20gohar%20128.mp3";
-            String saveLocation = "fetched_music/ey_iran.mp3";
-
-            downloadMP3(mp3Url, saveLocation);
-            System.out.println("MP3 saved to: " + saveLocation);
-
-        } catch (Exception e) {
-            System.err.println("Error downloading MP3: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
 }

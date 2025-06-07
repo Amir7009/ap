@@ -31,7 +31,7 @@ public class HtmlFileManager {
             // packaging html files
             String saveHtmlFilesToPackages = getActualSaveDirectoryAddress(url, domain);
             DirectoryTools.createDirectory(saveHtmlFilesToPackages);
-            PrintWriter out2 = new PrintWriter(saveHtmlFilesToPackages + File.separator + saveCounter + ".html");
+            PrintWriter out2 = new PrintWriter( saveHtmlFilesToPackages + File.separator + saveCounter + ".html");
             for (String line : lines) {
                 out2.println(line);
             }
@@ -66,6 +66,8 @@ public class HtmlFileManager {
 
         finalPath = domain.replace(".", "-") + "/" +
                 finalPath.replace(".", "_");
+
+        finalPath = "E:/Java/Advanced-Programming/ap/exercises/ex5_6/".concat(finalPath);
 
         return finalPath;
     }
