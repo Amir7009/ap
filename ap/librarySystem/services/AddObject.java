@@ -1,5 +1,6 @@
 package ap.librarySystem.services;
 
+import ap.librarySystem.constants.BookStatus;
 import ap.librarySystem.constants.ValidateRoles;
 import ap.librarySystem.helpers.InputHandler;
 import ap.librarySystem.models.Book;
@@ -49,7 +50,7 @@ public class AddObject {
 
         // add book
         if (!books.containsKey(ISBN)) {
-            books.put(ISBN, new Book(title, author, pages, year, ISBN));
+            books.put(ISBN, new Book(title, author, pages, year, ISBN, BookStatus.NOT_BORROWED));
             System.out.println("Successful");
         }else {
             System.out.println("Failed! ISBN exists.");

@@ -6,14 +6,20 @@ public class Librarian extends User {
             employeeID,
             firstName,
             lastName,
+            lendReport,
+            receiveReport,
             nationalID,
             address,
             educationLevel,
-            phoneNumber,
-            receiveReport,
-            lendReport;
+            phoneNumber;
 
-    public Librarian(String employeeID, String firstName, String lastName, String lendReport, String receiveReport) {
+    public Librarian(
+            String employeeID,
+            String firstName,
+            String lastName,
+            String lendReport,
+            String receiveReport
+    ){
 
         super(employeeID);
         this.employeeID = employeeID;
@@ -45,8 +51,44 @@ public class Librarian extends User {
         this.receiveReport = this.receiveReport.concat("-" + receiveReport);
     }
 
-    public void setLendReport(String lendReport){
-        this.lendReport = this.lendReport.concat("-" +lendReport);
+    public void setLendReport(String lendReport) {
+        this.lendReport = this.lendReport.concat("-" + lendReport);
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getEducationLevel() {
+        return educationLevel;
+    }
+
+    public String getNationalID() {
+        return nationalID;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getEmployeeID() {
+        return employeeID;
     }
 
     public String getLendReport() {
@@ -57,22 +99,16 @@ public class Librarian extends User {
         return receiveReport;
     }
 
-    // for save librarians' data in file
-    @Override
-    public String toString() {
-        return "Librarian{" +
-                "employeeID='" + employeeID + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", nationalID='" + nationalID + '\'' +
-                ", Address='" + address + '\'' +
-                ", educationLevel='" + educationLevel + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", receiveReport='" + receiveReport + '\'' +
-                ", lendReport='" + lendReport + '\'' +
-                '}';
+    public String tabSplit() {
+        return this.employeeID + "\t" +
+                this.firstName + "\t" +
+                this.lastName + "\t" +
+                this.lendReport + "\t" +
+                this.receiveReport + "\t" +
+                this.nationalID + "\t" +
+                this.address + "\t" +
+                this.educationLevel + "\t" +
+                this.phoneNumber + "\t";
     }
-
-    // fromString method to parse the input string and return a Librarian object
 
 }

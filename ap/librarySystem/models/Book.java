@@ -8,37 +8,37 @@ public class Book{
     private String title, author, pages, year;
     private BookStatus bookStatus; // this can be replaced with book count if we will have duplicated books
 
-    public Book(String title, String author, String pages, String year, String ISBN) {
+    public Book(String title, String author, String pages, String year, String ISBN, BookStatus status) {
 
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.year = year;
         this.ISBN = ISBN;
-        this.bookStatus = BookStatus.NOT_BORROWED;
+        this.bookStatus = status;
 
     }
 
     // setter methods (for edit attributes)
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setPages(String pages) {
-        this.pages = pages;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+//
+//    public void setAuthor(String author) {
+//        this.author = author;
+//    }
+//
+//    public void setPages(String pages) {
+//        this.pages = pages;
+//    }
+//
+//    public void setYear(String year) {
+//        this.year = year;
+//    }
+//
+//    public void setISBN(String ISBN) {
+//        this.ISBN = ISBN;
+//    }
 
     public void setBookStatus(BookStatus bookStatus) {
         this.bookStatus = bookStatus;
@@ -59,6 +59,18 @@ public class Book{
         return bookStatus;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getPages() {
+        return pages;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
     @Override
     public String toString() {
 
@@ -72,6 +84,13 @@ public class Book{
 
     }
 
-    // fromString method to parse the input string and return a Book object
+    public String tabSplit(){
+        return this.title + "\t" +
+                this.author + "\t" +
+                this.pages + "\t" +
+                this.year + "\t" +
+                this.ISBN + "\t" +
+                this.bookStatus + "\t";
+    }
 
 }

@@ -16,8 +16,12 @@ public class SearchBox {
     InputHandler input = new InputHandler(); // To get data from input
     Printer print = new Printer(); // to print object data
 
-    // Search by most matches
-    public void searchBooks( LinkedHashMap<String, Book> books) {
+    /**
+     * Search by most matches
+     * @see SearchBox in the calculateMatchScore method
+     * @param books to search an item inside it
+     */
+    public void searchBooks(LinkedHashMap<String, Book> books) {
 
         System.out.println("Please enter book name: ");
         String query = input.userInput(
@@ -25,9 +29,9 @@ public class SearchBox {
                 "You are only allowed to use letters & numbers.");
 
         ArrayList<String> list = new ArrayList<>();
-        for (String book : books.keySet()) {
-            if (calculateMatchScore(query, book) > 0) {
-                list.add(book);
+        for (Book book : books.values()) {
+            if (calculateMatchScore(query, book.getTitle()) > 0) {
+                list.add(book.getTitle());
             }
         }
         list.sort((b1, b2) -> Integer.compare(
@@ -35,7 +39,10 @@ public class SearchBox {
                 calculateMatchScore(query, b1)
         ));
 
-        print.printObjectInfo(list);
+        ArrayList<Book> bookList = new ArrayList<>();
+        for (String item : list)
+            bookList.add(books.get(item));
+        print.printObjectInfo(bookList);
 
     }
 
@@ -53,7 +60,7 @@ public class SearchBox {
         return input.toLowerCase().trim();
     }
 
-    public String searchStudent(LinkedHashMap<String, Student> students){
+    public String searchStudent(LinkedHashMap<String, Student> students) {
 
         System.out.println("Please enter student's ID: ");
         String studentID = input.userInput(
@@ -68,7 +75,7 @@ public class SearchBox {
 
     }
 
-    public String searchLibrarian(LinkedHashMap<String, Librarian> librarians){
+    public String searchLibrarian(LinkedHashMap<String, Librarian> librarians) {
 
         System.out.println("Please enter librarian's ID: ");
         String librarianID = input.userInput(

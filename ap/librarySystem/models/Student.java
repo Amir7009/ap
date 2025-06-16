@@ -48,9 +48,6 @@ public class Student extends User {
                 '}';
     }
 
-    // fromString method to parse the input string and return a Student object
-
-
     public void setNotifications(String newNotification) {
         this.notifications = this.notifications.concat("-" + newNotification);
     }
@@ -59,6 +56,30 @@ public class Student extends User {
         this.loanHistory = this.loanHistory.concat("-" + newAction);
     }
 
+//    public void setFirstName(String firstName) {
+//        this.firstName = firstName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
+//
+//    public void setStudyingField(String studyingField) {
+//        this.studyingField = studyingField;
+//    }
+//
+//    public void setLoanHistory(String loanHistory) {
+//        this.loanHistory = loanHistory;
+//    }
+//
+//    public void setStudentID(String studentID) {
+//        this.studentID = studentID;
+//    }
+//
+//    public void setMembershipDate(String membershipDate) {
+//        this.membershipDate = membershipDate;
+//    }
+
     public String getNotifications() {
         return notifications;
     }
@@ -66,4 +87,35 @@ public class Student extends User {
     public String getLoanHistory() {
         return loanHistory;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getStudyingField() {
+        return studyingField;
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
+    public String getMembershipDate() {
+        return membershipDate;
+    }
+
+    public String tabSplit(){
+        return this.firstName + "\t" +
+                this.lastName + "\t" +
+                this.studyingField + "\t" +
+                this.studentID + "\t" +
+                this.membershipDate + "\t" +
+                this.notifications + "\t" +
+                this.loanHistory + "\t";
+    }
+
 }

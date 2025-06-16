@@ -1,6 +1,5 @@
-package ap.librarySystem.services;
+package ap.librarySystem.helpers;
 
-import ap.librarySystem.helpers.InputHandler;
 
 public class MenuHelper {
 
@@ -79,6 +78,19 @@ public class MenuHelper {
                 3-View a librarian performance
                 4-View top ten borrowed books in last year
                 0-Go back
+                """);
+
+        return input.switcher();
+
+    }
+
+    public byte saveTypeMenu() {
+
+        System.out.println("""
+                
+                1-json
+                2-tab_split
+                3-sqlite
                 """);
 
         return input.switcher();

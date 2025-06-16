@@ -41,6 +41,22 @@ public class Request {
         return requestType;
     }
 
+//    public void setBorrowedBookISBN(String borrowedBookISBN) {
+//        this.borrowedBookISBN = borrowedBookISBN;
+//    }
+//
+//    public void setBorrowerStudentID(String borrowerStudentID) {
+//        this.borrowerStudentID = borrowerStudentID;
+//    }
+//
+//    public void setLibrarianID(String librarianID) {
+//        this.librarianID = librarianID;
+//    }
+//
+//    public void setRequestType(RequestType requestType) {
+//        this.requestType = requestType;
+//    }
+
     public String printRequestDetails(LinkedHashMap<String, Student> students){
 
         return "Request{" +
@@ -61,6 +77,11 @@ public class Request {
                 '}';
     }
 
-    // fromString method to parse the input string and return a Request object
+    public String tabSplit(){
+        return this.borrowerStudentID + "\t" +
+                this.borrowedBookISBN + "\t" +
+                this.requestType + "\t" +
+                this.librarianID + "\t";
+    }
 
 }

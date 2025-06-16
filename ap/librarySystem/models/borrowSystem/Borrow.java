@@ -62,6 +62,50 @@ public class Borrow {
         return loanStartDate;
     }
 
+    public String getLenderLibrarianID() {
+        return lenderLibrarianID;
+    }
+
+    public String getReclaimerLibrarianID() {
+        return reclaimerLibrarianID;
+    }
+
+    public LocalDate getActualReturnDate() {
+        return actualReturnDate;
+    }
+
+    public LocalDate getLoanFinishDate() {
+        return loanFinishDate;
+    }
+
+    public void setActualReturnDate(LocalDate actualReturnDate) {
+        this.actualReturnDate = actualReturnDate;
+    }
+
+    public void setReclaimerLibrarianID(String reclaimerLibrarianID) {
+        this.reclaimerLibrarianID = reclaimerLibrarianID;
+    }
+
+//    public void setLoanStartDate(LocalDate loanStartDate) {
+//        this.loanStartDate = loanStartDate;
+//    }
+//
+//    public void setLoanFinishDate(LocalDate loanFinishDate) {
+//        this.loanFinishDate = loanFinishDate;
+//    }
+//
+//    public void setBorrowerStudentID(String borrowerStudentID) {
+//        this.borrowerStudentID = borrowerStudentID;
+//    }
+//
+//    public void setBorrowedBookISBN(String borrowedBookISBN) {
+//        this.borrowedBookISBN = borrowedBookISBN;
+//    }
+//
+//    public void setLenderLibrarianID(String lenderLibrarianID) {
+//        this.lenderLibrarianID = lenderLibrarianID;
+//    }
+
     @Override
     public String toString() {
         return "Borrow{" +
@@ -73,6 +117,16 @@ public class Borrow {
                 ", lenderLibrarian=" + lenderLibrarianID +
                 ", reclaimerLibrarian=" + reclaimerLibrarianID +
                 '}';
+    }
+
+    public String tabSplit(){
+        return this.borrowerStudentID + "\t" +
+                this.borrowedBookISBN + "\t" +
+                this.lenderLibrarianID + "\t" +
+                this.loanStartDate + "\t" +
+                this.loanFinishDate + "\t" +
+                this.actualReturnDate + "\t" +
+                this.reclaimerLibrarianID + "\t";
     }
 
 }

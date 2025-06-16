@@ -15,6 +15,8 @@ public class Printer {
 
     public <T> void printObjectInfo(ArrayList<T> objects) {
 
+        // calls the toString method of objects
+
         if (objects.isEmpty()) {
             System.out.println("No items found.");
             return;
@@ -31,7 +33,7 @@ public class Printer {
     public void printStudentUnreturnedBooks(Library library, String studentID) {
 
         int i = 0;
-        for (Borrow borrow : library.getLoans()) {
+        for (Borrow borrow : library.getBorrows()) {
 
             if (library.getBooks().get(borrow.getBorrowedBookISBN()).getBookStatus() == BookStatus.IS_BORROWED &&
                     borrow.getBorrowerStudentID().equals(studentID)
@@ -55,7 +57,7 @@ public class Printer {
     public void printUnreturnedBooks(Library library) {
 
         int i = 0;
-        for (Borrow borrow : library.getLoans()) {
+        for (Borrow borrow : library.getBorrows()) {
 
             if (library.getBooks().get(borrow.getBorrowedBookISBN()).getBookStatus() == BookStatus.IS_BORROWED) {
                 System.out.print(borrow.getBorrowedBookISBN());

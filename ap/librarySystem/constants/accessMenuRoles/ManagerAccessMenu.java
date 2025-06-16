@@ -1,4 +1,4 @@
-package ap.librarySystem.constants;
+package ap.librarySystem.constants.accessMenuRoles;
 
 public enum ManagerAccessMenu {
 
