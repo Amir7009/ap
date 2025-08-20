@@ -33,9 +33,7 @@ public class StudentMenu {
                     System.out.println("\n--- My Information ---");
                     System.out.println(currentUser);
                 }
-                case 2 -> {
-                    System.out.println("Feature not implemented yet: Edit Information.");
-                }
+                case 2 -> System.out.println("Feature not implemented yet: Edit Information.");
                 case 3 -> System.out.println("Feature not implemented yet: Borrow Book.");
                 case 4 -> System.out.println("Feature not implemented yet: Return Book.");
                 case 5 -> System.out.println("Feature not implemented yet: Display Available Books.");

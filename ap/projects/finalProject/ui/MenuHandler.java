@@ -2,20 +2,19 @@ package ap.projects.finalProject.ui;
 
 import ap.projects.finalProject.*;
 import ap.projects.finalProject.model.Student;
+import ap.projects.finalProject.service.AuthService;
 import ap.projects.finalProject.util.UserInput;
-
-import java.util.Scanner;
 
 public class MenuHandler {
 
     private LibrarySystem librarySystem;
     private UserInput userInput;
-    private Scanner scanner;
+    private AuthService authentication;
 
     public MenuHandler(LibrarySystem librarySystem) {
         this.librarySystem = librarySystem;
         this.userInput = new UserInput();
-        this.scanner = new Scanner(System.in);
+        authentication = new AuthService(librarySystem);
     }
 
     // this method will be developed when admin & manager have been added
@@ -32,10 +31,10 @@ public class MenuHandler {
 
             switch (choice) {
                 case 1:
-                    handleStudentRegistration();
+                    authentication.handleStudentRegistration();
                     break;
                 case 2:
-                    handleStudentLogin();
+                    //handleStudentLogin();
                     break;
                 case 3:
                     displayStudentCount();
@@ -55,41 +54,4 @@ public class MenuHandler {
         System.out.println("\nTotal registered students: " + studentCount);
     }
 
-    private void handleStudentRegistration() {
-        System.out.println("\n--- New Student Registration ---");
-
-        System.out.print("Student name: ");
-        String name = scanner.nextLine();
-
-        System.out.print("Student ID: ");
-        String studentId = scanner.nextLine();
-
-        System.out.print("Username: ");
-        String username = scanner.nextLine();
-
-        System.out.print("Password: ");
-        String password = scanner.nextLine();
-
-        librarySystem.registerStudent(name, studentId, username, password);
-    }
-
-    private void handleStudentLogin() {
-        System.out.println("\n--- Student Login ---");
-
-        System.out.print("Username: ");
-        String username = scanner.nextLine();
-
-        System.out.print("Password: ");
-        String password = scanner.nextLine();
-
-        Student currentUser = librarySystem.authenticateStudent(username, password);
-
-        if (currentUser != null) {
-            System.out.println("Login successful! Welcome, " + currentUser.getName());
-            StudentMenu studentMenu = new StudentMenu(librarySystem, currentUser);
-            studentMenu.display();
-        } else {
-            System.out.println("Invalid username or password. Please try again.");
-        }
-    }
 }
