@@ -1,7 +1,6 @@
 package ap.projects.finalProject.ui;
 
 import ap.projects.finalProject.*;
-import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.service.AuthService;
 import ap.projects.finalProject.util.UserInput;
 
@@ -34,7 +33,7 @@ public class MenuHandler {
                     authentication.handleStudentRegistration();
                     break;
                 case 2:
-                    //handleStudentLogin();
+                    authentication.handleStudentLogin();
                     break;
                 case 3:
                     displayStudentCount();
