@@ -1,0 +1,430 @@
+@startuml
+
+class Library {
+    - String libraryName
+    - ArrayList<LibraryManager> libraryManager
+    - ArrayList<Librarian> librarians
+    - ArrayList<Student> libraryStudents
+    - ArrayList<Borrow> loans
+    - ArrayList<Book> books
+    - ArrayList<Request> loanRequests
+    - ArrayList<Request> returnRequests
+
+    + Library(String name)
+
+    + getBooks(): ArrayList<Book>
+    + getLibraryManager(): ArrayList<LibraryManager>
+    + getLibraryStudents(): ArrayList<Student>
+    + getLibrarians(): ArrayList<Librarian>
+    + getLoans(): ArrayList<Borrow>
+    + getLoanRequests(): ArrayList<Request>
+    + getReturnRequests(): ArrayList<Request>
+
+    + setLibrarians(ArrayList<Librarian>): void
+    + setLibraryStudents(ArrayList<Student>): void
+    + setLoans(ArrayList<Borrow>): void
+    + setBooks(ArrayList<Book>): void
+    + setLoanRequests(ArrayList<Request>): void
+    + setReturnRequests(ArrayList<Request>): void
+}
+
+class LibraryManager
+class Librarian
+class Student
+class Borrow
+class Request
+
+Library *-- LibraryManager
+Library *-- Librarian
+Library *-- Student
+Library *-- Book
+Library *-- Borrow
+Library *-- Request
+
+class MainLibrary {
+    + main(String[]): void
+}
+
+class FileManager {
+    - SaveToFile save
+    - LoadFromFile load
+
+    + save(library: Library): void
+    + load(library: Library): void
+}
+
+class SaveToFile {
+    + <T> save(objects: ArrayList<T>, filePath: String): void
+}
+
+class LoadFromFile {
+    + loadBooks(filePath: String): ArrayList<Book>
+    + loadStudents(filePath: String): ArrayList<Student>
+    + loadLibrarians(filePath: String): ArrayList<Librarian>
+    + loadLoans(filePath: String): ArrayList<Borrow>
+    + loadLoanRequests(filePath: String): ArrayList<Request>
+    + loadReturnRequests(filePath: String): ArrayList<Request>
+}
+
+FileManager *-- SaveToFile
+FileManager *-- LoadFromFile
+
+class Validator {
+    + Validate(value: String, condition: String): boolean
+}
+
+class InputHandler {
+    - Scanner scanner
+    - Validator validate
+
+    + switcher(): byte
+    + userInput(condition: String, exception: String): String
+    + yesOrNo(): boolean
+}
+
+InputHandler --> Validator
+
+class AddObject {
+    - ValidateRoles condition
+    - InputHandler userInput
+
+    + addBook(books: ArrayList<Book>): void
+    + addLibrarian(librarians: ArrayList<Librarian>): void
+}
+
+AddObject --> ValidateRoles
+AddObject --> InputHandler
+
+class Authentication {
+    - ValidateRoles condition
+    - InputHandler userInput
+
+    + signUp(students: ArrayList<Student>): void
+    + <T extends UsernameInterface> signIn(users: ArrayList<T>): int
+}
+
+Authentication --> ValidateRoles
+Authentication --> InputHandler
+
+class Editor {
+    - ValidateRoles condition
+    - InputHandler userInput
+
+    + editLibrarianInfo(librarian: Librarian): void
+}
+
+Editor --> ValidateRoles
+Editor --> InputHandler
+
+enum UserRoles {
+    STUDENT
+    LIBRARIAN
+    MANAGER
+    EXIT
+    INVALID_OPTION
+}
+
+MainLibrary --> FileManager
+MainLibrary --> Library
+MainLibrary --> MenuHelper
+MainLibrary --> SwitchHandler
+MainLibrary --> UserRoles
+
+class Book {
+    - String title
+    - String author
+    - String pages
+    - String year
+    - String ISBN
+    - BookStatus bookStatus
+
+    + Book(String, String, String, String, String)
+    + setTitle(String): void
+    + setAuthor(String): void
+    + setPages(String): void
+    + setYear(String): void
+    + setISBN(String): void
+    + setBookStatus(BookStatus): void
+
+    + getTitle(): String
+    + getISBN(): String
+    + getBookStatus(): BookStatus
+
+    + toString(): String
+    + fromString(String): Book
+}
+
+enum BookStatus {
+    IS_BORROWED
+    NOT_BORROWED
+    IS_RESERVED
+}
+
+Book --> BookStatus
+
+class Borrow {
+    - LocalDate loanStartDate
+    - LocalDate loanFinishDate
+    - LocalDate actualReturnDate
+    - Student borrowerStudent
+    - Book borrowedBook
+    - Librarian lenderLibrarian
+    - Librarian reclaimerLibrarian
+
+    + Borrow(Student, Book, Librarian, LocalDate, LocalDate)
+    + returnBook(Librarian, LocalDate): void
+    + getDelay(): int
+    + isLate(LocalDate): boolean
+    + getBorrowedBook(): Book
+    + getBorrowerStudent(): Student
+    + getLoanStartDate(): LocalDate
+    + toString(): String
+    + fromString(String): Borrow
+}
+
+Borrow *-- Book
+Borrow *-- Student
+Borrow *-- Librarian
+
+interface UsernameInterface {
+    + getUsername(): String
+}
+
+abstract class User {
+    - username: String
+    + User(username: String)
+    + getUsername(): String
+}
+
+User ..|> UsernameInterface
+
+class Librarian {
+    - employeeID: String
+    - firstName: String
+    - lastName: String
+    - nationalID: String
+    - address: String
+    - educationLevel: String
+    - phoneNumber: String
+    - receiveReport: String
+    - lendReport: String
+
+    + Librarian(employeeID: String, firstName: String, lastName: String)
+    + setNationalID(nationalID: String)
+    + setAddress(address: String)
+    + setEducationLevel(educationLevel: String)
+    + setPhoneNumber(phoneNumber: String)
+    + setReceiveReport(receiveReport: String)
+    + setLendReport(lendReport: String)
+    + getReceiveReport(): String
+    + getLendReport(): String
+    + toString(): String
+    + fromString(str: String): Librarian
+}
+
+Librarian --|> User
+
+class Request {
+    - Student student
+    - Book book
+    - LocalDate requestDate
+
+    + Request(Student, Book, LocalDate)
+    + getStudent(): Student
+    + getBook(): Book
+    + getRequestDate(): LocalDate
+    + toString(): String
+    + fromString(String, ArrayList<Student>, ArrayList<Book>): Request
+}
+
+Request *-- Student
+Request *-- Book
+
+class Student {
+    - String studentID
+    - String nationalID
+    - String phoneNumber
+    - String address
+
+    + Student(String, String)
+    + setNationalID(String): void
+    + setPhoneNumber(String): void
+    + setAddress(String): void
+    + toString(): String
+    + fromString(String): Student
+}
+
+Student --|> User
+
+class LibraryManager {
+    + LibraryManager(String)
+    + toString(): String
+    + fromString(String): LibraryManager
+}
+
+LibraryManager --|> User
+
+class SwitchHandler {
+    - MenuHelper menu
+    - Authentication authentication
+    - Library library
+    - Printer printer
+    - SearchBox search
+    - Editor edit
+    - AddObject add
+    - FileManager fileManager
+    - BorrowHandler borrowHandler
+
+    + SwitchHandler(Library)
+    + handleRoleMenu(UserRoles): void
+    - handleStudentLoginMenu(): void
+    - handleStudentAccessMenu(int): void
+    - handleLibrarianMenu(int): void
+    - handleManagerMenu(int): void
+}
+
+SwitchHandler --> Library
+SwitchHandler --> MenuHelper
+SwitchHandler --> Authentication
+SwitchHandler --> Printer
+SwitchHandler --> SearchBox
+SwitchHandler --> Editor
+SwitchHandler --> AddObject
+SwitchHandler --> FileManager
+SwitchHandler --> BorrowHandler
+
+class BorrowHandler {
+    - InputHandler input
+    - ValidateRoles condition
+
+    + makeLoanRequest(Library, Student): void
+    + makeReturnRequest(Library, Student): void
+    + acceptRequest(ArrayList<Request>, Library, int): void
+    - acceptBorrowRequest(Request, ArrayList<Borrow>): boolean
+    - acceptReturnRequest(Request, ArrayList<Borrow>): boolean
+}
+
+BorrowHandler --> InputHandler
+BorrowHandler --> ValidateRoles
+BorrowHandler --> Library
+BorrowHandler --> Student
+BorrowHandler --> Request
+BorrowHandler --> Borrow
+BorrowHandler --> Book
+BorrowHandler --> Librarian
+
+class InputHandler {
+    - Scanner scanner
+    - Validator validate
+
+    + switcher(): byte
+    + userInput(condition: String, exception: String): String
+    + yesOrNo(): boolean
+}
+
+InputHandler --> Validator
+
+class LoadFromFile {
+    + loadBooks(filePath: String): ArrayList<Book>
+    + loadStudents(filePath: String): ArrayList<Student>
+    + loadLibrarians(filePath: String): ArrayList<Librarian>
+    + loadLoans(filePath: String): ArrayList<Borrow>
+    + loadLoanRequests(filePath: String): ArrayList<Request>
+    + loadReturnRequests(filePath: String): ArrayList<Request>
+}
+
+class Printer {
+    + printObjectInfo<T>(objects: ArrayList<T>): void
+    + printStudentUnreturnedBooks(borrows: ArrayList<Borrow>, student: Student): void
+    + printUnreturnedBooks(borrows: ArrayList<Borrow>): void
+    + showStudentNotifications(student: Student): void
+    + printStudentHistory(student: Student): void
+    + printLibrarianHistory(history: String): void
+    + printLateBooks(borrows: ArrayList<Borrow>): void
+    + printTopTenBook(borrows: ArrayList<Borrow>): void
+}
+
+class SaveToFile {
+    + <T> save(objects: ArrayList<T>, filePath: String): void
+}
+
+class Validator {
+    + Validate(value: String, condition: String): boolean
+}
+
+class AddObject {
+    - ValidateRoles condition
+    - InputHandler userInput
+
+    + addBook(books: ArrayList<Book>): void
+    + addLibrarian(librarians: ArrayList<Librarian>): void
+}
+
+AddObject --> ValidateRoles
+AddObject --> InputHandler
+
+class Authentication {
+    - ValidateRoles condition
+    - InputHandler userInput
+
+    + signUp(students: ArrayList<Student>): void
+    + <T extends UsernameInterface> signIn(users: ArrayList<T>): int
+}
+
+Authentication --> ValidateRoles
+Authentication --> InputHandler
+
+class Editor {
+    - ValidateRoles condition
+    - InputHandler userInput
+
+    + editLibrarianInfo(librarian: Librarian): void
+}
+
+Editor --> ValidateRoles
+Editor --> InputHandler
+
+class FileManager {
+    - SaveToFile save
+    - LoadFromFile load
+
+    + save(library: Library): void
+    + load(library: Library): void
+}
+
+FileManager *-- SaveToFile
+FileManager *-- LoadFromFile
+
+class MenuHelper {
+    - input: InputHandler
+
+    + userSelectionMenu(): byte
+    + studentLoginMenu(): byte
+    + studentAccessMenu(): byte
+    + librariansAccessMenu(): byte
+    + managerAccessMenu(): byte
+}
+
+MenuHelper --> InputHandler
+
+class SearchBox {
+    - condition: ValidateRoles
+    - input: InputHandler
+    - print: Printer
+
+    + searchBooks(books: ArrayList<Book>): void
+    + searchStudent(students: ArrayList<Student>): int
+    + searchLibrarian(librarians: ArrayList<Librarian>): int
+
+    - calculateMatchScore(query: String, target: String): int
+    - normalize(input: String): String
+}
+
+SearchBox --> ValidateRoles
+SearchBox --> InputHandler
+SearchBox --> Printer
+SearchBox --> Book
+SearchBox --> Student
+SearchBox --> Librarian
+
+@enduml
