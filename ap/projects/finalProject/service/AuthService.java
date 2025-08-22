@@ -10,14 +10,21 @@ public class AuthService {
 
     private Scanner scanner;
     private LibrarySystem librarySystem;
+    private StudentService studentService;
 
     public AuthService(LibrarySystem librarySystem){
 
         scanner = new Scanner(System.in);
         this.librarySystem = librarySystem;
 
+        studentService = librarySystem.getStudentService();
+
     }
 
+    /**
+     * gets the student info from user and instantiates a new registered student in the library
+     * @see StudentService
+     */
     public void handleStudentRegistration() {
 
         System.out.println("\n--- New Student Registration ---");
@@ -34,10 +41,14 @@ public class AuthService {
         System.out.print("Password: ");
         String password = scanner.nextLine();
 
-        librarySystem.registerStudent(name, studentId, username, password);
+        studentService.registerStudent(name, studentId, username, password);
 
     }
 
+    /**
+     * gets the student info from user and searches the input username among the all students
+     * if the username exists, checks the password
+     */
     public void handleStudentLogin() {
 
         System.out.println("\n--- Student Login ---");
@@ -48,7 +59,7 @@ public class AuthService {
         System.out.print("Password: ");
         String password = scanner.nextLine();
 
-        Student currentUser = librarySystem.authenticateStudent(username, password);
+        Student currentUser = studentService.authenticateStudent(username, password);
 
         if (currentUser != null) {
             System.out.println("Login successful! Welcome, " + currentUser.getName());

@@ -2,16 +2,18 @@ package ap.projects.finalProject;
 
 import ap.projects.finalProject.repository.StudentRepository;
 import ap.projects.finalProject.service.StudentService;
-import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.ui.MenuHandler;
 
 public class LibrarySystem {
+
     private final StudentService studentService;
     private final MenuHandler menuHandler;
 
     public LibrarySystem() {
+
         StudentRepository repository = new StudentRepository();
         this.studentService = new StudentService(repository);
+
         this.menuHandler = new MenuHandler(this);
     }
 
@@ -19,14 +21,18 @@ public class LibrarySystem {
         return studentService.getStudentCount();
     }
 
-    public boolean registerStudent(String name, String studentId, String username, String password) {
-        return studentService.registerStudent(name, studentId, username, password);
+    /**
+     * just connects the student services with the Library students repository
+     * @return the services that student can get from library
+     * @see MenuHandler or StudentMenu
+     */
+    public StudentService getStudentService() {
+        return studentService;
     }
 
-    public Student authenticateStudent(String username, String password) {
-        return studentService.authenticateStudent(username, password);
-    }
-
+    /**
+     * starts the loop of Library System
+     */
     public void start() {
         menuHandler.displayMainMenu();
     }

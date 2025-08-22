@@ -15,6 +15,9 @@ public class StudentMenu {
         this.userInput = new UserInput();
     }
 
+    /**
+     * shows all available options for a student in library
+     */
     public void display() {
         while (currentUser != null) {
             System.out.println("\n=== Student Dashboard ===");

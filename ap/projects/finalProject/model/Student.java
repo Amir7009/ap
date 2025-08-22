@@ -1,6 +1,7 @@
 package ap.projects.finalProject.model;
 
 public class Student {
+
     private String name;
     private String studentId;
     private String username;
@@ -14,16 +15,34 @@ public class Student {
         this.password = password;
     }
 
+    /**
+     * getter methods for student attributes
+     * @return student info (String)
+     */
     public String getName() { return name; }
     public String getStudentId() { return studentId; }
     public String getUsername() { return username; }
     public String getPassword() { return password; }
+
+    /**
+     * for check activity of a student
+     * @return the activity stat of student
+     */
     public boolean isActive() { return active; }
 
+    /**
+     * to set activity status of a student
+     * @param active new activity status of the student
+     */
     public void setActive(boolean active) {
         this.active = active;
     }
 
+    /**
+     * for print the student info
+     * @return the student info in form of
+     * Name:  ... | Student ID:  ... | Username: ... | Status: ...
+     */
     @Override
     public String toString() {
         return "Name: " + name +
@@ -31,4 +50,5 @@ public class Student {
                 " | Username: " + username +
                 " | Status: " + (active ? "Active" : "Inactive");
     }
+
 }
