@@ -1,18 +1,22 @@
 package ap.projects.finalProject;
 
-import ap.projects.finalProject.repository.StudentRepository;
-import ap.projects.finalProject.service.StudentService;
+import ap.projects.finalProject.repository.*;
+import ap.projects.finalProject.service.*;
 import ap.projects.finalProject.ui.MenuHandler;
 
 public class LibrarySystem {
 
     private final StudentService studentService;
+    private final BookService bookService;
     private final MenuHandler menuHandler;
 
     public LibrarySystem() {
 
-        StudentRepository repository = new StudentRepository();
-        this.studentService = new StudentService(repository);
+        StudentRepository studentRepository = new StudentRepository();
+        this.studentService = new StudentService(studentRepository);
+
+        BookRepository bookRepository = new BookRepository();
+        this.bookService = new BookService(bookRepository);
 
         this.menuHandler = new MenuHandler(this);
     }
@@ -28,6 +32,14 @@ public class LibrarySystem {
      */
     public StudentService getStudentService() {
         return studentService;
+    }
+
+    /**
+     * just connects the Book services with the Library books repository
+     * @return the services that student can get for library books
+     */
+    public BookService getBookService() {
+        return bookService;
     }
 
     /**

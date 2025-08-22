@@ -1,0 +1,130 @@
+package ap.projects.finalProject.service;
+
+import ap.librarySystem.constants.BookStatus;
+import ap.projects.finalProject.model.Book;
+import ap.projects.finalProject.repository.BookRepository;
+import ap.projects.finalProject.util.UserInput;
+
+import java.util.Scanner;
+
+public class BookService {
+
+    private final BookRepository repository;
+    private Scanner scanner;
+    private UserInput userInput;
+
+    public BookService(BookRepository repository) {
+        this.repository = repository;
+        scanner = new Scanner(System.in);
+        userInput = new UserInput();
+    }
+
+    public void addBook() {
+
+        System.out.println("\n--- Add New Book ---");
+
+        System.out.print("Book title: ");
+        String title = scanner.nextLine();
+
+        System.out.print("Book Author: ");
+        String author = scanner.nextLine();
+
+        System.out.print("Book Year: ");
+        String year = scanner.nextLine();
+
+        System.out.print("Book ISBN: ");
+        String ISBN = scanner.nextLine();
+
+        Book book = new Book(title, author, year, ISBN);
+        repository.add(ISBN, book);
+
+    }
+
+    public void editBook() {
+
+        System.out.println("\n--- Edit Book Info ---");
+
+        System.out.print("Please enter the ISBN: ");
+        String ISBN = scanner.nextLine();
+
+        Book bookToEdit = repository.findByISBN(ISBN);
+
+        System.out.print("New Book title: ");
+        bookToEdit.setTitle(scanner.nextLine());
+
+        System.out.print("New Book Author: ");
+        bookToEdit.setAuthor(scanner.nextLine());
+
+        System.out.print("New Book Year: ");
+        bookToEdit.setYear(scanner.nextLine());
+
+    }
+
+    public void removeBook() {
+
+        System.out.println("\n--- Remove Book ---");
+
+        System.out.print("Please enter the ISBN: ");
+        String ISBN = scanner.nextLine();
+
+        Book bookToRemove = repository.findByISBN(ISBN);
+
+        if(bookToRemove.getBookStatus() == BookStatus.NOT_BORROWED){
+            System.out.println("Do you want to remove this book?\n" + bookToRemove);
+            if(scanner.nextLine().equals("y") || scanner.nextLine().equals("Y")) {
+                repository.remove(ISBN);
+                System.out.println("Successful!");
+            }
+        }else {
+            System.out.println("The book is already borrowed or reserved!");
+        }
+
+    }
+
+    /**
+     * shows all available options for search a book in library
+     */
+    public void searchBook() {
+        boolean condition = true;
+        while (condition) {
+            System.out.println("\n=== Search Book ===");
+            System.out.println("1. Search By Title");
+            System.out.println("2. Search By Author");
+            System.out.println("3. Search By Year");
+            System.out.println("4. Back");
+            System.out.print("Please enter your choice: ");
+
+            int choice = userInput.getIntInput(1, 4);
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.println("Enter The Title:");
+                    Book book = repository.findByTitle(scanner.nextLine());
+                    if (book != null)
+                        System.out.println(book);
+                    else
+                        System.out.println("Not Found!");
+                }
+                case 2 -> {
+                    System.out.println("Enter The Author:");
+                    Book book = repository.findByAuthor(scanner.nextLine());
+                    if (book != null)
+                        System.out.println(book);
+                    else
+                        System.out.println("Not Found!");
+                }
+                case 3 -> {
+                    System.out.println("Enter The Year:");
+                    Book book = repository.findByYear(scanner.nextLine());
+                    if (book != null)
+                        System.out.println(book);
+                    else
+                        System.out.println("Not Found!");
+                }
+                case 4 -> condition = false;
+                default -> System.out.println("Invalid option! Please try again.");
+            }
+        }
+    }
+
+}

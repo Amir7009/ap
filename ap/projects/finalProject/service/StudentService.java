@@ -4,6 +4,7 @@ import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.StudentRepository;
 
 public class StudentService {
+
     private final StudentRepository repository;
 
     public StudentService(StudentRepository repository) {

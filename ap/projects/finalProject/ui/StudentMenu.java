@@ -23,13 +23,14 @@ public class StudentMenu {
             System.out.println("\n=== Student Dashboard ===");
             System.out.println("1. View My Information");
             System.out.println("2. Edit My Information");
-            System.out.println("3. Borrow a Book");
-            System.out.println("4. Return a Book");
-            System.out.println("5. View Available Books");
-            System.out.println("6. Logout");
+            System.out.println("3. Search a Book");
+            System.out.println("4. Borrow a Book");
+            System.out.println("5. Return a Book");
+            System.out.println("6. View Available Books");
+            System.out.println("7. Logout");
             System.out.print("Please enter your choice: ");
 
-            int choice = userInput.getIntInput(1, 6);
+            int choice = userInput.getIntInput(1, 7);
 
             switch (choice) {
                 case 1 -> {
@@ -37,10 +38,11 @@ public class StudentMenu {
                     System.out.println(currentUser);
                 }
                 case 2 -> System.out.println("Feature not implemented yet: Edit Information.");
-                case 3 -> System.out.println("Feature not implemented yet: Borrow Book.");
-                case 4 -> System.out.println("Feature not implemented yet: Return Book.");
-                case 5 -> System.out.println("Feature not implemented yet: Display Available Books.");
-                case 6 -> {
+                case 3 -> librarySystem.getBookService().searchBook();
+                case 4 -> System.out.println("Feature not implemented yet: Borrow Book.");
+                case 5 -> System.out.println("Feature not implemented yet: Return Book.");
+                case 6 -> System.out.println("Feature not implemented yet: Display Available Books.");
+                case 7 -> {
                     currentUser = null;
                     System.out.println("Logged out successfully.");
                     return;
