@@ -26,10 +26,6 @@ public class LibrarySystem {
         this.menuHandler = new MenuHandler(this);
     }
 
-    public int getStudentCount() {
-        return studentService.getStudentCount();
-    }
-
     /**
      * just connects the student services with the Library students repository
      *

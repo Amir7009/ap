@@ -38,7 +38,7 @@ public class StudentRepository {
     }
 
     /**
-     * to access to count students who registered in the library
+     * to access to count of students who registered in the library
      *
      * @return the count of students
      */

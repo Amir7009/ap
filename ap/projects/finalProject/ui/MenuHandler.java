@@ -22,7 +22,7 @@ public class MenuHandler {
             System.out.println("\n=== University Library Management System ===");
             System.out.println("1. Student Registration");
             System.out.println("2. Student Login");
-            System.out.println("3. View Registered Student Count");
+            System.out.println("3. Enter as a Guest");
             System.out.println("4. Exit");
             System.out.print("Please enter your choice: ");
 
@@ -36,7 +36,7 @@ public class MenuHandler {
                     authentication.handleStudentLogin();
                     break;
                 case 3:
-                    displayStudentCount();
+                    GuestMenu.display(librarySystem);
                     break;
                 case 4:
                     System.out.println("Exiting system. Goodbye!");
@@ -46,11 +46,6 @@ public class MenuHandler {
             }
             System.out.println("___________________________");
         }
-    }
-
-    private void displayStudentCount() {
-        int studentCount = librarySystem.getStudentCount();
-        System.out.println("\nTotal registered students: " + studentCount);
     }
 
 }

@@ -65,7 +65,4 @@ public class StudentService {
         return repository;
     }
 
-    public int getStudentCount() {
-        return repository.count();
-    }
 }
