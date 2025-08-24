@@ -17,6 +17,11 @@ public class BookRepository {
         books.put(ISBN, book);
     }
 
+    /**
+     * a method for remove a book from library
+     *
+     * @param ISBN The ISBN of removing book
+     */
     public void remove(String ISBN) {
         books.remove(ISBN);
     }
@@ -77,7 +82,7 @@ public class BookRepository {
     /**
      * to access all books in library
      *
-     * @return list of all books
+     * @return a map of all books
      */
     public LinkedHashMap<String, Book> findAll() {
         return books;

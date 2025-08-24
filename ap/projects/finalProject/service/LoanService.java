@@ -47,6 +47,12 @@ public class LoanService {
                         )
                 );
                 System.out.println("Successful!");
+                System.out.println("Your request for borrow book from " +
+                        LocalDate.now().plusDays(1) +
+                        " to " + LocalDate.now().plusDays(1).plusMonths(1) +
+                        " have been registered."
+                );
+                System.out.println("After the librarian approves the loan request, go to the library to receive the book..");
                 return;
             } else
                 System.out.println("The book is already borrowed!");

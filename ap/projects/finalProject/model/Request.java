@@ -9,6 +9,10 @@ public class Request {
     private String borrowedBookISBN;
     private LocalDate createRequestDate;
 
+    /**
+     * When registering a loan request,
+     * the student specifies which book is requested to be borrowed at what time.
+     */
     public Request(String borrowerStudentUsername,
                    String borrowedBookISBN,
                    LocalDate createRequestDate
