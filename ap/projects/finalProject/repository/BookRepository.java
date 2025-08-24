@@ -2,9 +2,7 @@ package ap.projects.finalProject.repository;
 
 import ap.projects.finalProject.model.Book;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 public class BookRepository {
 
@@ -12,6 +10,7 @@ public class BookRepository {
 
     /**
      * a method for add a new book to library
+     *
      * @param book The new book
      */
     public void add(String ISBN, Book book) {
@@ -24,6 +23,7 @@ public class BookRepository {
 
     /**
      * to search a book by its title
+     *
      * @param title the title that entered by user
      * @return if book exists returns the book
      */
@@ -36,6 +36,7 @@ public class BookRepository {
 
     /**
      * to search a book by its author
+     *
      * @param author the author that entered by user
      * @return if book exists returns the book
      */
@@ -48,6 +49,7 @@ public class BookRepository {
 
     /**
      * to search a book by its year
+     *
      * @param year the year that entered by user
      * @return if book exists returns the book
      */
@@ -61,6 +63,7 @@ public class BookRepository {
     /**
      * to search a book by its ISBN
      * just for edit book info
+     *
      * @param ISBN the ISBN that entered by user
      * @return if book exists returns the book
      */
@@ -73,10 +76,11 @@ public class BookRepository {
 
     /**
      * to access all books in library
+     *
      * @return list of all books
      */
-    public List<Book> findAll() {
-        return new ArrayList<>(books.values());
+    public LinkedHashMap<String, Book> findAll() {
+        return books;
     }
 
 }

@@ -69,13 +69,13 @@ public class BookService {
 
         Book bookToRemove = repository.findByISBN(ISBN);
 
-        if(bookToRemove.getBookStatus() == BookStatus.NOT_BORROWED){
-            System.out.println("Do you want to remove this book?\n" + bookToRemove);
-            if(scanner.nextLine().equals("y") || scanner.nextLine().equals("Y")) {
+        if (bookToRemove.getBookStatus() == BookStatus.NOT_BORROWED) {
+            System.out.println("Do you want to remove this book?\t(y/n)\n" + bookToRemove);
+            if (scanner.nextLine().equals("y") || scanner.nextLine().equals("Y")) {
                 repository.remove(ISBN);
                 System.out.println("Successful!");
             }
-        }else {
+        } else {
             System.out.println("The book is already borrowed or reserved!");
         }
 
@@ -125,6 +125,15 @@ public class BookService {
                 default -> System.out.println("Invalid option! Please try again.");
             }
         }
+    }
+
+    /**
+     * To exchange the list of registered books
+     *
+     * @return the book repository services
+     */
+    public BookRepository getRepository() {
+        return repository;
     }
 
 }

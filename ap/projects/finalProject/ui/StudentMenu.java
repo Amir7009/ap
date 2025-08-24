@@ -37,16 +37,26 @@ public class StudentMenu {
                     System.out.println("\n--- My Information ---");
                     System.out.println(currentUser);
                 }
+
                 case 2 -> System.out.println("Feature not implemented yet: Edit Information.");
+
                 case 3 -> librarySystem.getBookService().searchBook();
-                case 4 -> System.out.println("Feature not implemented yet: Borrow Book.");
+
+                case 4 -> librarySystem.getLoanService().createLoanRequest(
+                        librarySystem.getBookService().getRepository().findAll(),
+                        currentUser.getUsername()
+                );
+
                 case 5 -> System.out.println("Feature not implemented yet: Return Book.");
+
                 case 6 -> System.out.println("Feature not implemented yet: Display Available Books.");
+
                 case 7 -> {
                     currentUser = null;
                     System.out.println("Logged out successfully.");
                     return;
                 }
+
                 default -> System.out.println("Invalid option! Please try again.");
             }
         }

@@ -12,7 +12,7 @@ public class AuthService {
     private LibrarySystem librarySystem;
     private StudentService studentService;
 
-    public AuthService(LibrarySystem librarySystem){
+    public AuthService(LibrarySystem librarySystem) {
 
         scanner = new Scanner(System.in);
         this.librarySystem = librarySystem;
@@ -23,6 +23,7 @@ public class AuthService {
 
     /**
      * gets the student info from user and instantiates a new registered student in the library
+     *
      * @see StudentService
      */
     public void handleStudentRegistration() {

@@ -47,10 +47,16 @@ public class Book {
         this.year = year;
     }
 
-    public void setBookStatus (BookStatus status){
+    public void setBookStatus(BookStatus status) {
         bookStatus = status;
     }
 
+    /**
+     * for print the book info
+     *
+     * @return the book info as a string in form of
+     * Book{title='...', author='...', year='...', ISBN='...', status='...'}
+     */
     @Override
     public String toString() {
 
