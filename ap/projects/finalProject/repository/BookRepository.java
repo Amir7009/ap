@@ -88,4 +88,13 @@ public class BookRepository {
         return books;
     }
 
+    /**
+     * to access to count of books that registered in the library
+     *
+     * @return the count of books
+     */
+    public int count() {
+        return books.size();
+    }
+
 }

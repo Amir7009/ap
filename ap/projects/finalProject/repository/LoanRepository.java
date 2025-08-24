@@ -11,9 +11,11 @@ public class LoanRepository {
     private List<Request> loanRequests = new ArrayList<>();
     private List<Request> returnRequests = new ArrayList<>();
 
-    private List<String> allLoansHistory = new ArrayList<>();
+    // loans that returned
+    private List<String> pastLoansHistory = new ArrayList<>();
 
-    private List<Loan> loans = new ArrayList<>();
+    // current loans
+    private List<Loan> currentLoans = new ArrayList<>();
 
     /**
      * a method for create a new loan request in library
@@ -37,7 +39,7 @@ public class LoanRepository {
      * @return list of all loans
      */
     public List<Loan> getAllLoans() {
-        return new ArrayList<>(loans);
+        return new ArrayList<>(currentLoans);
     }
 
     /**
@@ -52,6 +54,24 @@ public class LoanRepository {
      */
     public List<Request> getAllReturnRequests() {
         return new ArrayList<>(returnRequests);
+    }
+
+    /**
+     * to access to count of current loans in the library
+     *
+     * @return the count of current loans
+     */
+    public int currentLoansCount() {
+        return currentLoans.size();
+    }
+
+    /**
+     * to access to count of returned loans in the library
+     *
+     * @return the count of returned loans
+     */
+    public int pastLoansCount() {
+        return pastLoansHistory.size();
     }
 
 }

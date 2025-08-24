@@ -4,6 +4,7 @@ import ap.librarySystem.constants.BookStatus;
 import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Request;
 import ap.projects.finalProject.repository.LoanRepository;
+import ap.projects.finalProject.repository.StudentRepository;
 import ap.projects.finalProject.util.UserInput;
 
 import java.time.LocalDate;
@@ -60,6 +61,15 @@ public class LoanService {
         }
         System.out.println("ISBN not found!");
 
+    }
+
+    /**
+     * To exchange the list of loans in library
+     *
+     * @return the loan repository services
+     */
+    public LoanRepository getRepository() {
+        return repository;
     }
 
 }

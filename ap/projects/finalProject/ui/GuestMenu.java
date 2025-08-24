@@ -33,7 +33,7 @@ public class GuestMenu {
             switch (choice) {
                 case 1 -> {
                     int studentCount = librarySystem.getStudentService().getRepository().count();
-                    System.out.println("\nTotal registered students: " + studentCount);
+                    System.out.println("\nTotal Registered Students: " + studentCount);
                 }
 
                 case 2 -> {
@@ -45,9 +45,17 @@ public class GuestMenu {
                         System.out.println("Not Found!");
                 }
 
-                case 3 -> System.out.println("Feature not implemented yet: View All Books Count.");
+                case 3 -> {
+                    int bookCount = librarySystem.getBookService().getRepository().count();
+                    System.out.println("\nTotal Registered Books: " + bookCount);
+                }
 
-                case 4 -> System.out.println("Feature not implemented yet: View Library Loan Status.");
+                case 4 -> {
+                    int loanCount = librarySystem.getLoanService().getRepository().currentLoansCount();
+                    System.out.println("\nTotal Current Loans: " + loanCount);
+                    loanCount += librarySystem.getLoanService().getRepository().pastLoansCount();
+                    System.out.println("\nTotal Loans In The Library History: " + loanCount);
+                }
 
                 case 5 -> condition = false;
 
