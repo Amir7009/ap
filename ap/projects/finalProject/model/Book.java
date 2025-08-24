@@ -70,4 +70,20 @@ public class Book {
 
     }
 
+    /**
+     * print the book info for guest user
+     *
+     * @return the book info as a string in form of
+     * Book{title='...', author='...', year='...'}
+     */
+    public String getBookDetailForGuestUser() {
+
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", year='" + year + '\'' +
+                '}';
+
+    }
+
 }

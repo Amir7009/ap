@@ -1,7 +1,10 @@
 package ap.projects.finalProject.ui;
 
 import ap.projects.finalProject.LibrarySystem;
+import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.util.UserInput;
+
+import java.util.Scanner;
 
 public class GuestMenu {
 
@@ -14,6 +17,7 @@ public class GuestMenu {
 
         boolean condition = true;
         UserInput userInput = new UserInput();
+        Scanner scanner = new Scanner(System.in);
 
         while (condition) {
             System.out.println("\n=== Guest Dashboard ===");
@@ -32,7 +36,14 @@ public class GuestMenu {
                     System.out.println("\nTotal registered students: " + studentCount);
                 }
 
-                case 2 -> System.out.println("Feature not implemented yet: Search a Book by title.");
+                case 2 -> {
+                    System.out.println("Enter The Title:");
+                    Book book = librarySystem.getBookService().getRepository().findByTitle(scanner.nextLine());
+                    if (book != null)
+                        System.out.println(book.getBookDetailForGuestUser());
+                    else
+                        System.out.println("Not Found!");
+                }
 
                 case 3 -> System.out.println("Feature not implemented yet: View All Books Count.");
 
