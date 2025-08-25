@@ -23,10 +23,12 @@ public class MenuHandler {
             System.out.println("1. Student Registration");
             System.out.println("2. Student Login");
             System.out.println("3. Enter as a Guest");
-            System.out.println("4. Exit");
+            System.out.println("4. Librarian Login");
+            System.out.println("5. Manager Login");
+            System.out.println("6. Exit");
             System.out.print("Please enter your choice: ");
 
-            int choice = userInput.getIntInput(1, 4);
+            int choice = userInput.getIntInput(1, 6);
 
             switch (choice) {
                 case 1:
@@ -39,6 +41,12 @@ public class MenuHandler {
                     GuestMenu.display(librarySystem);
                     break;
                 case 4:
+                    authentication.handleLibrarianLogin();
+                    break;
+                case 5:
+                    System.out.println("Feature not implemented yet: Manager Login");
+                    break;
+                case 6:
                     System.out.println("Exiting system. Goodbye!");
                     return;
                 default:

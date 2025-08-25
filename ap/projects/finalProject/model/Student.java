@@ -9,7 +9,7 @@ public class Student {
     private boolean active = true;
 
     private String notifications = "-";
-    private String LoanHistory = "-";
+    private String loanHistory = "-";
 
     public Student(String name, String studentId, String username, String password) {
         this.name = name;
@@ -71,6 +71,17 @@ public class Student {
     public String getNotifications() {
 
         return notifications;
+
+    }
+
+    /**
+     * saves the student loan history split by -
+     *
+     * @param newAction the new borrow report for student
+     */
+    public void setLoanHistory(String newAction) {
+
+        this.loanHistory = this.loanHistory.concat(newAction + "-");
 
     }
 

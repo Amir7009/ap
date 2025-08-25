@@ -33,7 +33,7 @@ public class StudentService {
     }
 
     /**
-     * considers the input with students info
+     * compares the input with students info
      *
      * @param username the input username of user
      * @param password the input password of user

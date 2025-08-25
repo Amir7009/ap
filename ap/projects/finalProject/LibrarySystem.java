@@ -7,6 +7,7 @@ import ap.projects.finalProject.ui.MenuHandler;
 public class LibrarySystem {
 
     private final StudentService studentService;
+    private final LibrarianService librarianService;
     private final BookService bookService;
     private final LoanService loanService;
 
@@ -16,6 +17,9 @@ public class LibrarySystem {
 
         StudentRepository studentRepository = new StudentRepository();
         this.studentService = new StudentService(studentRepository);
+
+        LibrarianRepository librarianRepository = new LibrarianRepository();
+        this.librarianService = new LibrarianService(librarianRepository);
 
         BookRepository bookRepository = new BookRepository();
         this.bookService = new BookService(bookRepository);
@@ -34,6 +38,16 @@ public class LibrarySystem {
      */
     public StudentService getStudentService() {
         return studentService;
+    }
+
+    /**
+     * just connects the librarian services with the Library librarians repository
+     *
+     * @return the services that librarian can get from library
+     * @see MenuHandler or LibrarianMenu
+     */
+    public LibrarianService getLibrarianService() {
+        return librarianService;
     }
 
     /**

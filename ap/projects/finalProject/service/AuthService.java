@@ -1,7 +1,9 @@
 package ap.projects.finalProject.service;
 
 import ap.projects.finalProject.LibrarySystem;
+import ap.projects.finalProject.model.Librarian;
 import ap.projects.finalProject.model.Student;
+import ap.projects.finalProject.ui.LibrarianMenu;
 import ap.projects.finalProject.ui.StudentMenu;
 
 import java.util.Scanner;
@@ -11,6 +13,7 @@ public class AuthService {
     private Scanner scanner;
     private LibrarySystem librarySystem;
     private StudentService studentService;
+    private LibrarianService librarianService;
 
     public AuthService(LibrarySystem librarySystem) {
 
@@ -18,6 +21,7 @@ public class AuthService {
         this.librarySystem = librarySystem;
 
         studentService = librarySystem.getStudentService();
+        librarianService = librarySystem.getLibrarianService();
 
     }
 
@@ -66,6 +70,28 @@ public class AuthService {
             System.out.println("Login successful! Welcome, " + currentUser.getName());
             StudentMenu studentMenu = new StudentMenu(librarySystem, currentUser);
             studentMenu.display();
+        } else {
+            System.out.println("Invalid username or password. Please try again.");
+        }
+
+    }
+
+    public void handleLibrarianLogin() {
+
+        System.out.println("\n--- Librarian Login ---");
+
+        System.out.print("Employee ID: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+
+        Librarian currentUser = librarianService.authenticateLibrarian(username, password);
+
+        if (currentUser != null) {
+            System.out.println("Login successful! Welcome, " + currentUser.getEmployeeID());
+            LibrarianMenu librarianMenu = new LibrarianMenu(librarySystem, currentUser);
+            librarianMenu.display();
         } else {
             System.out.println("Invalid username or password. Please try again.");
         }
