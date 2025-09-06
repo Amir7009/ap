@@ -38,7 +38,7 @@ public class LibrarianMenu {
             switch (choice) {
                 case 1 -> librarySystem.getLibrarianService().changePassword(currentUser);
 
-                case 2 -> System.out.println("Feature not implemented yet: Register a New Book");
+                case 2 -> librarySystem.getBookService().addBook(currentUser);
 
                 case 3 -> System.out.println("Feature not implemented yet: Search a Book");
 

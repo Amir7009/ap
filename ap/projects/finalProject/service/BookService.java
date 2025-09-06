@@ -2,6 +2,7 @@ package ap.projects.finalProject.service;
 
 import ap.librarySystem.constants.BookStatus;
 import ap.projects.finalProject.model.Book;
+import ap.projects.finalProject.model.Librarian;
 import ap.projects.finalProject.repository.BookRepository;
 import ap.projects.finalProject.util.UserInput;
 
@@ -19,7 +20,13 @@ public class BookService {
         userInput = new UserInput();
     }
 
-    public void addBook() {
+    /**
+     * Simply add a book to the library by getting information from the librarian,
+     * and saving the book name as a book registration record for the librarian.
+     *
+     * @param librarian the librarian who registered new book
+     */
+    public void addBook(Librarian librarian) {
 
         System.out.println("\n--- Add New Book ---");
 
@@ -37,6 +44,8 @@ public class BookService {
 
         Book book = new Book(title, author, year, ISBN);
         repository.add(ISBN, book);
+
+        librarian.setBooksRegisteredHistory(title);
 
     }
 
