@@ -40,9 +40,9 @@ public class LibrarianMenu {
 
                 case 2 -> librarySystem.getBookService().addBook(currentUser);
 
-                case 3 -> System.out.println("Feature not implemented yet: Search a Book");
+                case 3 -> librarySystem.getBookService().searchBook();
 
-                case 4 -> System.out.println("Feature not implemented yet: Edit a Book Info");
+                case 4 -> librarySystem.getBookService().editBook();
 
                 case 5 -> System.out.println("Feature not implemented yet: Reviewing Student Loan Requests");
 

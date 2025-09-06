@@ -47,8 +47,13 @@ public class BookService {
 
         librarian.setBooksRegisteredHistory(title);
 
+        System.out.println("Successful!");
+
     }
 
+    /**
+     * The librarian can edit the book's information by entering its ISBN.
+     */
     public void editBook() {
 
         System.out.println("\n--- Edit Book Info ---");
@@ -66,6 +71,8 @@ public class BookService {
 
         System.out.print("New Book Year: ");
         bookToEdit.setYear(scanner.nextLine());
+
+        System.out.println("Successful!");
 
     }
 
