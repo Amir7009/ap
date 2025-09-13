@@ -5,6 +5,7 @@ import ap.projects.finalProject.model.Loan;
 import ap.projects.finalProject.model.Request;
 import ap.projects.finalProject.model.Student;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +40,11 @@ public class LoanRepository {
 
         librarian.setLentBooksCount();
 
-        student.setNotifications("Your request to borrow Book " + acceptedRequest.getBorrowedBookISBN() +
+        student.setNotifications(LocalDate.now() + " Your request to borrow Book " + acceptedRequest.getBorrowedBookISBN() +
                 " has been approved by Librarian " + librarian.getEmployeeID() + ". Visit the library to get the book."
         );
+
+        student.setCurrentLoansCount(1);
 
     }
 
@@ -56,7 +59,7 @@ public class LoanRepository {
      */
     public void rejectRequest(Request rejectedRequest,Librarian librarian, Student student, String requestType) {
 
-        student.setNotifications("Your request to " + requestType + " Book " + rejectedRequest.getBorrowedBookISBN() +
+        student.setNotifications(LocalDate.now() + "Your request to " + requestType + " Book " + rejectedRequest.getBorrowedBookISBN() +
                 " has been approved by Librarian " + librarian.getEmployeeID() + "."
         );
 
@@ -68,7 +71,7 @@ public class LoanRepository {
      */
     public void rejectRequest(Request rejaectedRequest, Student student) {
 
-        student.setNotifications("Your request to borrow Book " + rejaectedRequest.getBorrowedBookISBN() +
+        student.setNotifications(LocalDate.now() + "Your request to borrow Book " + rejaectedRequest.getBorrowedBookISBN() +
                 " was rejected due to the reservation deadline."
         );
 

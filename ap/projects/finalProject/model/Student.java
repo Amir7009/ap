@@ -9,6 +9,8 @@ public class Student extends AppUser {
     private String notifications = "-";
     private String loanHistory = "-";
     private long loansCount = 0;
+    private long currentLoansCount = 0;
+    private long lateLoansCount = 0;
 
     public Student(String name, String studentId, String username, String password) {
         super(username, password);
@@ -74,6 +76,13 @@ public class Student extends AppUser {
     }
 
     /**
+     * If the user borrows, the number increases and if they return it, the number decreases.
+     */
+    public void setCurrentLoansCount(int newAction) {
+        this.currentLoansCount += newAction;
+    }
+
+    /**
      * Saves the student loan history split by -
      * It also records the total number of loans taken by this student.
      *
@@ -84,6 +93,25 @@ public class Student extends AppUser {
         this.loanHistory = this.loanHistory.concat(newAction + "-");
         this.loansCount += 1;
 
+    }
+
+    /**
+     * Returns the history of all completed parcels.
+     */
+    public String getLoanHistory() {
+        return loanHistory;
+    }
+
+    public long getLoansCount() {
+        return loansCount;
+    }
+
+    public long getCurrentLoansCount() {
+        return currentLoansCount;
+    }
+
+    public long getLateLoansCount() {
+        return lateLoansCount;
     }
 
     /**

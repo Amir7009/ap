@@ -3,7 +3,7 @@ package ap.projects.finalProject.service;
 import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.StudentRepository;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class StudentService {
 
@@ -58,6 +58,35 @@ public class StudentService {
         for (int i = myNotifications.length - 1; i >= 0; i--) {
             System.out.println(myNotifications[i]);
         }
+
+    }
+
+    /**
+     * View a student's loan history along with the following statistical information:
+     * Total number of loans
+     * Total number of current loans
+     * Total number of overdue loans
+     */
+    public void printStudentLoanStats() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Enter The Student's Username: ");
+        Student student = this.repository.findByUsername(scanner.nextLine());
+
+        String[] history = student.getLoanHistory().split("-");
+
+        System.out.println("\n--- Student Loan Stats ---\n");
+
+        System.out.println("All Returned Loans: " + student.getLoansCount());
+        System.out.println("All Current Loans: " + student.getCurrentLoansCount());
+        System.out.println("All Late Loans: " + student.getLateLoansCount());
+
+        System.out.println("\n--- Student Loan History ---\n");
+        for (int i = history.length - 1; i >= 0; i--) {
+            System.out.println(history[i]);
+        }
+
+        scanner.close();
 
     }
 

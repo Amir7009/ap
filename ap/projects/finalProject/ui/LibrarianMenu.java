@@ -24,7 +24,7 @@ public class LibrarianMenu extends Menu{
             System.out.println("3. Search a Book");
             System.out.println("4. Edit a Book Info");
             System.out.println("5. Reviewing Student Loan Requests");
-            System.out.println("6. View Student Loan History");
+            System.out.println("6. View Student Loan History and Stats");
             System.out.println("7. Activate or Deactivate a Student");
             System.out.println("8. Reviewing Book Return Requests");
             System.out.println("9. Logout");
@@ -45,7 +45,7 @@ public class LibrarianMenu extends Menu{
                         .getRepository()
                         .setLoanRequests(RequestService.handleLoanRequests(currentUser, librarySystem));
 
-                case 6 -> System.out.println("Feature not implemented yet: View Student Loan History");
+                case 6 -> librarySystem.getStudentService().printStudentLoanStats();
 
                 case 7 -> System.out.println("Feature not implemented yet: Activate or Deactivate a Student");
 
