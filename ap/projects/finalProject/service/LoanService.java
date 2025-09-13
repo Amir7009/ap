@@ -2,6 +2,7 @@ package ap.projects.finalProject.service;
 
 import ap.librarySystem.constants.BookStatus;
 import ap.projects.finalProject.model.Book;
+import ap.projects.finalProject.model.Librarian;
 import ap.projects.finalProject.model.Request;
 import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.LoanRepository;
@@ -92,6 +93,22 @@ public class LoanService {
             return;
         }
         System.out.println("ISBN not found!");
+
+    }
+
+    /**
+     * View library loan stats:
+     * Total number of books borrowed
+     * Total number of current requests
+     */
+    public void printLibraryLoanStats() {
+
+        System.out.println("\n--- Library Stats ---\n");
+
+        System.out.println("All Books Borrowed: " + (repository.pastLoansCount() + repository.currentLoansCount()));
+        System.out.println("All Current Borrow Requests: "
+                + (repository.getAllLoanRequests().size() + repository.getAllReturnRequests().size())
+        );
 
     }
 
