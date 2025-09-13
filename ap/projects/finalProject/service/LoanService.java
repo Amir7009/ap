@@ -3,6 +3,7 @@ package ap.projects.finalProject.service;
 import ap.librarySystem.constants.BookStatus;
 import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Request;
+import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.LoanRepository;
 import ap.projects.finalProject.repository.StudentRepository;
 import ap.projects.finalProject.util.UserInput;
@@ -29,10 +30,15 @@ public class LoanService {
      * The ISBN of the borrowed book and the username of the student.
      *
      * @param books           all library books
-     * @param studentUsername borrower student
+     * @param student borrower student
      * @see Request
      */
-    public void createLoanRequest(LinkedHashMap<String, Book> books, String studentUsername) {
+    public void createLoanRequest(LinkedHashMap<String, Book> books, Student student) {
+
+        if (!student.isActive()) {
+            System.out.println("Your access has been revoked by the librarian, please visit the library in person.");
+            return;
+        }
 
         System.out.println("Enter the ISBN of book: ");
         String tempISBN = scanner.nextLine();
@@ -42,7 +48,7 @@ public class LoanService {
                 books.get(tempISBN).setBookStatus(BookStatus.IS_RESERVED);
                 repository.createLoanRequest(
                         new Request(
-                                studentUsername,
+                                student.getUsername(),
                                 tempISBN,
                                 LocalDate.now()
                         )

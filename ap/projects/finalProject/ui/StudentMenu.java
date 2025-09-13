@@ -42,7 +42,7 @@ public class StudentMenu extends Menu {
 
                 case 4 -> librarySystem.getLoanService().createLoanRequest(
                         librarySystem.getBookService().getRepository().findAll(),
-                        currentUser.getUsername()
+                        currentUser
                 );
 
                 case 5 -> System.out.println("Feature not implemented yet: Return Book.");

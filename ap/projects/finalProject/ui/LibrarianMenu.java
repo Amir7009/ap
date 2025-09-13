@@ -47,7 +47,7 @@ public class LibrarianMenu extends Menu{
 
                 case 6 -> librarySystem.getStudentService().printStudentLoanStats();
 
-                case 7 -> System.out.println("Feature not implemented yet: Activate or Deactivate a Student");
+                case 7 -> librarySystem.getStudentService().setStudentStatus();
 
                 case 8 -> System.out.println("Feature not implemented yet: Reviewing Book Return Requests");
 

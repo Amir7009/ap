@@ -91,6 +91,29 @@ public class StudentService {
     }
 
     /**
+     * The librarian can revoke access from a student.
+     * A student who does not have access cannot register for a new loan.
+     */
+    public void setStudentStatus() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Enter The Student's Username: ");
+        Student student = this.repository.findByUsername(scanner.nextLine());
+
+        if (student.isActive())
+            System.out.println("This Student Is Already Active. Do You Want To Change It? (y/n)");
+        else
+            System.out.println("This Student Is Already nonActive. Do You Want To Change It? (y/n)");
+
+        String input = scanner.nextLine().toLowerCase();
+        if (input.contains("y")) {
+            student.setActive(!student.isActive());
+            System.out.println("Successful!");
+        }
+
+    }
+
+    /**
      * To exchange the list of member students
      *
      * @return the student repository services
