@@ -85,14 +85,16 @@ public class BookService {
 
         Book bookToRemove = repository.findByISBN(ISBN);
 
-        if (bookToRemove.getBookStatus() == BookStatus.NOT_BORROWED) {
-            System.out.println("Do you want to remove this book?\t(y/n)\n" + bookToRemove);
-            if (scanner.nextLine().equals("y") || scanner.nextLine().equals("Y")) {
-                repository.remove(ISBN);
-                System.out.println("Successful!");
-            }
-        } else {
+        if (bookToRemove.getBookStatus() != BookStatus.NOT_BORROWED) {
             System.out.println("The book is already borrowed or reserved!");
+            return;
+        }
+
+        System.out.println("Do you want to remove this book?\t(y/n)\n" + bookToRemove);
+        String input = scanner.nextLine().toLowerCase();
+        if (input.contains("y")) {
+            repository.remove(ISBN);
+            System.out.println("Successful!");
         }
 
     }

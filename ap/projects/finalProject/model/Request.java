@@ -34,4 +34,16 @@ public class Request {
 
     }
 
+    public LocalDate getCreateRequestDate() {
+        return createRequestDate;
+    }
+
+    public String getBorrowerStudentUsername() {
+        return borrowerStudentUsername;
+    }
+
+    public String getBorrowedBookISBN() {
+        return borrowedBookISBN;
+    }
+
 }

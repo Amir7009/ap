@@ -10,6 +10,7 @@ public class Student {
 
     private String notifications = "-";
     private String loanHistory = "-";
+    private long loansCount = 0;
 
     public Student(String name, String studentId, String username, String password) {
         this.name = name;
@@ -76,12 +77,14 @@ public class Student {
 
     /**
      * saves the student loan history split by -
+     * It also records the total number of loans taken by this student.
      *
      * @param newAction the new borrow report for student
      */
     public void setLoanHistory(String newAction) {
 
         this.loanHistory = this.loanHistory.concat(newAction + "-");
+        this.loansCount += 1;
 
     }
 

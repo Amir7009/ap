@@ -2,12 +2,13 @@ package ap.projects.finalProject.model;
 
 public class Librarian {
 
-    // for librarian, I have used both username and employee ID
+    // for librarian, I have used both username and employee ID in same meaning
     private String employeeID, password;
 
     private String booksRegisteredHistory = "-";
-    private String lentBooksHistory = "-";
-    private String reclaimedBooksHistory = "-";
+    private long booksRegisteredCount = 0;
+    private long lentBooksCount = 0;
+    private long reclaimedBooksCont = 0;
 
     public Librarian(String employeeID, String password) {
 
@@ -30,34 +31,32 @@ public class Librarian {
 
     /**
      * saves the books that added by this librarian split by -
+     * It also records the total number of books that registered by the librarian
      *
      * @param newAction the new book info
      */
     public void setBooksRegisteredHistory(String newAction) {
 
         this.booksRegisteredHistory = this.booksRegisteredHistory.concat(newAction + "-");
+        this.booksRegisteredCount += 1;
 
     }
 
     /**
-     * saves the loans that lent by this librarian split by -
-     *
-     * @param newAction the new loan info
+     * records the number of loans that lent by this librarian
      */
-    public void setLentBooksHistory(String newAction) {
+    public void setLentBooksCount() {
 
-        this.lentBooksHistory = this.lentBooksHistory.concat(newAction + "-");
+        this.lentBooksCount += 1;
 
     }
 
     /**
-     * saves the books that reclaimed by this librarian split by -
-     *
-     * @param newAction the returned loan info
+     * records the number of books that reclaimed by this librarian
      */
-    public void setReclaimedBooksHistory(String newAction) {
+    public void setReclaimedBooksCount() {
 
-        this.reclaimedBooksHistory = this.reclaimedBooksHistory.concat(newAction + "-");
+        this.reclaimedBooksCont += 1;
 
     }
 

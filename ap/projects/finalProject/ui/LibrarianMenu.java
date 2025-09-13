@@ -2,6 +2,7 @@ package ap.projects.finalProject.ui;
 
 import ap.projects.finalProject.LibrarySystem;
 import ap.projects.finalProject.model.Librarian;
+import ap.projects.finalProject.service.RequestService;
 import ap.projects.finalProject.util.UserInput;
 
 public class LibrarianMenu {
@@ -44,7 +45,9 @@ public class LibrarianMenu {
 
                 case 4 -> librarySystem.getBookService().editBook();
 
-                case 5 -> System.out.println("Feature not implemented yet: Reviewing Student Loan Requests");
+                case 5 -> librarySystem.getLoanService()
+                        .getRepository()
+                        .setLoanRequests(RequestService.handleLoanRequests(currentUser, librarySystem));
 
                 case 6 -> System.out.println("Feature not implemented yet: View Student Loan History");
 

@@ -31,10 +31,10 @@ public class StudentRepository {
     /**
      * to access all students who registered in the library
      *
-     * @return list of students who registered in the library
+     * @return Map of students who registered in the library
      */
-    public List<Student> findAll() {
-        return new ArrayList<>(students.values());
+    public LinkedHashMap<String, Student> findAll() {
+        return students;
     }
 
     /**
