@@ -40,6 +40,10 @@ public class Librarian extends AppUser {
 
     }
 
+    public long getBooksRegisteredCount() {
+        return booksRegisteredCount;
+    }
+
     /**
      * Records the number of loans that lent by this librarian
      */
@@ -49,6 +53,10 @@ public class Librarian extends AppUser {
 
     }
 
+    public long getLentBooksCount() {
+        return lentBooksCount;
+    }
+
     /**
      * Records the number of books that reclaimed by this librarian
      */
@@ -56,6 +64,10 @@ public class Librarian extends AppUser {
 
         this.reclaimedBooksCont += 1;
 
+    }
+
+    public long getReclaimedBooksCont() {
+        return reclaimedBooksCont;
     }
 
 }

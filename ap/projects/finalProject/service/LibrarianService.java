@@ -2,6 +2,7 @@ package ap.projects.finalProject.service;
 
 import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Librarian;
+import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.LibrarianRepository;
 
 import java.util.Scanner;
@@ -60,6 +61,28 @@ public class LibrarianService {
         System.out.println("Enter Your New Password: ");
         librarian.setPassword(scanner.nextLine());
         System.out.println("Successful!");
+    }
+
+    /**
+     * View a librarian's stats:
+     * Total number of books registered
+     * Total number of books lent
+     * Total number of books reclaimed
+     */
+    public void printLibrarianStats() {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Enter The Librarian's Employee ID: ");
+        Librarian librarian = this.repository.findByUsername(scanner.nextLine());
+
+        System.out.println("\n--- Librarian Stats ---\n");
+
+        System.out.println("All Books Registered: " + librarian.getBooksRegisteredCount());
+        System.out.println("All Books Lent: " + librarian.getLentBooksCount());
+        System.out.println("All Books Reclaimed: " + librarian.getReclaimedBooksCont());
+
+        scanner.close();
+
     }
 
     /**
