@@ -1,6 +1,6 @@
 package ap.projects.finalProject.model;
 
-import ap.librarySystem.constants.BookStatus;
+import ap.projects.midtermProject.constants.BookStatus;
 
 public class Book {
 

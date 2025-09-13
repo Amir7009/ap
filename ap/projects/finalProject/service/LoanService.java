@@ -1,8 +1,7 @@
 package ap.projects.finalProject.service;
 
-import ap.librarySystem.constants.BookStatus;
+import ap.projects.midtermProject.constants.BookStatus;
 import ap.projects.finalProject.model.Book;
-import ap.projects.finalProject.model.Librarian;
 import ap.projects.finalProject.model.Request;
 import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.LoanRepository;
