@@ -35,9 +35,10 @@ public class ManagerMenu extends Menu{
 
                 case 3 -> librarySystem.getLoanService().printLibraryLoanStats();
 
-                case 4 -> System.out.println();
+                case 4 -> librarySystem.getStudentService().printStudentLoanStats();
 
-                case 5 -> System.out.println();
+                // I'm short on time, Master.
+                case 5 -> librarySystem.getStudentService().printTopTenMostDelayed();
 
                 case 6 -> {
                     currentUser = null;

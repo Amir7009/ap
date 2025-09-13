@@ -3,6 +3,7 @@ package ap.projects.finalProject.service;
 import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.StudentRepository;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentService {
@@ -110,6 +111,12 @@ public class StudentService {
             student.setActive(!student.isActive());
             System.out.println("Successful!");
         }
+
+    }
+
+    public void printTopTenMostDelayed() {
+
+        return;
 
     }
 
