@@ -1,10 +1,13 @@
 package ap.projects.finalProject;
 
+import ap.projects.finalProject.model.Manager;
 import ap.projects.finalProject.repository.*;
 import ap.projects.finalProject.service.*;
 import ap.projects.finalProject.ui.LoginMenuHandler;
 
 public class LibrarySystem {
+
+    public Manager manager;
 
     private final StudentService studentService;
     private final LibrarianService librarianService;
@@ -14,6 +17,8 @@ public class LibrarySystem {
     private final LoginMenuHandler menuHandler;
 
     public LibrarySystem() {
+
+        manager = new Manager("Amlh", "1234", "AmirHossein", "Mohebbi", "Diploma");
 
         StudentRepository studentRepository = new StudentRepository();
         this.studentService = new StudentService(studentRepository);

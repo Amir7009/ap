@@ -7,8 +7,7 @@ public class Main {
     }
 
 
-    // param
-    // see
-    // return
+    //Manager username: Amlh
+    //Manager Password: 1234
 
 }

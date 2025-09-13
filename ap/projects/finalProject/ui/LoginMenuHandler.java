@@ -43,7 +43,7 @@ public class LoginMenuHandler extends Menu{
                     authentication.handleLibrarianLogin();
                     break;
                 case 5:
-                    System.out.println("Feature not implemented yet: Manager Login");
+                    authentication.handleManagerLogin();
                     break;
                 case 6:
                     System.out.println("Exiting system. Goodbye!");

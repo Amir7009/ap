@@ -2,8 +2,10 @@ package ap.projects.finalProject.service;
 
 import ap.projects.finalProject.LibrarySystem;
 import ap.projects.finalProject.model.Librarian;
+import ap.projects.finalProject.model.Manager;
 import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.ui.LibrarianMenu;
+import ap.projects.finalProject.ui.ManagerMenu;
 import ap.projects.finalProject.ui.StudentMenu;
 
 import java.util.Scanner;
@@ -92,6 +94,26 @@ public class AuthService {
             System.out.println("Login successful! Welcome, " + currentUser.getEmployeeID());
             LibrarianMenu librarianMenu = new LibrarianMenu(librarySystem, currentUser);
             librarianMenu.display();
+        } else {
+            System.out.println("Invalid username or password. Please try again.");
+        }
+
+    }
+
+    public void handleManagerLogin() {
+
+        System.out.println("\n--- Manager Login ---");
+
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+
+        if(librarySystem.manager.getUsername().equals(username) && librarySystem.manager.getPassword().equals(password)) {
+            System.out.println("Login successful! Welcome, " + librarySystem.manager.getUsername());
+            ManagerMenu managerMenu = new ManagerMenu(librarySystem, librarySystem.manager);
+            managerMenu.display();
         } else {
             System.out.println("Invalid username or password. Please try again.");
         }
