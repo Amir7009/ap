@@ -5,7 +5,6 @@ import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Request;
 import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.LoanRepository;
-import ap.projects.finalProject.repository.StudentRepository;
 import ap.projects.finalProject.util.UserInput;
 
 import java.time.LocalDate;
@@ -29,7 +28,7 @@ public class LoanService {
      * The following information is recorded in this request:
      * The ISBN of the borrowed book and the username of the student.
      *
-     * @param books           all library books
+     * @param books   all library books
      * @param student borrower student
      * @see Request
      */
@@ -59,10 +58,37 @@ public class LoanService {
                         " to " + LocalDate.now().plusDays(1).plusMonths(1) +
                         " have been registered."
                 );
-                System.out.println("After the librarian approves the loan request, go to the library to receive the book..");
+                System.out.println("After the librarian approves the loan request, go to the library to receive the book.");
                 return;
             } else
                 System.out.println("The book is already borrowed!");
+            return;
+        }
+        System.out.println("ISBN not found!");
+
+    }
+
+    public void createReturnRequest(LinkedHashMap<String, Book> books, Student student) {
+
+        System.out.println("Enter the ISBN of book: ");
+        String tempISBN = scanner.nextLine();
+
+        if (books.containsKey(tempISBN)) {
+            if (books.get(tempISBN).getBookStatus() == BookStatus.IS_BORROWED) {
+
+                repository.createReturnRequest(
+                        new Request(
+                                student.getUsername(),
+                                tempISBN,
+                                LocalDate.now()
+                        )
+                );
+                System.out.println("Successful!");
+                System.out.println("Your request for return book have been registered.");
+                System.out.println("After the librarian approves the return request, go to the library to return the book.");
+                return;
+            } else
+                System.out.println("The book is not borrowed!");
             return;
         }
         System.out.println("ISBN not found!");

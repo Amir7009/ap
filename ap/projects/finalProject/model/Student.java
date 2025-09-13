@@ -115,6 +115,15 @@ public class Student extends AppUser {
     }
 
     /**
+     * Records the number of books that late by this student
+     */
+    public void setLateLoansCount() {
+
+        this.lateLoansCount += 1;
+
+    }
+
+    /**
      * For print the student info
      *
      * @return the student info as a string in form of

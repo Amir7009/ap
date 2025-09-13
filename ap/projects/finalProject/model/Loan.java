@@ -72,4 +72,21 @@ public class Loan {
         return now.isAfter(loanFinishDate);
     }
 
+    public String getBorrowedBookISBN() {
+        return borrowedBookISBN;
+    }
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "loanStartDate=" + loanStartDate +
+                ", loanFinishDate=" + loanFinishDate +
+                ", actualReturnDate=" + actualReturnDate +
+                ", borrowerStudentUsername='" + borrowerStudentUsername + '\'' +
+                ", borrowedBookISBN='" + borrowedBookISBN + '\'' +
+                ", lenderLibrarianID='" + lenderLibrarianID + '\'' +
+                ", reclaimerLibrarianID='" + reclaimerLibrarianID + '\'' +
+                '}';
+    }
+
 }

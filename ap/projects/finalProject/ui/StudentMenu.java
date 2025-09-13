@@ -45,7 +45,10 @@ public class StudentMenu extends Menu {
                         currentUser
                 );
 
-                case 5 -> System.out.println("Feature not implemented yet: Return Book.");
+                case 5 -> librarySystem.getLoanService().createReturnRequest(
+                        librarySystem.getBookService().getRepository().findAll(),
+                        currentUser
+                );
 
                 case 6 -> System.out.println("Feature not implemented yet: Display Available Books.");
 

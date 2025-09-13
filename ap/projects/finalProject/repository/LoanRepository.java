@@ -1,9 +1,6 @@
 package ap.projects.finalProject.repository;
 
-import ap.projects.finalProject.model.Librarian;
-import ap.projects.finalProject.model.Loan;
-import ap.projects.finalProject.model.Request;
-import ap.projects.finalProject.model.Student;
+import ap.projects.finalProject.model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -48,6 +45,25 @@ public class LoanRepository {
 
     }
 
+    public void returnBook(Loan loan, Request acceptedRequest, Librarian librarian, Student student) {
+
+        loan.returnBook(librarian.getEmployeeID(), LocalDate.now());
+
+        pastLoansHistory.add(loan.toString());
+
+        librarian.setReclaimedBooksCount();
+
+        student.setNotifications(LocalDate.now() + " Your request to return Book " + acceptedRequest.getBorrowedBookISBN() +
+                " has been approved by Librarian " + librarian.getEmployeeID() + ". Visit the library to return the book."
+        );
+
+        if (loan.isLate(LocalDate.now()))
+            student.setLateLoansCount();
+
+        student.setCurrentLoansCount(-1);
+
+    }
+
     /**
      * For students, based on the type of request,
      * a notification stating that your request to borrow a certain book was rejected by a certain librarian.
@@ -89,7 +105,15 @@ public class LoanRepository {
 
     }
 
-    public void createReturnRequest() {
+    /**
+     * A method for create a new return request in library
+     *
+     * @param returnRequest the new request by library student
+     * @see Request
+     */
+    public void createReturnRequest(Request returnRequest) {
+
+        returnRequests.add(returnRequest);
 
     }
 
@@ -100,6 +124,13 @@ public class LoanRepository {
      */
     public ArrayList<Loan> getAllLoans() {
         return new ArrayList<>(currentLoans);
+    }
+
+    public Loan findLoanByISBN(String ISBN) {
+        return currentLoans.stream()
+                .filter(s -> s.getBorrowedBookISBN().equals(ISBN))
+                .findFirst()
+                .orElse(null);
     }
 
     /**

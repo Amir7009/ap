@@ -1,7 +1,9 @@
 package ap.projects.finalProject.service;
 
+import ap.librarySystem.constants.BookStatus;
 import ap.projects.finalProject.LibrarySystem;
 import ap.projects.finalProject.model.Librarian;
+import ap.projects.finalProject.model.Loan;
 import ap.projects.finalProject.model.Request;
 import ap.projects.finalProject.model.Student;
 
@@ -66,6 +68,10 @@ public class RequestService {
                 librarySystem.getLoanService()
                         .getRepository()
                         .addLoan(requestsList.get(i), librarian, student);
+                librarySystem.getBookService()
+                        .getRepository()
+                        .findByISBN(requestsList.get(i).getBorrowedBookISBN())
+                        .setBookStatus(BookStatus.IS_BORROWED);
                 requestsList.remove(i);
                 System.out.println("Successful!");
             }
@@ -87,8 +93,67 @@ public class RequestService {
 
     }
 
-    public static ArrayList<Request> handleReturnRequests() {
-        return null;
+    /**
+     * This method allows the librarian to view the content of requests to return books and approve or reject them if necessary.
+     *
+     * @param librarian librarian who reviews requests
+     * @return requests that remain untouched
+     */
+    public static ArrayList<Request> handleReturnRequests(Librarian librarian, LibrarySystem librarySystem) {
+
+        ArrayList<Request> requests = librarySystem.getLoanService().getRepository().getAllReturnRequests();
+        LinkedHashMap<Integer, Request> requestsList = new LinkedHashMap<>();
+
+        /*
+        This loop groups requests into a map for easier access.
+         */
+        for (int i = 0; i < requests.size(); i++) {
+
+            requestsList.put(i, requests.get(i));
+
+        }
+
+        System.out.println("\n--- Accept Return Requests ---\n");
+
+        for (int i = 0; i < requests.size(); i++) {
+            Student student = librarySystem.getStudentService()
+                    .getRepository().findAll()
+                    .get(requestsList.get(i).getBorrowerStudentUsername());
+            System.out.println("Do you want to accept this request?\ty/n\n");
+            System.out.println(requestsList.get(i));
+            System.out.println("\n1-Next");
+            System.out.println("0-Exit");
+            String input = scanner.nextLine().toLowerCase();
+            if (input.contains("y")) {
+                Loan loan = librarySystem.getLoanService()
+                        .getRepository()
+                        .findLoanByISBN(requestsList.get(i).getBorrowedBookISBN());
+                librarySystem.getLoanService()
+                        .getRepository()
+                        .returnBook(loan, requestsList.get(i), librarian, student);
+                librarySystem.getBookService()
+                        .getRepository()
+                        .findByISBN(requestsList.get(i).getBorrowedBookISBN())
+                        .setBookStatus(BookStatus.NOT_BORROWED);
+                librarySystem.getLoanService().getRepository().getAllLoans().remove(loan);
+                requestsList.remove(i);
+                System.out.println("Successful!");
+            }
+            if (input.contains("n")) {
+                librarySystem.getLoanService().getRepository()
+                        .rejectRequest(requestsList.get(i), librarian, student, "return");
+                requestsList.remove(i);
+                System.out.println("Successful!");
+            }
+            if (input.contains("0")) {
+                return new ArrayList<>(requestsList.values());
+            }
+        }
+
+        /*
+        Requests that remain untouched will be returned.
+         */
+        return new ArrayList<>(requestsList.values());
     }
 
 }
