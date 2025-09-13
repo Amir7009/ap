@@ -1,5 +1,6 @@
 package ap.projects.finalProject.service;
 
+import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Librarian;
 import ap.projects.finalProject.repository.LibrarianRepository;
 
@@ -13,6 +14,26 @@ public class LibrarianService {
     public LibrarianService(LibrarianRepository repository) {
         this.repository = repository;
         this.scanner = new Scanner(System.in);
+    }
+
+    /**
+     * A method that the manager can use to add a librarian to the library.
+     */
+    public void addLibrarian() {
+
+        System.out.println("\n--- Add New Librarian ---");
+
+        System.out.print("Please Enter The Librarian's Employee ID: ");
+        String employeeID = scanner.nextLine();
+
+        System.out.print("Please Enter The Librarian's Password: ");
+        String password = scanner.nextLine();
+
+        Librarian librarian = new Librarian(employeeID, password);
+        repository.add(employeeID, librarian);
+
+        System.out.println("Successful!");
+
     }
 
     /**

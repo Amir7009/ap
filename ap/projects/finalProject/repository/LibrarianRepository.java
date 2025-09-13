@@ -1,5 +1,6 @@
 package ap.projects.finalProject.repository;
 
+import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Librarian;
 
 import java.util.LinkedHashMap;
@@ -7,6 +8,15 @@ import java.util.LinkedHashMap;
 public class LibrarianRepository {
 
     private LinkedHashMap<String, Librarian> librarians = new LinkedHashMap<>();
+
+    /**
+     * A method for add a new librarian to library
+     *
+     * @param librarian the new librarian
+     */
+    public void add(String employeeID, Librarian librarian) {
+        librarians.put(employeeID, librarian);
+    }
 
     /**
      * To search a librarian by its employee ID
