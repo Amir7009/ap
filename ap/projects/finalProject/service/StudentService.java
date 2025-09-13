@@ -14,7 +14,7 @@ public class StudentService {
     }
 
     /**
-     * after authenticating a student by AuthService registers the student in Library
+     * After authenticating a student by AuthService registers the student in Library
      *
      * @param name      student fullName
      * @param studentId student ID in the University
@@ -33,7 +33,7 @@ public class StudentService {
     }
 
     /**
-     * compares the input with students info
+     * Compares the input with students info
      *
      * @param username the input username of user
      * @param password the input password of user
@@ -50,9 +50,14 @@ public class StudentService {
     /**
      * Prints student's all notifications
      */
-    public void printNotifications(String username) {
+    public void printNotifications(Student student) {
 
-        System.out.println(Arrays.toString(repository.findByUsername(username).getNotifications().split("-")));
+        String[] myNotifications = student.getNotifications().split("-");
+
+        System.out.println("\n--- My Notifications ---\n");
+        for (int i = myNotifications.length - 1; i >= 0; i--) {
+            System.out.println(myNotifications[i]);
+        }
 
     }
 

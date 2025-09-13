@@ -17,8 +17,8 @@ public class RequestService {
     /**
      * This method allows the librarian to view the content of requests to borrow books and approve or reject them if necessary.
      *
-     * @param librarian Librarian who reviews requests
-     * @return Requests that remain untouched
+     * @param librarian librarian who reviews requests
+     * @return requests that remain untouched
      */
     public static ArrayList<Request> handleLoanRequests(Librarian librarian, LibrarySystem librarySystem) {
 

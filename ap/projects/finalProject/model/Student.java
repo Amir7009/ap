@@ -1,11 +1,9 @@
 package ap.projects.finalProject.model;
 
-public class Student {
+public class Student extends AppUser {
 
     private String name;
     private String studentId;
-    private String username;
-    private String password;
     private boolean active = true;
 
     private String notifications = "-";
@@ -13,14 +11,13 @@ public class Student {
     private long loansCount = 0;
 
     public Student(String name, String studentId, String username, String password) {
+        super(username, password);
         this.name = name;
         this.studentId = studentId;
-        this.username = username;
-        this.password = password;
     }
 
     /**
-     * getter methods for student attributes
+     * Getter methods for student attributes
      *
      * @return student info (String)
      */
@@ -33,15 +30,15 @@ public class Student {
     }
 
     public String getUsername() {
-        return username;
+        return super.getUsername();
     }
 
     public String getPassword() {
-        return password;
+        return super.getPassword();
     }
 
     /**
-     * for check activity of a student
+     * For check activity of a student
      *
      * @return the activity status of student
      */
@@ -50,7 +47,7 @@ public class Student {
     }
 
     /**
-     * to set activity status of a student
+     * To set activity status of a student
      *
      * @param active new activity status of the student
      */
@@ -59,7 +56,7 @@ public class Student {
     }
 
     /**
-     * saves the student notifications split by -
+     * Saves the student notifications split by -
      *
      * @param notifications the new notification for student
      */
@@ -69,14 +66,15 @@ public class Student {
 
     }
 
+    /**
+     * Returns all announcements for printing.
+     */
     public String getNotifications() {
-
         return notifications;
-
     }
 
     /**
-     * saves the student loan history split by -
+     * Saves the student loan history split by -
      * It also records the total number of loans taken by this student.
      *
      * @param newAction the new borrow report for student
@@ -89,7 +87,7 @@ public class Student {
     }
 
     /**
-     * for print the student info
+     * For print the student info
      *
      * @return the student info as a string in form of
      * Name:  ... | Student ID:  ... | Username: ... | Status: ...
@@ -98,7 +96,7 @@ public class Student {
     public String toString() {
         return "Name: " + name +
                 " | Student ID: " + studentId +
-                " | Username: " + username +
+                " | Username: " + super.getUsername() +
                 " | Status: " + (active ? "Active" : "Inactive");
     }
 

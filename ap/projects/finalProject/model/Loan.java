@@ -5,7 +5,7 @@ import java.time.temporal.ChronoUnit;
 
 public class Loan {
 
-    // parameters to save lending info
+    // Parameters to save lending info
     private LocalDate
             loanStartDate,
             loanFinishDate,

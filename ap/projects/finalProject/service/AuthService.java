@@ -26,7 +26,7 @@ public class AuthService {
     }
 
     /**
-     * gets the student info from user and instantiates a new registered student in the library
+     * Gets the student info from user and instantiates a new registered student in the library
      *
      * @see StudentService
      */
@@ -51,8 +51,8 @@ public class AuthService {
     }
 
     /**
-     * gets the student info from user and searches the input username among the all students
-     * if the username exists, checks the password
+     * Gets the student info from user and searches the input username among the all students
+     * If the username exists, checks the password
      */
     public void handleStudentLogin() {
 

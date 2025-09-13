@@ -3,22 +3,18 @@ package ap.projects.finalProject.ui;
 import ap.projects.finalProject.LibrarySystem;
 import ap.projects.finalProject.model.Librarian;
 import ap.projects.finalProject.service.RequestService;
-import ap.projects.finalProject.util.UserInput;
 
-public class LibrarianMenu {
+public class LibrarianMenu extends Menu{
 
     private Librarian currentUser;
-    private LibrarySystem librarySystem;
-    private UserInput userInput;
 
     public LibrarianMenu(LibrarySystem librarySystem, Librarian currentUser) {
-        this.librarySystem = librarySystem;
+        super(librarySystem);
         this.currentUser = currentUser;
-        this.userInput = new UserInput();
     }
 
     /**
-     * shows all available options for a librarian in library
+     * Shows all available options for a librarian in library
      */
     public void display() {
         while (currentUser != null) {

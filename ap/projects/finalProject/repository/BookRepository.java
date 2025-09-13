@@ -9,25 +9,25 @@ public class BookRepository {
     private LinkedHashMap<String, Book> books = new LinkedHashMap<>();
 
     /**
-     * a method for add a new book to library
+     * A method for add a new book to library
      *
-     * @param book The new book
+     * @param book the new book
      */
     public void add(String ISBN, Book book) {
         books.put(ISBN, book);
     }
 
     /**
-     * a method for remove a book from library
+     * A method for remove a book from library
      *
-     * @param ISBN The ISBN of removing book
+     * @param ISBN the ISBN of removing book
      */
     public void remove(String ISBN) {
         books.remove(ISBN);
     }
 
     /**
-     * to search a book by its title
+     * To search a book by its title
      *
      * @param title the title that entered by user
      * @return if book exists returns the book
@@ -40,7 +40,7 @@ public class BookRepository {
     }
 
     /**
-     * to search a book by its author
+     * To search a book by its author
      *
      * @param author the author that entered by user
      * @return if book exists returns the book
@@ -53,7 +53,7 @@ public class BookRepository {
     }
 
     /**
-     * to search a book by its year
+     * To search a book by its year
      *
      * @param year the year that entered by user
      * @return if book exists returns the book
@@ -66,8 +66,8 @@ public class BookRepository {
     }
 
     /**
-     * to search a book by its ISBN
-     * just for edit book info
+     * To search a book by its ISBN
+     * Just for edit book info
      *
      * @param ISBN the ISBN that entered by user
      * @return if book exists returns the book
@@ -80,7 +80,7 @@ public class BookRepository {
     }
 
     /**
-     * to access all books in library
+     * To access all books in library
      *
      * @return a map of all books
      */
@@ -89,7 +89,7 @@ public class BookRepository {
     }
 
     /**
-     * to access to count of books that registered in the library
+     * To access to count of books that registered in the library
      *
      * @return the count of books
      */

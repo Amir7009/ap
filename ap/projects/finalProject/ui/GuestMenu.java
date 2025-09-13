@@ -6,14 +6,16 @@ import ap.projects.finalProject.util.UserInput;
 
 import java.util.Scanner;
 
-public class GuestMenu {
+public class GuestMenu extends Menu {
+
+    public GuestMenu(LibrarySystem librarySystem) {
+        super(librarySystem);
+    }
 
     /**
-     * shows all available options for a guest user in library
-     *
-     * @param librarySystem to access library data
+     * Shows all available options for a guest user in library
      */
-    public static void display(LibrarySystem librarySystem) {
+    public void display() {
 
         boolean condition = true;
         UserInput userInput = new UserInput();

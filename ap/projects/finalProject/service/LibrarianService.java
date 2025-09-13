@@ -16,7 +16,7 @@ public class LibrarianService {
     }
 
     /**
-     * compares the input with librarians info
+     * Compares the input with librarians info
      *
      * @param username the input employee ID of user
      * @param password the input password of user

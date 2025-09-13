@@ -2,22 +2,20 @@ package ap.projects.finalProject.ui;
 
 import ap.projects.finalProject.*;
 import ap.projects.finalProject.service.AuthService;
-import ap.projects.finalProject.util.UserInput;
 
-public class MenuHandler {
+public class LoginMenuHandler extends Menu{
 
-    private LibrarySystem librarySystem;
-    private UserInput userInput;
     private AuthService authentication;
 
-    public MenuHandler(LibrarySystem librarySystem) {
-        this.librarySystem = librarySystem;
-        this.userInput = new UserInput();
+    public LoginMenuHandler(LibrarySystem librarySystem) {
+        super(librarySystem);
         authentication = new AuthService(librarySystem);
     }
 
-    // this method will be developed when admin & manager have been added
-    public void displayMainMenu() {
+    /**
+     * This method manages all the options available on the user login page.
+     */
+    public void display() {
         while (true) {
             System.out.println("\n=== University Library Management System ===");
             System.out.println("1. Student Registration");
@@ -38,7 +36,8 @@ public class MenuHandler {
                     authentication.handleStudentLogin();
                     break;
                 case 3:
-                    GuestMenu.display(librarySystem);
+                    GuestMenu guestMenu = new GuestMenu(librarySystem);
+                    guestMenu.display();
                     break;
                 case 4:
                     authentication.handleLibrarianLogin();

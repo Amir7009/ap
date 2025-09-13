@@ -9,7 +9,7 @@ public class LibrarianRepository {
     private LinkedHashMap<String, Librarian> librarians = new LinkedHashMap<>();
 
     /**
-     * to search a librarian by its employee ID
+     * To search a librarian by its employee ID
      *
      * @param username the employee ID that entered by user
      * @return if librarian exists returns the librarian

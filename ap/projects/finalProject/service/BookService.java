@@ -76,6 +76,10 @@ public class BookService {
 
     }
 
+    /**
+     * The user can delete that book from the library book list by entering the ISBN.
+     * But this feature has not yet been fully implemented.
+     */
     public void removeBook() {
 
         System.out.println("\n--- Remove Book ---");
@@ -100,7 +104,7 @@ public class BookService {
     }
 
     /**
-     * shows all available options for search a book in library
+     * Shows all available options for search a book in library
      */
     public void searchBook() {
         boolean condition = true;

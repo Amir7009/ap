@@ -49,10 +49,10 @@ public class LoanRepository {
      * For students, based on the type of request,
      * a notification stating that your request to borrow a certain book was rejected by a certain librarian.
      *
-     * @param rejectedRequest Request information rejected by librarian
-     * @param librarian The librarian who rejected the request
-     * @param student A student who receives a rejection notice
-     * @param requestType Type of request denied by the librarian
+     * @param rejectedRequest request information rejected by librarian
+     * @param librarian the librarian who rejected the request
+     * @param student a student who receives a rejection notice
+     * @param requestType type of request denied by the librarian
      */
     public void rejectRequest(Request rejectedRequest,Librarian librarian, Student student, String requestType) {
 
@@ -75,9 +75,9 @@ public class LoanRepository {
     }
 
     /**
-     * a method for create a new loan request in library
+     * A method for create a new loan request in library
      *
-     * @param loanRequest The new request by library student
+     * @param loanRequest the new request by library student
      * @see Request
      */
     public void createLoanRequest(Request loanRequest) {
@@ -91,7 +91,7 @@ public class LoanRepository {
     }
 
     /**
-     * to access all loans in library
+     * To access all loans in library
      *
      * @return list of all loans
      */
@@ -100,7 +100,7 @@ public class LoanRepository {
     }
 
     /**
-     * to access all loan requests have created in the library
+     * To access all loan requests have created in the library
      */
     public ArrayList<Request> getAllLoanRequests() {
         return new ArrayList<>(loanRequests);
@@ -109,21 +109,21 @@ public class LoanRepository {
     /**
      * For when the librarian approves or denies a set of requests and returns the rest intact.
      *
-     * @param loanRequests Requests that remain untouched will be returned.
+     * @param loanRequests requests that remain untouched will be returned.
      */
     public void setLoanRequests(List<Request> loanRequests) {
         this.loanRequests = loanRequests;
     }
 
     /**
-     * to access all return requests have created in the library
+     * To access all return requests have created in the library
      */
     public ArrayList<Request> getAllReturnRequests() {
         return new ArrayList<>(returnRequests);
     }
 
     /**
-     * to access to count of current loans in the library
+     * To access to count of current loans in the library
      *
      * @return the count of current loans
      */
@@ -132,7 +132,7 @@ public class LoanRepository {
     }
 
     /**
-     * to access to count of returned loans in the library
+     * To access to count of returned loans in the library
      *
      * @return the count of returned loans
      */

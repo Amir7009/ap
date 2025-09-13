@@ -2,7 +2,7 @@ package ap.projects.finalProject;
 
 import ap.projects.finalProject.repository.*;
 import ap.projects.finalProject.service.*;
-import ap.projects.finalProject.ui.MenuHandler;
+import ap.projects.finalProject.ui.LoginMenuHandler;
 
 public class LibrarySystem {
 
@@ -11,7 +11,7 @@ public class LibrarySystem {
     private final BookService bookService;
     private final LoanService loanService;
 
-    private final MenuHandler menuHandler;
+    private final LoginMenuHandler menuHandler;
 
     public LibrarySystem() {
 
@@ -27,31 +27,31 @@ public class LibrarySystem {
         LoanRepository loanRepository = new LoanRepository();
         this.loanService = new LoanService(loanRepository);
 
-        this.menuHandler = new MenuHandler(this);
+        this.menuHandler = new LoginMenuHandler(this);
     }
 
     /**
-     * just connects the student services with the Library students repository
+     * Just connects the student services with the Library students repository
      *
      * @return the services that student can get from library
-     * @see MenuHandler or StudentMenu
+     * @see LoginMenuHandler or StudentMenu
      */
     public StudentService getStudentService() {
         return studentService;
     }
 
     /**
-     * just connects the librarian services with the Library librarians repository
+     * Just connects the librarian services with the Library librarians repository
      *
      * @return the services that librarian can get from library
-     * @see MenuHandler or LibrarianMenu
+     * @see LoginMenuHandler or LibrarianMenu
      */
     public LibrarianService getLibrarianService() {
         return librarianService;
     }
 
     /**
-     * just connects the Book services with the Library books repository
+     * Just connects the Book services with the Library books repository
      *
      * @return the services that student can get for library books
      */
@@ -60,7 +60,7 @@ public class LibrarySystem {
     }
 
     /**
-     * just connects the Loan services with the Library books, students and librarians
+     * Just connects the Loan services with the Library books, students and librarians
      *
      * @return the services that student can get for Borrowing book process
      */
@@ -69,9 +69,9 @@ public class LibrarySystem {
     }
 
     /**
-     * starts the loop of Library System
+     * Starts the loop of Library System
      */
     public void start() {
-        menuHandler.displayMainMenu();
+        menuHandler.display();
     }
 }

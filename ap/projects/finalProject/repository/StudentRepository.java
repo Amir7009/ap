@@ -9,9 +9,9 @@ public class StudentRepository {
     private LinkedHashMap<String, Student> students = new LinkedHashMap<>();
 
     /**
-     * a method for add a new student to registered students
+     * A method for add a new student to registered students
      *
-     * @param student  The last student to register
+     * @param student  the last student to register
      * @param username the student's username
      */
     public void add(String username, Student student) {
@@ -19,7 +19,7 @@ public class StudentRepository {
     }
 
     /**
-     * to search a student by its username
+     * To search a student by its username
      *
      * @param username the username that entered by user
      * @return if student exists returns the student
@@ -29,16 +29,16 @@ public class StudentRepository {
     }
 
     /**
-     * to access all students who registered in the library
+     * To access all students who registered in the library
      *
-     * @return Map of students who registered in the library
+     * @return map of students who registered in the library
      */
     public LinkedHashMap<String, Student> findAll() {
         return students;
     }
 
     /**
-     * to access to count of students who registered in the library
+     * To access to count of students who registered in the library
      *
      * @return the count of students
      */

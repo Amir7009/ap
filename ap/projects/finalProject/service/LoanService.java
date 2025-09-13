@@ -25,8 +25,8 @@ public class LoanService {
 
     /**
      * This method registers a loan request for a student in such a way that
-     * the following information is recorded in this request:
-     * the ISBN of the borrowed book and the username of the student.
+     * The following information is recorded in this request:
+     * The ISBN of the borrowed book and the username of the student.
      *
      * @param books           all library books
      * @param studentUsername borrower student

@@ -6,7 +6,7 @@ public class Book {
 
     private String ISBN;
     private String title, author, year;
-    private BookStatus bookStatus = BookStatus.NOT_BORROWED; // this can be replaced with book count if we will have duplicated books
+    private BookStatus bookStatus = BookStatus.NOT_BORROWED; // This can be replaced with book count if we will have duplicated books
 
     public Book(String title, String author, String year, String ISBN) {
         this.title = title;
@@ -52,7 +52,7 @@ public class Book {
     }
 
     /**
-     * for print the book info
+     * For print the book info
      *
      * @return the book info as a string in form of
      * Book{title='...', author='...', year='...', ISBN='...', status='...'}
@@ -71,7 +71,7 @@ public class Book {
     }
 
     /**
-     * print the book info for guest user
+     * Print the book info for guest user
      *
      * @return the book info as a string in form of
      * Book{title='...', author='...', year='...'}
