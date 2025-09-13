@@ -7,7 +7,7 @@ import ap.projects.finalProject.ui.LoginMenuHandler;
 
 public class LibrarySystem {
 
-    public Manager manager;
+    private Manager libraryManager;
 
     private final StudentService studentService;
     private final LibrarianService librarianService;
@@ -16,9 +16,9 @@ public class LibrarySystem {
 
     private final LoginMenuHandler menuHandler;
 
-    public LibrarySystem() {
+    public LibrarySystem(Manager librarymanager) {
 
-        manager = new Manager("Amlh", "1234", "AmirHossein", "Mohebbi", "Diploma");
+        this.libraryManager = librarymanager;
 
         StudentRepository studentRepository = new StudentRepository();
         this.studentService = new StudentService(studentRepository);
@@ -36,7 +36,7 @@ public class LibrarySystem {
     }
 
     /**
-     * Just connects the student services with the Library students repository
+     * Just connects the student services with the Library students repository.
      *
      * @return the services that student can get from library
      * @see LoginMenuHandler or StudentMenu
@@ -46,7 +46,7 @@ public class LibrarySystem {
     }
 
     /**
-     * Just connects the librarian services with the Library librarians repository
+     * Just connects the librarian services with the Library librarians repository.
      *
      * @return the services that librarian can get from library
      * @see LoginMenuHandler or LibrarianMenu
@@ -56,7 +56,7 @@ public class LibrarySystem {
     }
 
     /**
-     * Just connects the Book services with the Library books repository
+     * Just connects the Book services with the Library books repository.
      *
      * @return the services that student can get for library books
      */
@@ -65,7 +65,7 @@ public class LibrarySystem {
     }
 
     /**
-     * Just connects the Loan services with the Library books, students and librarians
+     * Just connects the Loan services with the Library books, students and librarians.
      *
      * @return the services that student can get for Borrowing book process
      */
@@ -74,7 +74,16 @@ public class LibrarySystem {
     }
 
     /**
-     * Starts the loop of Library System
+     * To access library Manager.
+     *
+     * @return the manager
+     */
+    public Manager getLibraryManager() {
+        return libraryManager;
+    }
+
+    /**
+     * Starts the loop of Library System.
      */
     public void start() {
         menuHandler.display();

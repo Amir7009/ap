@@ -13,7 +13,7 @@ public class StudentMenu extends Menu {
     }
 
     /**
-     * Shows all available options for a student in library
+     * Shows all available options for a student in library.
      */
     public void display() {
         while (currentUser != null) {

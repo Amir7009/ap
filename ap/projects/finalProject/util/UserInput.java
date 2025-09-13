@@ -7,7 +7,7 @@ public class UserInput {
     private Scanner scanner = new Scanner(System.in);
 
     /**
-     * For switch cases of a UI menu
+     * For switch cases of a UI menu.
      *
      * @param min the first option of menu
      * @param max the last option of menu

@@ -2,7 +2,7 @@ package ap.projects.finalProject.model;
 
 public class Librarian extends AppUser {
 
-    // For librarian, I have used both username and employee ID in same meaning
+    // For librarian, I have used both username and employee ID in same meaning.
 
     private String booksRegisteredHistory = "-";
     private long booksRegisteredCount = 0;
@@ -23,13 +23,19 @@ public class Librarian extends AppUser {
         return super.getPassword();
     }
 
+    /**
+     * For edit password after registration.
+     *
+     * @param password the new password
+     */
     public void setPassword(String password) {
         super.setPassword(password);
     }
 
+
     /**
-     * Saves the books that added by this librarian split by -
-     * It also records the total number of books that registered by the librarian
+     * Saves the books that added by this librarian split by -.
+     * It also records the total number of books that registered by the librarian.
      *
      * @param newAction the new book info
      */
@@ -40,12 +46,17 @@ public class Librarian extends AppUser {
 
     }
 
+    public String getBooksRegisteredHistory() {
+        return booksRegisteredHistory;
+    }
+
     public long getBooksRegisteredCount() {
         return booksRegisteredCount;
     }
 
+
     /**
-     * Records the number of loans that lent by this librarian
+     * Records the number of loans that lent by this librarian.
      */
     public void setLentBooksCount() {
 
@@ -57,8 +68,9 @@ public class Librarian extends AppUser {
         return lentBooksCount;
     }
 
+
     /**
-     * Records the number of books that reclaimed by this librarian
+     * Records the number of books that reclaimed by this librarian.
      */
     public void setReclaimedBooksCount() {
 

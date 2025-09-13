@@ -104,7 +104,7 @@ public class BookService {
     }
 
     /**
-     * Shows all available options for search a book in library
+     * Shows all available options for search a book in library.
      */
     public void searchBook() {
         boolean condition = true;
@@ -150,7 +150,7 @@ public class BookService {
     }
 
     /**
-     * To exchange the list of registered books
+     * To exchange the list of registered books.
      *
      * @return the book repository services
      */

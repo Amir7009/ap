@@ -3,7 +3,7 @@ package ap.projects.finalProject.service;
 import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.StudentRepository;
 
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class StudentService {
@@ -15,7 +15,7 @@ public class StudentService {
     }
 
     /**
-     * After authenticating a student by AuthService registers the student in Library
+     * After authenticating a student by AuthService registers the student in Library.
      *
      * @param name      student fullName
      * @param studentId student ID in the University
@@ -34,7 +34,7 @@ public class StudentService {
     }
 
     /**
-     * Compares the input with students info
+     * Compares the input with students info.
      *
      * @param username the input username of user
      * @param password the input password of user
@@ -49,7 +49,7 @@ public class StudentService {
     }
 
     /**
-     * Prints student's all notifications
+     * Prints student's all notifications.
      */
     public void printNotifications(Student student) {
 
@@ -72,7 +72,13 @@ public class StudentService {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter The Student's Username: ");
-        Student student = this.repository.findByUsername(scanner.nextLine());
+        String tempUsername = scanner.nextLine();
+        Student student = this.repository.findByUsername(tempUsername);
+
+        if (student == null) {
+            System.out.println("Student Not Found!");
+            return;
+        }
 
         String[] history = student.getLoanHistory().split("-");
 
@@ -87,8 +93,6 @@ public class StudentService {
             System.out.println(history[i]);
         }
 
-        scanner.close();
-
     }
 
     /**
@@ -99,7 +103,13 @@ public class StudentService {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter The Student's Username: ");
-        Student student = this.repository.findByUsername(scanner.nextLine());
+        String tempUsername = scanner.nextLine();
+        Student student = this.repository.findByUsername(tempUsername);
+
+        if (student == null) {
+            System.out.println("Student Not Found!");
+            return;
+        }
 
         if (student.isActive())
             System.out.println("This Student Is Already Active. Do You Want To Change It? (y/n)");
@@ -114,14 +124,22 @@ public class StudentService {
 
     }
 
+    /**
+     * To print top ten students with the most delays.
+     */
     public void printTopTenMostDelayed() {
 
-        return;
+        int i = 0;
+        for (Map.Entry<Integer, String> entry : repository.getMostLateStudents().descendingMap().entrySet()) {
+            if (i < 10)
+                System.out.println(entry.getKey() + " => " + entry.getValue());
+            i++;
+        }
 
     }
 
     /**
-     * To exchange the list of member students
+     * To exchange the list of member students.
      *
      * @return the student repository services
      */

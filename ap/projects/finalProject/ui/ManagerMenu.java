@@ -13,7 +13,7 @@ public class ManagerMenu extends Menu{
     }
 
     /**
-     * Shows all available options for a Manager in library
+     * Shows all available options for a Manager in library.
      */
     public void display() {
         while (currentUser != null) {
@@ -37,7 +37,6 @@ public class ManagerMenu extends Menu{
 
                 case 4 -> librarySystem.getStudentService().printStudentLoanStats();
 
-                // I'm short on time, Master.
                 case 5 -> librarySystem.getStudentService().printTopTenMostDelayed();
 
                 case 6 -> {

@@ -72,10 +72,25 @@ public class Loan {
         return now.isAfter(loanFinishDate);
     }
 
+    /**
+     * Function to calculate how long a book has been on loan.
+     *
+     * @return number of days the book has been on loan
+     */
+    public int loanDuration() {
+        return (int) ChronoUnit.DAYS.between(loanStartDate, actualReturnDate);
+    }
+
+    /**
+     * Returns the ISBN of the book on loan.
+     */
     public String getBorrowedBookISBN() {
         return borrowedBookISBN;
     }
 
+    /**
+     * For log the loan info.
+     */
     @Override
     public String toString() {
         return "Loan{" +

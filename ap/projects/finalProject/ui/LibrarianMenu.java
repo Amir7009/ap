@@ -14,7 +14,7 @@ public class LibrarianMenu extends Menu{
     }
 
     /**
-     * Shows all available options for a librarian in library
+     * Shows all available options for a librarian in library.
      */
     public void display() {
         while (currentUser != null) {
@@ -31,6 +31,7 @@ public class LibrarianMenu extends Menu{
             System.out.print("Please enter your choice: ");
 
             int choice = userInput.getIntInput(1, 9);
+            RequestService requestService = new RequestService();
 
             switch (choice) {
                 case 1 -> librarySystem.getLibrarianService().changePassword(currentUser);
@@ -43,13 +44,15 @@ public class LibrarianMenu extends Menu{
 
                 case 5 -> librarySystem.getLoanService()
                         .getRepository()
-                        .setLoanRequests(RequestService.handleLoanRequests(currentUser, librarySystem));
+                        .setLoanRequests(requestService.handleLoanRequests(currentUser, librarySystem));
 
                 case 6 -> librarySystem.getStudentService().printStudentLoanStats();
 
                 case 7 -> librarySystem.getStudentService().setStudentStatus();
 
-                case 8 -> System.out.println("Feature not implemented yet: Reviewing Book Return Requests");
+                case 8 -> librarySystem.getLoanService()
+                        .getRepository()
+                        .setLoanRequests(requestService.handleReturnRequests(currentUser, librarySystem));
 
                 case 9 -> {
                     currentUser = null;

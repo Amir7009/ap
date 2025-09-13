@@ -43,7 +43,7 @@ public class LoginMenuHandler extends Menu{
                     authentication.handleLibrarianLogin();
                     break;
                 case 5:
-                    authentication.handleManagerLogin();
+                    authentication.handleManagerLogin(librarySystem.getLibraryManager());
                     break;
                 case 6:
                     System.out.println("Exiting system. Goodbye!");

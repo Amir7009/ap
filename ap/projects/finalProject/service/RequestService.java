@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class RequestService {
 
-    private static Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     /**
      * This method allows the librarian to view the content of requests to borrow books and approve or reject them if necessary.
@@ -22,7 +22,7 @@ public class RequestService {
      * @param librarian librarian who reviews requests
      * @return requests that remain untouched
      */
-    public static ArrayList<Request> handleLoanRequests(Librarian librarian, LibrarySystem librarySystem) {
+    public ArrayList<Request> handleLoanRequests(Librarian librarian, LibrarySystem librarySystem) {
 
         ArrayList<Request> requests = librarySystem.getLoanService().getRepository().getAllLoanRequests();
         LinkedHashMap<Integer, Request> requestsList = new LinkedHashMap<>();
@@ -99,7 +99,7 @@ public class RequestService {
      * @param librarian librarian who reviews requests
      * @return requests that remain untouched
      */
-    public static ArrayList<Request> handleReturnRequests(Librarian librarian, LibrarySystem librarySystem) {
+    public ArrayList<Request> handleReturnRequests(Librarian librarian, LibrarySystem librarySystem) {
 
         ArrayList<Request> requests = librarySystem.getLoanService().getRepository().getAllReturnRequests();
         LinkedHashMap<Integer, Request> requestsList = new LinkedHashMap<>();

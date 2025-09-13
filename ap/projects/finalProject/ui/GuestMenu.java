@@ -13,7 +13,7 @@ public class GuestMenu extends Menu {
     }
 
     /**
-     * Shows all available options for a guest user in library
+     * Shows all available options for a guest user in library.
      */
     public void display() {
 
@@ -53,9 +53,9 @@ public class GuestMenu extends Menu {
                 }
 
                 case 4 -> {
-                    int loanCount = librarySystem.getLoanService().getRepository().currentLoansCount();
+                    int loanCount = librarySystem.getLoanService().getRepository().getCurrentLoansCount();
                     System.out.println("\nTotal Current Loans: " + loanCount);
-                    loanCount += librarySystem.getLoanService().getRepository().pastLoansCount();
+                    loanCount += librarySystem.getLoanService().getRepository().getPastLoansCount();
                     System.out.println("\nTotal Loans In The Library History: " + loanCount);
                 }
 

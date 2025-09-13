@@ -9,7 +9,7 @@ public class BookRepository {
     private LinkedHashMap<String, Book> books = new LinkedHashMap<>();
 
     /**
-     * A method for add a new book to library
+     * A method for add a new book to library.
      *
      * @param book the new book
      */
@@ -18,7 +18,7 @@ public class BookRepository {
     }
 
     /**
-     * A method for remove a book from library
+     * A method for remove a book from library.
      *
      * @param ISBN the ISBN of removing book
      */
@@ -27,7 +27,7 @@ public class BookRepository {
     }
 
     /**
-     * To search a book by its title
+     * To search a book by its title.
      *
      * @param title the title that entered by user
      * @return if book exists returns the book
@@ -40,7 +40,7 @@ public class BookRepository {
     }
 
     /**
-     * To search a book by its author
+     * To search a book by its author.
      *
      * @param author the author that entered by user
      * @return if book exists returns the book
@@ -53,7 +53,7 @@ public class BookRepository {
     }
 
     /**
-     * To search a book by its year
+     * To search a book by its year.
      *
      * @param year the year that entered by user
      * @return if book exists returns the book
@@ -67,7 +67,7 @@ public class BookRepository {
 
     /**
      * To search a book by its ISBN
-     * Just for edit book info
+     * Just for edit book info.
      *
      * @param ISBN the ISBN that entered by user
      * @return if book exists returns the book
@@ -80,7 +80,7 @@ public class BookRepository {
     }
 
     /**
-     * To access all books in library
+     * To access all books in library.
      *
      * @return a map of all books
      */
@@ -89,7 +89,7 @@ public class BookRepository {
     }
 
     /**
-     * To access to count of books that registered in the library
+     * To access to count of books that registered in the library.
      *
      * @return the count of books
      */

@@ -24,18 +24,20 @@ public class Request {
 
     }
 
-    public String printRequestDetails(LinkedHashMap<String, Student> students) {
+    /**
+     * Print details of a request including the requesting student,
+     * ISBN of the requested book, and the date the request was submitted.
+     *
+     * @return the request details in json form
+     */
+    public String requestDetails() {
 
         return "Request{" +
-                "borrowerStudent=" + students.get(borrowerStudentUsername).getUsername() +
+                "borrowerStudent=" + borrowerStudentUsername +
                 ", borrowedBook=" + borrowedBookISBN +
                 ", createRequestDate=" + createRequestDate +
                 '}';
 
-    }
-
-    public LocalDate getCreateRequestDate() {
-        return createRequestDate;
     }
 
     public String getBorrowerStudentUsername() {
@@ -44,6 +46,10 @@ public class Request {
 
     public String getBorrowedBookISBN() {
         return borrowedBookISBN;
+    }
+
+    public LocalDate getCreateRequestDate() {
+        return createRequestDate;
     }
 
 }

@@ -8,8 +8,10 @@ public class StudentRepository {
 
     private LinkedHashMap<String, Student> students = new LinkedHashMap<>();
 
+    private TreeMap<Integer, String> mostLateStudents = new TreeMap<>();
+
     /**
-     * A method for add a new student to registered students
+     * A method for add a new student to registered students.
      *
      * @param student  the last student to register
      * @param username the student's username
@@ -19,7 +21,7 @@ public class StudentRepository {
     }
 
     /**
-     * To search a student by its username
+     * To search a student by its username.
      *
      * @param username the username that entered by user
      * @return if student exists returns the student
@@ -29,7 +31,7 @@ public class StudentRepository {
     }
 
     /**
-     * To access all students who registered in the library
+     * To access all students who registered in the library.
      *
      * @return map of students who registered in the library
      */
@@ -38,12 +40,26 @@ public class StudentRepository {
     }
 
     /**
-     * To access to count of students who registered in the library
+     * To access to count of students who registered in the library.
      *
      * @return the count of students
      */
     public int count() {
         return students.size();
+    }
+
+    /**
+     * To identify the students with the most delays.
+     *
+     * @param delay delay amount
+     * @param username the student who is late in returning a loan
+     */
+    public void setMostLateStudents(int delay, String username) {
+        this.mostLateStudents.put(delay, username);
+    }
+
+    public TreeMap<Integer, String> getMostLateStudents() {
+        return mostLateStudents;
     }
 
 }

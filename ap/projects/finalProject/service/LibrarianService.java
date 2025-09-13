@@ -1,8 +1,6 @@
 package ap.projects.finalProject.service;
 
-import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Librarian;
-import ap.projects.finalProject.model.Student;
 import ap.projects.finalProject.repository.LibrarianRepository;
 
 import java.util.Scanner;
@@ -38,7 +36,7 @@ public class LibrarianService {
     }
 
     /**
-     * Compares the input with librarians info
+     * Compares the input with librarians info.
      *
      * @param username the input employee ID of user
      * @param password the input password of user
@@ -53,7 +51,7 @@ public class LibrarianService {
     }
 
     /**
-     * A function for when the librarian wants to change their password
+     * A function for when the librarian wants to change their password.
      *
      * @param librarian the librarian who wants to change password
      */
@@ -73,7 +71,13 @@ public class LibrarianService {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please Enter The Librarian's Employee ID: ");
-        Librarian librarian = this.repository.findByUsername(scanner.nextLine());
+        String tempEmployeeID = scanner.nextLine();
+        Librarian librarian = this.repository.findByUsername(tempEmployeeID);
+
+        if (librarian == null){
+            System.out.println("Librarian Not Found!");
+            return;
+        }
 
         System.out.println("\n--- Librarian Stats ---\n");
 
@@ -81,12 +85,10 @@ public class LibrarianService {
         System.out.println("All Books Lent: " + librarian.getLentBooksCount());
         System.out.println("All Books Reclaimed: " + librarian.getReclaimedBooksCont());
 
-        scanner.close();
-
     }
 
     /**
-     * To exchange the list of librarians
+     * To exchange the list of librarians.
      *
      * @return the librarian repository services
      */

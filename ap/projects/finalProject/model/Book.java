@@ -6,7 +6,9 @@ public class Book {
 
     private String ISBN;
     private String title, author, year;
-    private BookStatus bookStatus = BookStatus.NOT_BORROWED; // This can be replaced with book count if we will have duplicated books
+
+    // This can be replaced with book count if we will have duplicated books.
+    private BookStatus bookStatus = BookStatus.NOT_BORROWED;
 
     public Book(String title, String author, String year, String ISBN) {
         this.title = title;
@@ -15,44 +17,48 @@ public class Book {
         this.ISBN = ISBN;
     }
 
-    public String getISBN() {
-        return ISBN;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getTitle() {
         return title;
     }
 
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getAuthor() {
         return author;
+    }
+
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getYear() {
         return year;
     }
 
-    public BookStatus getBookStatus() {
-        return bookStatus;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
 
     public void setBookStatus(BookStatus status) {
         bookStatus = status;
     }
 
+    public BookStatus getBookStatus() {
+        return bookStatus;
+    }
+
+
+    public String getISBN() {
+        return ISBN;
+    }
+
     /**
-     * For print the book info
+     * For print the book info.
      *
      * @return the book info as a string in form of
      * Book{title='...', author='...', year='...', ISBN='...', status='...'}
@@ -71,7 +77,7 @@ public class Book {
     }
 
     /**
-     * Print the book info for guest user
+     * Print the book info for guest user.
      *
      * @return the book info as a string in form of
      * Book{title='...', author='...', year='...'}

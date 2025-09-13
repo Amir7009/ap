@@ -4,18 +4,21 @@ import ap.projects.finalProject.model.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 public class LoanRepository {
 
-    private List<Request> loanRequests = new ArrayList<>();
-    private List<Request> returnRequests = new ArrayList<>();
+    private ArrayList<Request> loanRequests = new ArrayList<>();
+    private ArrayList<Request> returnRequests = new ArrayList<>();
 
     // loans that returned
-    private List<String> pastLoansHistory = new ArrayList<>();
+    private ArrayList<String> pastLoansHistory = new ArrayList<>();
+    private ArrayList<Integer> allPastLoansDuringTime = new ArrayList<>();
 
     // current loans
-    private List<Loan> currentLoans = new ArrayList<>();
+    private ArrayList<Loan> currentLoans = new ArrayList<>();
+
+    // all registered borrow requests number
+    private long allBorrowRequestsCount = 0;
 
     /**
      * Stores the information recorded in the request along with the librarian's information as well as the loan start and end dates.
@@ -57,8 +60,12 @@ public class LoanRepository {
                 " has been approved by Librarian " + librarian.getEmployeeID() + ". Visit the library to return the book."
         );
 
+        student.setLoanHistory(loan.toString());
+
         if (loan.isLate(LocalDate.now()))
             student.setLateLoansCount();
+
+        this.setAllPastLoansDuringTime(loan.loanDuration());
 
         student.setCurrentLoansCount(-1);
 
@@ -94,7 +101,7 @@ public class LoanRepository {
     }
 
     /**
-     * A method for create a new loan request in library
+     * A method for create a new loan request in library.
      *
      * @param loanRequest the new request by library student
      * @see Request
@@ -106,7 +113,7 @@ public class LoanRepository {
     }
 
     /**
-     * A method for create a new return request in library
+     * A method for create a new return request in library.
      *
      * @param returnRequest the new request by library student
      * @see Request
@@ -118,7 +125,7 @@ public class LoanRepository {
     }
 
     /**
-     * To access all loans in library
+     * To access all loans in library.
      *
      * @return list of all loans
      */
@@ -133,45 +140,71 @@ public class LoanRepository {
                 .orElse(null);
     }
 
-    /**
-     * To access all loan requests have created in the library
-     */
-    public ArrayList<Request> getAllLoanRequests() {
-        return new ArrayList<>(loanRequests);
-    }
 
     /**
      * For when the librarian approves or denies a set of requests and returns the rest intact.
      *
      * @param loanRequests requests that remain untouched will be returned.
      */
-    public void setLoanRequests(List<Request> loanRequests) {
+    public void setLoanRequests(ArrayList<Request> loanRequests) {
         this.loanRequests = loanRequests;
     }
 
     /**
-     * To access all return requests have created in the library
+     * To access all loan requests have created in the library.
+     */
+    public ArrayList<Request> getAllLoanRequests() {
+        return new ArrayList<>(loanRequests);
+    }
+
+
+    /**
+     * To access all return requests have created in the library.
      */
     public ArrayList<Request> getAllReturnRequests() {
         return new ArrayList<>(returnRequests);
     }
 
     /**
-     * To access to count of current loans in the library
+     * To access to count of current loans in the library.
      *
      * @return the count of current loans
      */
-    public int currentLoansCount() {
+    public int getCurrentLoansCount() {
         return currentLoans.size();
     }
 
     /**
-     * To access to count of returned loans in the library
+     * To access to count of returned loans in the library.
      *
      * @return the count of returned loans
      */
-    public int pastLoansCount() {
+    public int getPastLoansCount() {
         return pastLoansHistory.size();
+    }
+
+
+    /**
+     * To count all borrow requests at all time.
+     */
+    public void setAllBorrowRequestsCount() {
+        this.allBorrowRequestsCount += 1;
+    }
+
+    public long getAllBorrowRequestsCount() {
+        return allBorrowRequestsCount;
+    }
+
+    /**
+     * For calculate average of all loans during time.
+     * @param loanDuringTime how long the new loan has lasted
+     */
+    public void setAllPastLoansDuringTime(int loanDuringTime) {
+        this.allPastLoansDuringTime.add(loanDuringTime);
+    }
+
+    public ArrayList<Integer> getAllPastLoansDuringTime() {
+        return allPastLoansDuringTime;
     }
 
 }

@@ -28,7 +28,7 @@ public class AuthService {
     }
 
     /**
-     * Gets the student info from user and instantiates a new registered student in the library
+     * Gets the student info from user and instantiates a new registered student in the library.
      *
      * @see StudentService
      */
@@ -53,8 +53,8 @@ public class AuthService {
     }
 
     /**
-     * Gets the student info from user and searches the input username among the all students
-     * If the username exists, checks the password
+     * Gets the student info from user and searches the input username among the all students;
+     * If the username exists, checks the password.
      */
     public void handleStudentLogin() {
 
@@ -78,6 +78,10 @@ public class AuthService {
 
     }
 
+    /**
+     * Gets the librarian info from user and searches the input username among the all librarians;
+     * If the username exists, checks the password.
+     */
     public void handleLibrarianLogin() {
 
         System.out.println("\n--- Librarian Login ---");
@@ -100,7 +104,11 @@ public class AuthService {
 
     }
 
-    public void handleManagerLogin() {
+    /**
+     * Gets the library manager info from user and searches the input username and password
+     * with library manager info.
+     */
+    public void handleManagerLogin(Manager libraryManager) {
 
         System.out.println("\n--- Manager Login ---");
 
@@ -110,9 +118,9 @@ public class AuthService {
         System.out.print("Password: ");
         String password = scanner.nextLine();
 
-        if(librarySystem.manager.getUsername().equals(username) && librarySystem.manager.getPassword().equals(password)) {
-            System.out.println("Login successful! Welcome, " + librarySystem.manager.getUsername());
-            ManagerMenu managerMenu = new ManagerMenu(librarySystem, librarySystem.manager);
+        if(libraryManager.getUsername().equals(username) && libraryManager.getPassword().equals(password)) {
+            System.out.println("Login successful! Welcome, " + librarySystem.getLibraryManager().getUsername());
+            ManagerMenu managerMenu = new ManagerMenu(librarySystem, libraryManager);
             managerMenu.display();
         } else {
             System.out.println("Invalid username or password. Please try again.");

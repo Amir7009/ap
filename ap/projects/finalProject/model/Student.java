@@ -19,7 +19,7 @@ public class Student extends AppUser {
     }
 
     /**
-     * Getter methods for student attributes
+     * Getter methods for student attributes.
      *
      * @return student info (String)
      */
@@ -39,17 +39,9 @@ public class Student extends AppUser {
         return super.getPassword();
     }
 
-    /**
-     * For check activity of a student
-     *
-     * @return the activity status of student
-     */
-    public boolean isActive() {
-        return active;
-    }
 
     /**
-     * To set activity status of a student
+     * To set activity status of a student.
      *
      * @param active new activity status of the student
      */
@@ -58,7 +50,17 @@ public class Student extends AppUser {
     }
 
     /**
-     * Saves the student notifications split by -
+     * For check activity of a student.
+     *
+     * @return the activity status of student
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+
+    /**
+     * Saves the student notifications split by -.
      *
      * @param notifications the new notification for student
      */
@@ -75,12 +77,18 @@ public class Student extends AppUser {
         return notifications;
     }
 
+
     /**
      * If the user borrows, the number increases and if they return it, the number decreases.
      */
     public void setCurrentLoansCount(int newAction) {
         this.currentLoansCount += newAction;
     }
+
+    public long getCurrentLoansCount() {
+        return currentLoansCount;
+    }
+
 
     /**
      * Saves the student loan history split by -
@@ -106,16 +114,9 @@ public class Student extends AppUser {
         return loansCount;
     }
 
-    public long getCurrentLoansCount() {
-        return currentLoansCount;
-    }
-
-    public long getLateLoansCount() {
-        return lateLoansCount;
-    }
 
     /**
-     * Records the number of books that late by this student
+     * Records the number of books that late by this student.
      */
     public void setLateLoansCount() {
 
@@ -123,8 +124,13 @@ public class Student extends AppUser {
 
     }
 
+    public long getLateLoansCount() {
+        return lateLoansCount;
+    }
+
+
     /**
-     * For print the student info
+     * For print the student info.
      *
      * @return the student info as a string in form of
      * Name:  ... | Student ID:  ... | Username: ... | Status: ...
