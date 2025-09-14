@@ -3,7 +3,7 @@ package ap.projects.finalProject.model;
 public class Student extends AppUser {
 
     private String name;
-    private String studentId;
+    private String studentID;
     private boolean active = true;
 
     private String notifications = "-";
@@ -15,7 +15,7 @@ public class Student extends AppUser {
     public Student(String name, String studentId, String username, String password) {
         super(username, password);
         this.name = name;
-        this.studentId = studentId;
+        this.studentID = studentId;
     }
 
     /**
@@ -27,8 +27,8 @@ public class Student extends AppUser {
         return name;
     }
 
-    public String getStudentId() {
-        return studentId;
+    public String getStudentID() {
+        return studentID;
     }
 
     public String getUsername() {
@@ -64,10 +64,14 @@ public class Student extends AppUser {
      *
      * @param notifications the new notification for student
      */
-    public void setNotifications(String notifications) {
+    public void addNotifications(String notifications) {
 
         this.notifications = this.notifications.concat(notifications + "-");
 
+    }
+
+    public void setNotifications(String notifications) {
+        this.notifications = notifications;
     }
 
     /**
@@ -81,8 +85,12 @@ public class Student extends AppUser {
     /**
      * If the user borrows, the number increases and if they return it, the number decreases.
      */
-    public void setCurrentLoansCount(int newAction) {
+    public void addCurrentLoansCount(int newAction) {
         this.currentLoansCount += newAction;
+    }
+
+    public void setCurrentLoansCount(long currentLoansCount) {
+        this.currentLoansCount = currentLoansCount;
     }
 
     public long getCurrentLoansCount() {
@@ -96,11 +104,19 @@ public class Student extends AppUser {
      *
      * @param newAction the new borrow report for student
      */
-    public void setLoanHistory(String newAction) {
+    public void addLoanHistory(String newAction) {
 
         this.loanHistory = this.loanHistory.concat(newAction + "-");
         this.loansCount += 1;
 
+    }
+
+    public void setLoanHistory(String loanHistory) {
+        this.loanHistory = loanHistory;
+    }
+
+    public void setLoansCount(long loansCount) {
+        this.loansCount = loansCount;
     }
 
     /**
@@ -118,10 +134,14 @@ public class Student extends AppUser {
     /**
      * Records the number of books that late by this student.
      */
-    public void setLateLoansCount() {
+    public void addLateLoansCount() {
 
         this.lateLoansCount += 1;
 
+    }
+
+    public void setLateLoansCount(long lateLoansCount) {
+        this.lateLoansCount = lateLoansCount;
     }
 
     public long getLateLoansCount() {
@@ -138,9 +158,22 @@ public class Student extends AppUser {
     @Override
     public String toString() {
         return "Name: " + name +
-                " | Student ID: " + studentId +
+                " | Student ID: " + studentID +
                 " | Username: " + super.getUsername() +
                 " | Status: " + (active ? "Active" : "Inactive");
+    }
+
+    public String tabSplit(){
+        return this.name + "\t" +
+                this.studentID + "\t" +
+                this.getUsername() + "\t" +
+                this.getPassword() + "\t" +
+                this.isActive() + "\t" +
+                this.notifications + "\t" +
+                this.loanHistory + "\t" +
+                this.loansCount + "\t" +
+                this.currentLoansCount + "\t" +
+                this.lateLoansCount + "\t";
     }
 
 }

@@ -88,6 +88,14 @@ public class Loan {
         return borrowedBookISBN;
     }
 
+    public void setActualReturnDate(LocalDate actualReturnDate) {
+        this.actualReturnDate = actualReturnDate;
+    }
+
+    public void setReclaimerLibrarianID(String reclaimerLibrarianID) {
+        this.reclaimerLibrarianID = reclaimerLibrarianID;
+    }
+
     /**
      * For log the loan info.
      */
@@ -102,6 +110,16 @@ public class Loan {
                 ", lenderLibrarianID='" + lenderLibrarianID + '\'' +
                 ", reclaimerLibrarianID='" + reclaimerLibrarianID + '\'' +
                 '}';
+    }
+
+    public String tabSplit(){
+        return this.borrowerStudentUsername + "\t" +
+                this.borrowedBookISBN + "\t" +
+                this.lenderLibrarianID + "\t" +
+                this.loanStartDate + "\t" +
+                this.loanFinishDate + "\t" +
+                this.actualReturnDate + "\t" +
+                this.reclaimerLibrarianID + "\t";
     }
 
 }

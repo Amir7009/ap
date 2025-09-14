@@ -54,12 +54,19 @@ public class StudentRepository {
      * @param delay delay amount
      * @param username the student who is late in returning a loan
      */
-    public void setMostLateStudents(int delay, String username) {
+    public void addMostLateStudents(int delay, String username) {
         this.mostLateStudents.put(delay, username);
+    }
+
+    public void setMostLateStudents(TreeMap<Integer, String> mostLateStudents) {
+        this.mostLateStudents = mostLateStudents;
     }
 
     public TreeMap<Integer, String> getMostLateStudents() {
         return mostLateStudents;
     }
 
+    public void setStudents(LinkedHashMap<String, Student> students) {
+        this.students = students;
+    }
 }

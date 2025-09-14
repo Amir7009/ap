@@ -38,13 +38,13 @@ public class LoanRepository {
 
         currentLoans.add(newLoan);
 
-        librarian.setLentBooksCount();
+        librarian.addLentBooksCount();
 
-        student.setNotifications(LocalDate.now() + " Your request to borrow Book " + acceptedRequest.getBorrowedBookISBN() +
+        student.addNotifications(LocalDate.now() + " Your request to borrow Book " + acceptedRequest.getBorrowedBookISBN() +
                 " has been approved by Librarian " + librarian.getEmployeeID() + ". Visit the library to get the book."
         );
 
-        student.setCurrentLoansCount(1);
+        student.addCurrentLoansCount(1);
 
     }
 
@@ -54,20 +54,20 @@ public class LoanRepository {
 
         pastLoansHistory.add(loan.toString());
 
-        librarian.setReclaimedBooksCount();
+        librarian.addReclaimedBooksCount();
 
-        student.setNotifications(LocalDate.now() + " Your request to return Book " + acceptedRequest.getBorrowedBookISBN() +
+        student.addNotifications(LocalDate.now() + " Your request to return Book " + acceptedRequest.getBorrowedBookISBN() +
                 " has been approved by Librarian " + librarian.getEmployeeID() + ". Visit the library to return the book."
         );
 
-        student.setLoanHistory(loan.toString());
+        student.addLoanHistory(loan.toString());
 
         if (loan.isLate(LocalDate.now()))
-            student.setLateLoansCount();
+            student.addLateLoansCount();
 
         this.setAllPastLoansDuringTime(loan.loanDuration());
 
-        student.setCurrentLoansCount(-1);
+        student.addCurrentLoansCount(-1);
 
     }
 
@@ -82,7 +82,7 @@ public class LoanRepository {
      */
     public void rejectRequest(Request rejectedRequest,Librarian librarian, Student student, String requestType) {
 
-        student.setNotifications(LocalDate.now() + "Your request to " + requestType + " Book " + rejectedRequest.getBorrowedBookISBN() +
+        student.addNotifications(LocalDate.now() + "Your request to " + requestType + " Book " + rejectedRequest.getBorrowedBookISBN() +
                 " has been approved by Librarian " + librarian.getEmployeeID() + "."
         );
 
@@ -94,7 +94,7 @@ public class LoanRepository {
      */
     public void rejectRequest(Request rejaectedRequest, Student student) {
 
-        student.setNotifications(LocalDate.now() + "Your request to borrow Book " + rejaectedRequest.getBorrowedBookISBN() +
+        student.addNotifications(LocalDate.now() + "Your request to borrow Book " + rejaectedRequest.getBorrowedBookISBN() +
                 " was rejected due to the reservation deadline."
         );
 
@@ -141,6 +141,10 @@ public class LoanRepository {
     }
 
 
+    public ArrayList<String> getPastLoansHistory() {
+        return pastLoansHistory;
+    }
+
     /**
      * For when the librarian approves or denies a set of requests and returns the rest intact.
      *
@@ -148,6 +152,10 @@ public class LoanRepository {
      */
     public void setLoanRequests(ArrayList<Request> loanRequests) {
         this.loanRequests = loanRequests;
+    }
+
+    public void setReturnRequests(ArrayList<Request> returnRequests) {
+        this.returnRequests = returnRequests;
     }
 
     /**
@@ -207,4 +215,11 @@ public class LoanRepository {
         return allPastLoansDuringTime;
     }
 
+    public void setCurrentLoans(ArrayList<Loan> currentLoans) {
+        this.currentLoans = currentLoans;
+    }
+
+    public void setPastLoansHistory(ArrayList<String> pastLoansHistory) {
+        this.pastLoansHistory = pastLoansHistory;
+    }
 }

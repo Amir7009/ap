@@ -1,14 +1,13 @@
 package ap.projects.finalProject;
 
 import ap.projects.finalProject.model.*;
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.TreeMap;
+import ap.projects.finalProject.storage.FileManager;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        FileManager fileManager = new FileManager();
 
         Manager libraryManager = new Manager(
                 "znu",
@@ -18,18 +17,13 @@ public class Main {
                 "Diploma"
         );
 
-        new LibrarySystem(libraryManager).start();
+        LibrarySystem librarySystem = new LibrarySystem(libraryManager);
+        fileManager.loadLibrary(librarySystem);
+
+        librarySystem.start();
+
+        fileManager.saveLibraryToTabSplit(librarySystem);
 
     }
-
-    // for backup
-    private LinkedHashMap<String, Book> books = new LinkedHashMap<>();
-    private LinkedHashMap<String, Librarian> librarians = new LinkedHashMap<>();
-    private ArrayList<Request> loanRequests = new ArrayList<>();
-    private ArrayList<Request> returnRequests = new ArrayList<>();
-    private ArrayList<String> pastLoansHistory = new ArrayList<>();
-    private ArrayList<Loan> currentLoans = new ArrayList<>();
-    private LinkedHashMap<String, Student> students = new LinkedHashMap<>();
-    private TreeMap<Integer, String> mostLateStudents = new TreeMap<>();
 
 }

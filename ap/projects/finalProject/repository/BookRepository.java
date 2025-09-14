@@ -97,4 +97,8 @@ public class BookRepository {
         return books.size();
     }
 
+    public void setBooks(LinkedHashMap<String, Book> books) {
+        this.books = books;
+    }
+
 }

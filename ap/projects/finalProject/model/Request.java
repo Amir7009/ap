@@ -1,7 +1,6 @@
 package ap.projects.finalProject.model;
 
 import java.time.LocalDate;
-import java.util.LinkedHashMap;
 
 public class Request {
 
@@ -50,6 +49,12 @@ public class Request {
 
     public LocalDate getCreateRequestDate() {
         return createRequestDate;
+    }
+
+    public String tabSplit(){
+        return this.borrowerStudentUsername + "\t" +
+                this.borrowedBookISBN + "\t" +
+                this.createRequestDate + "\t";
     }
 
 }

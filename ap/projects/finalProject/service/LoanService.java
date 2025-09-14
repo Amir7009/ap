@@ -1,6 +1,6 @@
 package ap.projects.finalProject.service;
 
-import ap.projects.midtermProject.constants.BookStatus;
+import ap.projects.finalProject.model.enums.BookStatus;
 import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Request;
 import ap.projects.finalProject.model.Student;

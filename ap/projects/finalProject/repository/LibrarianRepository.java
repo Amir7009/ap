@@ -27,4 +27,12 @@ public class LibrarianRepository {
         return librarians.getOrDefault(username, null);
     }
 
+    public LinkedHashMap<String, Librarian> findAll() {
+        return librarians;
+    }
+
+    public void setLibrarians(LinkedHashMap<String, Librarian> librarians) {
+        this.librarians = librarians;
+    }
+
 }

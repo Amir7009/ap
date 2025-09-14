@@ -1,6 +1,7 @@
 package ap.projects.finalProject.model;
 
-import ap.projects.midtermProject.constants.BookStatus;
+
+import ap.projects.finalProject.model.enums.BookStatus;
 
 public class Book {
 
@@ -8,13 +9,14 @@ public class Book {
     private String title, author, year;
 
     // This can be replaced with book count if we will have duplicated books.
-    private BookStatus bookStatus = BookStatus.NOT_BORROWED;
+    private BookStatus bookStatus;
 
-    public Book(String title, String author, String year, String ISBN) {
+    public Book(String title, String author, String year, String ISBN, BookStatus bookStatus) {
         this.title = title;
         this.author = author;
         this.year = year;
         this.ISBN = ISBN;
+        this.bookStatus = bookStatus;
     }
 
     public void setTitle(String title) {
@@ -90,6 +92,17 @@ public class Book {
                 ", year='" + year + '\'' +
                 '}';
 
+    }
+
+    /**
+     * For save and load library data.
+     */
+    public String tabSplit(){
+        return this.title + "\t" +
+                this.author + "\t" +
+                this.year + "\t" +
+                this.ISBN + "\t" +
+                this.bookStatus + "\t";
     }
 
 }

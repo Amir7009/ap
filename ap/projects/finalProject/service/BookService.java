@@ -1,6 +1,6 @@
 package ap.projects.finalProject.service;
 
-import ap.projects.midtermProject.constants.BookStatus;
+import ap.projects.finalProject.model.enums.BookStatus;
 import ap.projects.finalProject.model.Book;
 import ap.projects.finalProject.model.Librarian;
 import ap.projects.finalProject.repository.BookRepository;
@@ -42,10 +42,10 @@ public class BookService {
         System.out.print("Book ISBN: ");
         String ISBN = scanner.nextLine();
 
-        Book book = new Book(title, author, year, ISBN);
+        Book book = new Book(title, author, year, ISBN, BookStatus.NOT_BORROWED);
         repository.add(ISBN, book);
 
-        librarian.setBooksRegisteredHistory(title);
+        librarian.addBooksRegisteredHistory(title);
 
         System.out.println("Successful!");
 
